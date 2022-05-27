@@ -9,11 +9,15 @@ div.box {
     margin: auto; /* this centers the box */
 }
 
+.download {
+    margin-top:1em;
+}
+
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
     position: relative;
     width: 250px;
-    height: 520px;
+    height: 512px;
     margin: auto;
     border: 10px black solid;
     border-top-width: 36px;
@@ -38,4 +42,13 @@ div.box {
     height: 100%;
     background: white;
 }
+
+
+/* download uses smaller smartphone */
+.download .smartphone {
+    width: 180px;
+    height: 369px;
+    margin-bottom: 1em;
+}
+
 
