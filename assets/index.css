@@ -1,6 +1,15 @@
 
-/* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 
+html {
+    font-size: 1.2em;
+}
+
+div.box {
+    max-width: 1024px;
+    margin: auto; /* this centers the box */
+}
+
+/* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
     position: relative;
     width: 250px;
