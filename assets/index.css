@@ -45,12 +45,15 @@ a {
 
 
 /* download uses smaller smartphone */
+.download {
+    width: 12em;
+}
 
 .download .smartphone {
     width: 180px;
     height: 369px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 2em;
+    margin-bottom: .3em;
 }
 
 .download a {
