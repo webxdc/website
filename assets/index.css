@@ -9,8 +9,8 @@ div.box {
     margin: auto; /* this centers the box */
 }
 
-.download {
-    margin-top:1em;
+a {
+    text-decoration: underline;
 }
 
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
@@ -45,10 +45,15 @@ div.box {
 
 
 /* download uses smaller smartphone */
+
 .download .smartphone {
     width: 180px;
     height: 369px;
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 
+.download a {
+    text-decoration: none;
+}
 
