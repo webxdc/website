@@ -57,3 +57,24 @@ a {
     text-decoration: none;
 }
 
+.download a:hover {
+    text-decoration: underline;
+}
+
+
+/* footer */
+
+div.page-footer {
+    margin-top: 4em;
+    text-align: center;
+    font-size: .8em;
+}
+
+div.page-footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+div.page-footer a:hover {
+    text-decoration: underline;
+}
