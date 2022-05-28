@@ -9,6 +9,11 @@ div.box {
     margin: auto; /* this centers the box */
 }
 
+div.box-topmost {
+    border-radius: 0 0 6px 6px;
+}
+
+
 a {
     text-decoration: underline;
 }
