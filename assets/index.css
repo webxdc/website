@@ -1,7 +1,10 @@
 
-
 html {
     font-size: 1.2em;
+}
+
+a {
+    text-decoration: underline;
 }
 
 div.box {
@@ -20,9 +23,23 @@ div.box-topmost {
     }
 }
 
-a {
+div.page-footer {
+    max-width: 1024px;
+    margin: auto;
+    padding: 1.5em;
+    text-align: center;
+    font-size: .9em;
+}
+
+div.page-footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+div.page-footer a:hover {
     text-decoration: underline;
 }
+
 
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
@@ -76,21 +93,3 @@ a {
 }
 
 
-/* footer */
-
-div.page-footer {
-    max-width: 1024px;
-    margin: auto;
-    padding: 1.5em;
-    text-align: center;
-    font-size: .9em;
-}
-
-div.page-footer a {
-    color: #888;
-    text-decoration: none;
-}
-
-div.page-footer a:hover {
-    text-decoration: underline;
-}
