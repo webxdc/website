@@ -13,6 +13,12 @@ div.box-topmost {
     border-radius: 0 0 6px 6px;
 }
 
+@media screen and (min-width: 1048px) {
+    div.box-topmost {
+        margin-top: 1.5em;
+        border-radius: 6px;
+    }
+}
 
 a {
     text-decoration: underline;
