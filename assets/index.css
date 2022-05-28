@@ -79,9 +79,11 @@ a {
 /* footer */
 
 div.page-footer {
-    margin-top: 4em;
+    max-width: 1024px;
+    margin: auto;
+    padding: 1.5em;
     text-align: center;
-    font-size: .8em;
+    font-size: .9em;
 }
 
 div.page-footer a {
