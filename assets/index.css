@@ -68,20 +68,32 @@ div.page-footer a:hover {
 .smartphone .content { /* The screen (or content) of the device */
     width: 100%;
     height: 100%;
-    background: white;
+    background: #888;
 }
 
 
 /* download uses smaller smartphone */
 .download {
-    width: 12em;
+    width: 190px;
+}
+
+@media screen and (max-width: 768px) {
+    .download {
+        width: 170px;
+    }
 }
 
 .download .smartphone {
-    width: 180px;
-    height: 369px;
+    width: 165px;
+    height: 337px;
+    border: 7px black solid;
+    border-top-width: 24px;
+    border-bottom-width: 24px;
+    border-radius: 18px;
+
     margin-top: 2em;
     margin-bottom: .3em;
+    box-shadow: 0 0 20px #ddd;
 }
 
 .download a {
