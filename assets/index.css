@@ -74,26 +74,33 @@ div.page-footer a:hover {
 
 /* download uses smaller smartphone */
 .download {
-    width: 190px;
+    width: 160px;
 }
-
 @media screen and (max-width: 768px) {
     .download {
-        width: 170px;
+        width: 145px;
     }
 }
 
 .download .smartphone {
-    width: 165px;
-    height: 337px;
-    border: 7px black solid;
-    border-top-width: 24px;
-    border-bottom-width: 24px;
-    border-radius: 18px;
+    width: 132px;
+    height: 269px;
+    border: 5px black solid;
+    border-top-width: 19px;
+    border-bottom-width: 19px;
+    border-radius: 14px;
 
     margin-top: 2em;
     margin-bottom: .3em;
-    box-shadow: 0 0 10px #555;
+    box-shadow: 0 0 8px #555;
+}
+.smartphone:before { /* The horizontal line on the top of the device */
+    width: 32px;
+    height: 3px;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
 }
 
 .download a {
