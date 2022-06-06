@@ -23,13 +23,18 @@ div.box-topmost {
     }
 }
 
-div.page-footer {
+div.footnotes, div.page-footer {
     max-width: 1024px;
     margin: auto;
     padding: 1.5em;
     text-align: center;
     font-size: .9em;
 }
+
+div.footnotes a {
+    color: #4a4a4a;
+}
+
 
 div.page-footer a {
     color: #888;
