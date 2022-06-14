@@ -7,6 +7,10 @@ a {
     text-decoration: underline;
 }
 
+.blurb {
+    font-size: 80%;
+}
+
 div.box {
     max-width: 1024px;
     margin: auto; /* this centers the box */
