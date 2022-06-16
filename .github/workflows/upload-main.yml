@@ -16,6 +16,7 @@ jobs:
       run: |
         mkdir webxdc.org
         mv * webxdc.org
+      continue-on-error: true
     - name: Upload
       uses: horochx/deploy-via-scp@v1.0.1
       with:
