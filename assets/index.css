@@ -7,23 +7,23 @@ a {
     text-decoration: underline;
 }
 
-div.box {
+.box {
     max-width: 1024px;
     margin: auto; /* this centers the box */
 }
 
-div.box-topmost {
+.box-topmost {
     border-radius: 0 0 6px 6px;
 }
 
 @media screen and (min-width: 1048px) {
-    div.box-topmost {
+    .box-topmost {
         margin-top: 1.5em;
         border-radius: 6px;
     }
 }
 
-div.footnotes, .page-footer {
+.footnotes, .page-footer {
     max-width: 1024px;
     margin: auto;
     padding: 1.5em;
@@ -31,7 +31,7 @@ div.footnotes, .page-footer {
     font-size: .9em;
 }
 
-div.footnotes a {
+.footnotes a {
     color: #4a4a4a;
 }
 
