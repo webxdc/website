@@ -23,7 +23,7 @@ div.box-topmost {
     }
 }
 
-div.footnotes, div.page-footer {
+div.footnotes, .page-footer {
     max-width: 1024px;
     margin: auto;
     padding: 1.5em;
@@ -36,12 +36,12 @@ div.footnotes a {
 }
 
 
-div.page-footer a {
+.page-footer a {
     color: #4a4a4a;
     text-decoration: none;
 }
 
-div.page-footer a:hover {
+.page-footer a:hover {
     text-decoration: underline;
 }
 
