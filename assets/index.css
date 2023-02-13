@@ -45,6 +45,12 @@ a {
     text-decoration: underline;
 }
 
+.fixed-width-emoji {
+    min-width: 3ch;
+    display: inline-block;
+    text-align: center;
+}
+
 
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
