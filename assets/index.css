@@ -1,6 +1,8 @@
 
 html {
     font-size: 1.2em;
+    /* For style. See https://github.com/webxdc/website/pull/7. */
+    text-transform: lowercase;
 }
 
 a {
