@@ -16,7 +16,32 @@
 
     <link rel="stylesheet" href="assets/bulma.min.css">
     <link rel="stylesheet" href="assets/index.css">
-    
+
+    <script>
+
+        function gotoLatestRelease(el) {
+            const matches = el.href.match(/codeberg.org\/(.+?)\/(.+?)\/releases/)
+            if (matches) {
+                const request = 'https://codeberg.org/api/v1/repos/' + matches[1] + '/' + matches[2] + '/releases/latest'
+                fetch(request).then((response) => {
+                    response.json().then((obj) => {
+                        if (obj.assets) {
+                            for(asset of obj.assets) {
+                                if (asset.name.endsWith('.xdc')) {
+                                    window.location = asset.browser_download_url
+                                    break
+                                }
+                            }
+                        }
+                    });
+                });
+                return false
+            }
+            return true
+        }
+
+    </script>
+
     <script defer src="https://cosmos.delta.chat/banner.js"></script>
     <link rel="stylesheet" href="https://cosmos.delta.chat/banner.css" type="text/css" />
 </head>
@@ -98,11 +123,11 @@
             </div>
             <div class="is-pulled-left download">
                 <div class="smartphone"><img class="content" aria-hidden="true" src="assets/screenshots/poll.png"></div>
-                <div><a href="https://codeberg.org/webxdc/poll/releases/">download<br><code>poll.xdc</code></a></div>
+                <div><a href="https://codeberg.org/webxdc/poll/releases/" onclick="return gotoLatestRelease(this)">download<br><code>poll.xdc</code></a></div>
             </div>
             <div class="is-pulled-left download">
                 <div class="smartphone"><img class="content" aria-hidden="true" src="assets/screenshots/calendar.png"></div>
-                <div><a href="https://codeberg.org/webxdc/calendar/releases/">download<br><code>calendar.xdc</code></a></div>
+                <div><a href="https://codeberg.org/webxdc/calendar/releases/" onclick="return gotoLatestRelease(this)">download<br><code>calendar.xdc</code></a></div>
             </div>
             <div class="is-pulled-left download">
                 <div class="smartphone"><img class="content" aria-hidden="true" src="assets/screenshots/checklist.png"></div>
