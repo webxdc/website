@@ -33,6 +33,8 @@
                                 }
                             }
                         }
+                    }).catch(() => {
+                        window.location = el.href
                     })
                 }).catch(() => {
                     window.location = el.href
