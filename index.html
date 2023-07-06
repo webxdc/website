@@ -33,8 +33,10 @@
                                 }
                             }
                         }
-                    });
-                });
+                    })
+                }).catch(() => {
+                    window.location = el.href
+                })
                 return false
             }
             return true
