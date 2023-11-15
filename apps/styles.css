@@ -35,10 +35,6 @@
   flex-shrink: 0;
 }
 
-.app * {
-  color: black;
-}
-
 .app img {
   --image: 64px;
 
