@@ -15,7 +15,7 @@ import dayjs from "./deps/dayjs/dayjs_with_relative_time.min.js";
 dayjs.extend(dayjs_plugin_relativeTime);
 
 // without a trailing slash
-const xdcget_export = "https://webxdc.org/export";
+const xdcget_export = "https://apps.testrun.org";
 
 /**
  * @param {{app: import('./app_list.d').AppEntry}} param0
