@@ -1,6 +1,9 @@
-# Webxdc Webpage
+# Webxdc Webpage, docs and apps 
 
-Short introduction to Webxdc
-and to links to external resources as Examples, Documentation, Delta Chat.
+This repository contains 
 
-The page is published at <https://webxdc.org>
+- `website`: webxdc website https://webxdc.org
+
+- TODO: `docs`: documentation and specification: https://webxdc.org/docs 
+
+- `apps`: searchable auto-updated app store page: https://webxdc.org/apps 
