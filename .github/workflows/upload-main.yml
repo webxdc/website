@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: put everything in a folder so we don't accidentally upload the private key
-      run: |
-        mkdir webxdc.org
-        mv * webxdc.org
-      continue-on-error: true
     - name: Upload
       uses: horochx/deploy-via-scp@v1.0.1
       with:
@@ -24,6 +19,6 @@ jobs:
         key: ${{ secrets.KEY }}
         host: "delta.chat"
         port: 22
-        local: "webxdc.org"
+        local: "website"
         remote: "/var/www/html/"
 
