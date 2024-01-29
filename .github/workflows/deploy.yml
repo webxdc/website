@@ -48,4 +48,4 @@ jobs:
           host: "delta.chat"
           port: 22
           local: "docs.webxdc.org"
-          remote: "/var/www/html/"
+          remote: "/var/www/html/webxdc.org/docs/"
