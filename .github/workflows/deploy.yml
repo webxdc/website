@@ -37,6 +37,7 @@ jobs:
       - name: install mdbook
         run: |
           cargo install mdbook
+          cd docs
           mdbook build
           mv book docs.webxdc.org
       - name: Upload
