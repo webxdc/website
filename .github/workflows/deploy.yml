@@ -8,7 +8,7 @@ on:
   push:
     branches: 
       - master
-      - new-deployment
+      - move_subdir 
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,23 +38,11 @@ jobs:
         run: |
           cargo install mdbook
           cd src-docs 
-          mdbook build --dest-dir ../docs.webxdc.org
-      - name: Upload to old location
-        uses: horochx/deploy-via-scp@v1.0.1
-        with:
-          user: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          host: "delta.chat"
-          port: 22
-          local: "docs.webxdc.org"
-          remote: "/var/www/html/"
+          mdbook build --dest-dir ../website/docs
 
-      - name: Upload to new location
-        uses: horochx/deploy-via-scp@v1.0.1
-        with:
-          user: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          host: "delta.chat"
-          port: 22
-          local: "docs.webxdc.org/"
-          remote: "/var/www/html/webxdc.org/docs"
+      - name: Upload website including docs and apps 
+        run: |
+          mkdir -p "$HOME/.ssh"
+          echo "${{ secrets.KEY }}" > "$HOME/.ssh/key"
+          chmod 600 "$HOME/.ssh/key"
+          rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/" "${{ secrets.USERNAME }}@delta.chat:/var/www/html/webxdc.org" 
