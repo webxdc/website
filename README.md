@@ -1,6 +1,8 @@
-# Webxdc Webpage
+# Webxdc.org contents
 
-Short introduction to Webxdc
-and to links to external resources as Examples, Documentation, Delta Chat.
+- `website/` is published to <https://webxdc.org>
 
-The page is published at <https://webxdc.org>
+- `src/` contains the source markdown files rendered to <https://webxdc.org/docs>
+
+- `apps/` contains the small static app store from <https://webxdc.org/apps>
+
