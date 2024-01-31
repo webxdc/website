@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Upload
+name: Render and upload webxdc docs 
 
 # Controls when the workflow will run
 on:
@@ -37,7 +37,7 @@ jobs:
       - name: install mdbook
         run: |
           cargo install mdbook
-          cd src 
+          cd src-docs 
           mdbook build --dest-dir ../docs.webxdc.org
       - name: Upload
         uses: horochx/deploy-via-scp@v1.0.1
