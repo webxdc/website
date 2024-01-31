@@ -39,7 +39,7 @@ jobs:
           cargo install mdbook
           cd src-docs 
           mdbook build --dest-dir ../docs.webxdc.org
-      - name: Upload
+      - name: Upload to old location
         uses: horochx/deploy-via-scp@v1.0.1
         with:
           user: ${{ secrets.USERNAME }}
@@ -48,3 +48,13 @@ jobs:
           port: 22
           local: "docs.webxdc.org"
           remote: "/var/www/html/"
+
+      - name: Upload to new location
+        uses: horochx/deploy-via-scp@v1.0.1
+        with:
+          user: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          host: "delta.chat"
+          port: 22
+          local: "docs.webxdc.org/"
+          remote: "/var/www/html/webxdc.org/docs"
