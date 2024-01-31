@@ -1,6 +1,8 @@
 # From online-HTTP to offline-first P2P web apps
 
-Webxdc is a P2P oriented container format for sharing and hosting HTML5 web apps in messenger chats. 
+Webxdc brings web apps to messenger chats,
+in a P2P oriented container format
+containing HTML5, CSS, and JavaScript.
 The e-mail based [Delta Chat](https://delta.chat) 
 and the XMPP-based [Cheogram](https://cheogram.com) messengers 
 support [webxdc apps](https://webxdc.org/apps), which run on both messengers without any change. 
