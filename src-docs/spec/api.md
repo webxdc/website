@@ -1,5 +1,5 @@
 
-## Webxdc API
+## Webxdc Javascript API
 
 Webxdc apps are shared in a chat and each device runs its own instance on the recipients device when they click "Start". The apps are network-isolated but can share state via [`sendUpdate()`](./sendUpdate.md) and [`setUpdateListener()`](./setUpdateListener.md).
 

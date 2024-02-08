@@ -4,7 +4,7 @@
 - [Get Started](./get_started.md)
 
 - [Webxdc Specification](./spec/README.md)
-  - [File format (`.xdc`)](./spec/format.md)
+  - [Container file format (`.xdc`)](./spec/format.md)
   - [Javascript API](./spec/api.md)
       - [sendUpdate](./spec/sendUpdate.md)
       - [setUpdateListener](./spec/setUpdateListener.md)

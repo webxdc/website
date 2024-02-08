@@ -2,13 +2,11 @@
 
 The webxdc specification covers three areas: 
 
-- [`.xdc` file format](format.md) describes manifest, icon and base
-  metadata as well as zip-file format. 
+- [`.xdc` container file format](format.md) describes zip-file format
+  with manifest and icon files. 
 
 - [Webxdc API](api.md) specifies a minimal stable API that all webxdc
   apps can use. 
 
 - [Messenger implementation](messenger.md) specifies how messenger 
-  instantiate isolated web views for an app, 
-  the provisioning of the webxdc API and points to example implementations. 
-
+  run webxdc apps in isolated web views. 

@@ -1,5 +1,5 @@
 
-## Webxdc File Format
+## Webxdc Container File Format
 
 - a Webxdc app is a **ZIP-file** with the extension `.xdc`
 - the ZIP-file MUST use the default compression methods as of RFC 1950,
