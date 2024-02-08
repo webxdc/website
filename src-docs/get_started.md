@@ -11,7 +11,7 @@ and the XMPP-based [Cheogram](https://cheogram.com) messengers
 support [webxdc apps](https://webxdc.org/apps), which run on both messengers without any change. 
 
 If you have one of those messengers installed 
-you can jump start developing with the following example. 
+you can start developing with the following example. 
 
 ## A simple example
 
