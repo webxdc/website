@@ -1,6 +1,5 @@
 # Summary
 
-- [From HTTP to P2P web apps](./intro.md)
 - [Get Started](./get_started.md)
 
 - [Webxdc Specification](./spec/README.md)

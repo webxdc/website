@@ -1,5 +1,17 @@
 # Getting Started 
 
+Webxdc brings web apps to messenger chats,
+in a P2P oriented container format
+containing HTML5, CSS, and JavaScript.
+
+<video controls style="width:560px; max-width: 100%;"><source src="https://webxdc.org/assets/just-web-apps.mp4" type="video/mp4"><a href="https://www.youtube.com/watch?v=I1K4pBvb2pI">watch "just web apps" on youtube</a></video>
+
+The e-mail based [Delta Chat](https://delta.chat) 
+and the XMPP-based [Cheogram](https://cheogram.com) messengers 
+support [webxdc apps](https://webxdc.org/apps), which run on both messengers without any change. 
+
+If you have one of those messengers installed 
+you can jump start developing with the following example. 
 
 ## A simple example
 
