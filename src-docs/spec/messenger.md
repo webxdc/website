@@ -29,7 +29,7 @@ When starting a web view for a webxdc app to run, messenger implementors:
   [Webxdc Javascript API](api.md) so that messages are relayed and shown in chats.
 
 - MUST make sure the standard JavaScript API works as described at
-  [Other APIs and Tags Usage Hints](/tips_and_tricks/compatibility.md#other-apis-and-tags-usage-hints).
+  [Other APIs and Tags Usage Hints](/faq/compat.md#other-apis-and-tags-usage-hints).
 
 In ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security) 
 Delta Chat developers discuss the unique privacy guarantees of webxdc,
