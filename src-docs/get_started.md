@@ -66,7 +66,7 @@ contain curated webxdc app examples.
 
 The [webxdc store](https://webxdc.org/apps) contains working webxdc apps that you can use today. 
 Each app comes with a "source code" link so that you can learn and fork as you wish. 
-You can submit your own available FOSS app for inclusion into the curated store. 
+You can [submit your own available FOSS app](https://codeberg.org/webxdc/xdcget/src/branch/main/SUBMIT.md) for inclusion into the curated store. 
 
 ## Useful background for developing webxdc apps 
 
