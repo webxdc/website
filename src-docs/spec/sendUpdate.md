@@ -30,7 +30,7 @@ Send an update to all peers.
   this is shown e.g. as a fallback text in an e-mail program.
 
 All peers, including the sending one,
-will receive the update by the callback given to [`setUpdateListener()`](#setupdatelistener).
+will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
 
 There are situations where the user cannot send messages to a chat,
 e.g. if the webxdc instance comes as a contact request or if the user has left a group.
