@@ -36,6 +36,6 @@ There are situations where the user cannot send messages to a chat,
 e.g. if the webxdc instance comes as a contact request or if the user has left a group.
 In these cases, you can still call `sendUpdate()`,
 however, the update won't be sent to other peers
-and you won't get the update by [`setUpdateListener()`](#setupdatelistener).
+and you won't get the update by [`setUpdateListener()`](./setUpdateListener.html).
 
 

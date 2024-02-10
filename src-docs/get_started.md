@@ -74,11 +74,10 @@ Webxdc app development and deployment is fundamentally easier than
 developing for and maintaining an application-specific always-online HTTP server. 
 But there are undeniably complications in arranging consistent web app state 
 across user's devices, a typical issue for any Peer-to-Peer (P2P) networking system. 
-Even if you don't study the topic in depth, reading [Shared web application state] 
+Even if you don't study the topic in depth, reading [Shared web application state](./shared_state/)
 introduces you to the terminology and some necessary considerations,
 with a particular eye on webxdc and providing practical guidance. 
 
-[Shared web application state]: /shared_state/index.html
 
 ## Participating in developments 
 

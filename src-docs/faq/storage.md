@@ -12,7 +12,7 @@ IndexedDB is an alternative you can use that doesn't have this size limitation.
 Note that browsers might reclaim storage for both localStorage and IndexedDB
 after a longer time of not using a webxdc app. 
 If you want to safely persist data, 
-you must [send an application update](/spec/sendUpdate.html)
+you must [send an application update](../spec/sendUpdate.html)
 which will be safely persisted by the messenger,
 and which also allows to use an app on multiple devices. 
 

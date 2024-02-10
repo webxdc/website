@@ -31,4 +31,4 @@ Each `update` which is passed to the callback comes with the following propertie
 
 Calling `setUpdateListener()` multiple times is undefined behavior: in current implementations only the last invocation works.
 
-[`sendUpdate()`]: /spec/sendUpdate.html
+[`sendUpdate()`]: ./sendUpdate.html
