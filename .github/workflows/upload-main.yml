@@ -36,6 +36,7 @@ jobs:
       - name: install mdbook
         run: |
           cargo install mdbook
+          cargo install mdbook-linkcheck
           cd src-docs 
           mdbook build --dest-dir ../website/docs
 

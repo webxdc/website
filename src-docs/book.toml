@@ -16,3 +16,5 @@ edit-url-template = "https://github.com/webxdc/webxdc_docs/edit/master/{path}"
 "/spec.html" = "/spec/index.html"
 "/tips_and_tricks.html" = "/tips_and_tricks/index.html"
 "/intro.html" = "/get_started.html"
+
+[output.linkcheck]
