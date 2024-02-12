@@ -9,19 +9,43 @@ a {
     text-decoration: underline;
 }
 
-.box {
+.box-topmost {
+    max-width: 1024px;
+    margin: auto; /* this centers the box */
+    border-radius: 0 0 6px 6px;
+}
+
+.box-buttons {
     max-width: 1024px;
     margin: auto; /* this centers the box */
 }
 
-.box-topmost {
-    border-radius: 0 0 6px 6px;
+.box-buttons .column {
+    margin-left: .75em;
+    margin-right: .75em;
+}
+
+.box-buttons .column:last-child {
+    margin-bottom: 1.5em; /* for other columns, margin is set in bulma.css */
+}
+
+.box-buttons .column h2 {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 @media screen and (min-width: 1048px) {
     .box-topmost {
         margin-top: 1.5em;
         border-radius: 6px;
+    }
+
+    .box-buttons .column:first-child {
+        margin-left: 0;
+    }
+
+    .box-buttons .column:last-child {
+        margin-right: 0;
     }
 }
 
@@ -47,18 +71,12 @@ a {
     text-decoration: underline;
 }
 
-.fixed-width-emoji {
-    min-width: 3ch;
-    display: inline-block;
-    text-align: center;
-}
-
 
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
     position: relative;
-    width: 250px;
-    height: 512px;
+    width: 200px;
+    height: 410px;
     margin: auto;
     border: 10px black solid;
     border-top-width: 36px;
@@ -84,29 +102,6 @@ a {
     background: black;
 }
 
-
-/* download uses smaller smartphone */
-.download {
-    width: 160px;
-}
-@media screen and (max-width: 768px) {
-    .download {
-        width: 145px;
-    }
-}
-
-.download .smartphone {
-    width: 132px;
-    height: 269px;
-    border: 5px black solid;
-    border-top-width: 19px;
-    border-bottom-width: 19px;
-    border-radius: 14px;
-
-    margin-top: 2em;
-    margin-bottom: .3em;
-    box-shadow: 0 0 8px #555;
-}
 .smartphone:before { /* The horizontal line on the top of the device */
     width: 32px;
     height: 3px;
@@ -115,13 +110,4 @@ a {
     transform: translate(-50%, -50%);
     border-radius: 5px;
 }
-
-.download a {
-    text-decoration: none;
-}
-
-.download a:hover {
-    text-decoration: underline;
-}
-
 
