@@ -34,6 +34,14 @@ a {
         margin-top: 1.5em;
         border-radius: 6px;
     }
+
+    .box-buttons .column:first-child {
+        margin-left: 0;
+    }
+
+    .box-buttons .column:last-child {
+        margin-right: 0;
+    }
 }
 
 .footnotes, .page-footer {
