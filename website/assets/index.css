@@ -20,6 +20,11 @@ a {
     margin: auto; /* this centers the box */
 }
 
+.box-buttons .column {
+    margin-left: .75em;
+    margin-right: .75em;
+}
+
 .box-buttons .column:last-child {
     margin-bottom: 1.5em; /* for other columns, margin is set in bulma.css */
 }
