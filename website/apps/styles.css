@@ -64,3 +64,13 @@
   font-size: 60%;
   opacity: 0.5;
 }
+
+#footer {
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+#footer a {
+  padding: .5em;
+}
