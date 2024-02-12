@@ -29,6 +29,11 @@ a {
     margin-bottom: 1.5em; /* for other columns, margin is set in bulma.css */
 }
 
+.box-buttons .column h2 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 @media screen and (min-width: 1048px) {
     .box-topmost {
         margin-top: 1.5em;
