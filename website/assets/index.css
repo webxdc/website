@@ -9,13 +9,15 @@ a {
     text-decoration: underline;
 }
 
-.box {
+.box-topmost {
     max-width: 1024px;
     margin: auto; /* this centers the box */
+    border-radius: 0 0 6px 6px;
 }
 
-.box-topmost {
-    border-radius: 0 0 6px 6px;
+.box-buttons {
+    max-width: 1024px;
+    margin: auto; /* this centers the box */
 }
 
 @media screen and (min-width: 1048px) {
@@ -45,12 +47,6 @@ a {
 
 .page-footer a:hover {
     text-decoration: underline;
-}
-
-.fixed-width-emoji {
-    min-width: 3ch;
-    display: inline-block;
-    text-align: center;
 }
 
 
@@ -84,29 +80,6 @@ a {
     background: black;
 }
 
-
-/* download uses smaller smartphone */
-.download {
-    width: 160px;
-}
-@media screen and (max-width: 768px) {
-    .download {
-        width: 145px;
-    }
-}
-
-.download .smartphone {
-    width: 132px;
-    height: 269px;
-    border: 5px black solid;
-    border-top-width: 19px;
-    border-bottom-width: 19px;
-    border-radius: 14px;
-
-    margin-top: 2em;
-    margin-bottom: .3em;
-    box-shadow: 0 0 8px #555;
-}
 .smartphone:before { /* The horizontal line on the top of the device */
     width: 32px;
     height: 3px;
@@ -115,13 +88,4 @@ a {
     transform: translate(-50%, -50%);
     border-radius: 5px;
 }
-
-.download a {
-    text-decoration: none;
-}
-
-.download a:hover {
-    text-decoration: underline;
-}
-
 
