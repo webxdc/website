@@ -499,4 +499,9 @@ and the [y-webxdc-provider](https://npmjs.org/package/y-webxdc)
 * [webxdc/checklist](https://codeberg.org/webxdc/checklist/)
 uses the [Automerge CRDT](https://automerge.org/)
 to implement a collaborative checklist
+* [webxdc/pixel](https://codeberg.org/webxdc/pixel/)
+implements a fixed-size bitmap data type
+with no external dependencies
+using [Lamport Timestamps](https://en.wikipedia.org/wiki/Lamport_timestamp)
+to resolve concurrent changes
 
