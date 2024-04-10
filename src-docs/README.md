@@ -5,7 +5,7 @@
 Install requirements:
 
 ```
-cargo install mdbook
+cargo install mdbook mdbook-linkcheck 
 ```
 
 Build the documentation:
