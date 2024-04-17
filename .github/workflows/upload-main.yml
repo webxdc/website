@@ -38,7 +38,8 @@ jobs:
           cargo install mdbook
           cargo install mdbook-linkcheck
           cd src-docs 
-          mdbook build --dest-dir ../website/docs
+          mdbook build
+          mv book/html ../website/docs
 
       - name: Upload website including docs and apps 
         run: |
