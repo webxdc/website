@@ -15,9 +15,9 @@ The `realtimeSession` object provides the following methods:
 Register an event handler callback for a realtimeSession event. 
 Current supported event types are:
 
-- `ready`: indicating there is at least one connected chat peer 
+- `ready`: indicates there is at least one connected realtime peer 
 
-- `data`: indicating receiving of a `Uint8Array` sent from a peer 
+- `data`: on receiving a `Uint8Array` that was sent from a realtime peer 
 
 
 **`realtimeSession.sendToConnectedPeers(data)`**
