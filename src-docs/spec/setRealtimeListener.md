@@ -19,7 +19,6 @@ to re-establish participation in realtime sending and receiving.
 ## Example 
 
 ```js
-let timeout
 window.webxdc.setRealtimeListener((data) => {
     console.log("Received realtime data: ", data);
     const msg = new TextDecoder().decode(data);

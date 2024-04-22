@@ -29,7 +29,7 @@ Any sent data is
 ## Example
 
 ```js
-let timeout
+
 window.webxdc.setRealtimeListener((data) => {
     console.log("Received realtime data: ", data);
     const msg = new TextDecoder().decode(data);
