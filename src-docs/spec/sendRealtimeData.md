@@ -24,16 +24,20 @@ Any sent data is
 ## Example
 
 ```js
-
+let timeout
 window.webxdc.setRealtimeListener((data) => {
     console.log("Received realtime data: ", data);
     const msg = new TextDecoder().decode(data);
     console.log("decoded message: ", msg);
-}).then(() => {
-    const myId = window.webxdc.selfAddr;
-    const data = new TextEncoder().encode('hello world from ' + myId);
-    console.log("Sending message", data);
-    window.webxdc.sendRealtimeData(data);
 })
 
+let pings = 0
+setInterval(() => {
+    const myId = window.webxdc.selfAddr;
+    const data = new TextEncoder().encode(`[${pings}] hello from ${myId}`);
+    pings += 1
+    console.log("Sending message", data);
+    window.webxdc.sendRealtimeData(data);
+}, 1000)
+```
 ```
