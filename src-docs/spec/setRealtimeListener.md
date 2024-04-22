@@ -4,13 +4,16 @@
 window.webxdc.setRealtimeListener((data) => {});
 ```
 
+**Note that this API is experimental and not fully settled (April 2024)**
+
 Announce participation in realtime data sending and receiving to other peers.
 
 The `setRealtimeListener` callback receives all `Uint8Array` data items 
 that were sent from a peer through [`sendRealtimeData(data)`](./sendRealtimeData.md).
 
-Calling `setRealtimeListener` with a `null` value will disconnect from receiving 
-and sending realtime data. You may afterwards call `setRealtimeListener` again
+Calling `setRealtimeListener` with a `null` value 
+will disconnect from receiving and sending realtime data. 
+You may afterwards call `setRealtimeListener` again with a callback
 to re-establish participation in realtime sending and receiving. 
 
 ## Example 
