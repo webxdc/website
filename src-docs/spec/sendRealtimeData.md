@@ -23,8 +23,8 @@ Any sent data is
 - **ephemeral**: any sent data will only be received by the currently
   connected chat peers but not by peers joining later.
   There is no guarantee anyone is receiving the sent data
-  because for example there might be no currently listening peers 
-  or there is no network at all. 
+  because there might be no currently listening peers,
+  or network connections broke. 
 
 ## Example
 
