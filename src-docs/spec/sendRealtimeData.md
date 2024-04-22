@@ -7,11 +7,12 @@ window.webxdc.sendRealtimeData(data);
 **Note that this API is experimental and not fully settled (April 2024)**
 
 Send `Uint8Array` data to other realtime peers for this app. 
-You must first call [`setRealtimeListener`](./setRealtimeListener.md) 
-to announce participation in realtime data transmission. 
+This will implicitely trigger the setup of realtime connections
+if they are not established yet. 
 Note that any data sent before a first peer is connected might not arrive. 
+See [`setRealtimeListener`](./setRealtimeListener.md) for how data can be received. 
 It is up to the app to implement a "synchronization" protocol
-so that peers can detect each other presences. 
+so that peers can detect each other's presence. 
 
 Any sent data is 
 
