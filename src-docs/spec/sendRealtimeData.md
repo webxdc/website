@@ -45,4 +45,3 @@ setInterval(() => {
     window.webxdc.sendRealtimeData(data);
 }, 1000)
 ```
-```
