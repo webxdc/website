@@ -8,7 +8,7 @@ Setup and return the realtime channel for this app,
 with methods for listening and sending data as well as leaving the channel. 
 Per-app realtime channels are: 
 
-- **private**: No one outside the chat can participate in realtime channels. 
+- **private**: no one outside the chat can participate in realtime channels. 
 
 - **isolated**: apps can not participate in realtime channels of other apps. 
 
