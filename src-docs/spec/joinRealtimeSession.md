@@ -1,62 +1,67 @@
-# joinRealtimeSession (experimental API as of April 2024) 
+# joinRealtimeChannel (experimental)
 
 ```js
-const realtimeSession = window.webxdc.joinRealtimeSession((data) => {});
+const realtimeChannel = window.webxdc.joinRealtimeChannel();
 ```
 
-Join an app-specific realtime session with chat peers and 
-return a `realtimeSession` object with `send` and `leave` methods. 
+Setup and return the realtime channel for this app,
+with methods for listening and sending data as well as leaving the channel. 
+Per-app realtime channels are: 
 
-The callback receives `Uint8Array` data items that were sent from connected peers. 
+- **private**: No one outside the chat can participate in realtime channels. 
 
-Calling `joinRealtimeSession` while another `realtimeSession` is active
+- **isolated**: apps can not participate in realtime channels of other apps. 
+
+- **ephemeral**: any sent data will only be received by currently
+  connected peers but not by peers connecting later.
+
+Calling `joinRealtimeChannel` a second time without leaving the prior one
 will not cause any action and returns a `null` value. 
 
-Any transmitted realtime data is 
+## `realtimeChannel.setListener((data) => {})` 
 
-- **private to the chat**: Only chat members can receive realtime data
-  and data can only be sent to connected chat members. 
+Start listening on the realtime channel using the specified callback. 
+The callback receives `Uint8Array` data items that were sent from connected peers. 
+Calling `setListener` a second time will replace the previous listener. 
 
-- **scoped to the app**: different apps in a
-  chat can not discover or receive realtime data of other apps in the chat. 
 
-- **ephemeral**: any sent data will only be received by the currently
-  connected chat peers but not by peers joining later.
-
-## `realtimeSession.send(data)` 
+## `realtimeChannel.send(data)` 
 
 Send a `Uint8Array` data item to connected peers. 
 There is no guarantee anyone is receiving sent data
 because there might be no currently listening peers,
 or network connections fail. 
-It is up to the app to determine connectivity status with other peers. 
+It is up to the app to determine connectivity status with other peers
+by monitoring and triggering data messages. 
 
-## `realtimeSession.leave()`
 
-Leave the realtime session and disconnect from all peers.
-Afterwards the `realtimeSession` is invalid and 
+## `realtimeChannel.leave()`
+
+Leave the realtime channel. 
+Afterwards the `realtimeChannel` is invalid and 
 can not be used anymore for sending or receiving data.
-You need to call `window.webxdc.joinRealtimeSession()` 
-to re-initiate real time connectivity. 
+You need to call `window.webxdc.joinRealtimeChannel()` again
+to re-join the per-app realtime channel. 
 
 ## Example 
 
 ```js
-const realtimeSession = window.webxdc.joinRealtimeSession((data) => {
+const realtimeChannel = window.webxdc.joinRealtimeChannel();
+realtimeChannel.setListener((data) => {
     console.log("Received realtime data: ", data);
     const msg = new TextDecoder().decode(data);
     console.log("decoded message: ", msg);
 })
 
-let pings = 0
+let numMsgs = 0
 const refreshIntervalId = setInterval(() => {
     const myId = window.webxdc.selfAddr;
-    const data = new TextEncoder().encode(`[${pings}] hello from ${myId}`);
-    pings += 1
+    const data = new TextEncoder().encode(`[${numMsgs}] hello from ${myId}`);
+    numMsgs += 1
     console.log("Sending message", data);
-    realtimeSession.send(data);
-    if (pings >= 100) {
-        realtimeSession.leave();
+    realtimeChannel.send(data);
+    if (numMsgs >= 100) {
+        realtimeChannel.leave();
         clearInterval(refreshIntervalId);
     }
 
