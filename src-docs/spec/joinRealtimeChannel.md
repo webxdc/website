@@ -16,7 +16,7 @@ Per-app realtime channels are:
   connected peers but not by peers connecting later.
 
 Calling `joinRealtimeChannel` a second time without leaving the prior one
-will not cause any action and returns a `null` value. 
+will throw an error.
 
 ## `realtimeChannel.setListener((data) => {})` 
 
