@@ -18,6 +18,15 @@ Per-app realtime channels are:
 Calling `joinRealtimeChannel` a second time without leaving the prior one
 will throw an error.
 
+## Check if the API is available
+
+This API is experimental and may not be implemented by every messenger yet.
+Check if it is available with `window.webxdc.joinRealtimeChannel !== undefined`
+ 
+For Delta Chat, you need at least version 1.46 to enable the feature
+in the settings under `Settings -> Advanced -> Experimental Features -> Realtime Webxdc Channels`.
+Without enabling the feature in Settings, the API is available but not working.
+
 ## `realtimeChannel.setListener((data) => {})` 
 
 Start listening on the realtime channel using the specified callback. 
