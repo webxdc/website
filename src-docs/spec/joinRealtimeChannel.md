@@ -25,7 +25,7 @@ Check if it is available with `window.webxdc.joinRealtimeChannel !== undefined`
  
 For Delta Chat, you need at least version 1.46 to enable the feature
 in the settings under `Settings -> Advanced -> Experimental Features -> Realtime Webxdc Channels`.
-Without enabling the feature in Settings, the API is available but not working.
+Without enabling the feature, the API is available but not working.
 
 ## `realtimeChannel.setListener((data) => {})` 
 
