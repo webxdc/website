@@ -29,6 +29,56 @@ Each `update` which is passed to the callback comes with the following propertie
 
 - `update.summary`: optional, short text, shown beside icon (see [`sendUpdate()`])
 
+Example:
+
+```js
+let myDocumentState = localStorage.getItem("myDocumentState") ?? "";
+
+let initialPendingUpdatesHandled = false;
+const initialPendingUpdatesHandledPromise = window.webxdc.setUpdateListener(
+  (update) => {
+    // Remember that the listener is invoked for
+    // your own `window.webxdc.sendUpdate()` calls as well!
+
+    applyDocumentUpdate(update.payload);
+    localStorage.setItem("myDocumentState", myDocumentState);
+    localStorage.setItem("lastHandledUpdateSerial", update.serial);
+
+    const areMoreUpdatesPending = update.serial !== update.max_serial;
+    if (
+      !areMoreUpdatesPending &&
+      // We'll make the initial render when the promise resolves,
+      // because if there are no pending updates,
+      // the listener will not be invoked.
+      initialPendingUpdatesHandled
+    ) {
+      renderDocument();
+    }
+  },
+  parseInt(localStorage.getItem("lastHandledUpdateSerial") ?? "0")
+);
+
+initialPendingUpdatesHandledPromise.then(() => {
+  initialPendingUpdatesHandled = true;
+  renderDocument();
+});
+
+function applyDocumentUpdate(myDocumentUpdate) {
+  // Dummy `applyDocumentUpdate` logic.
+  // Yours might be more complex,
+  // such as applying a chess move to the board.
+  myDocumentState = myDocumentUpdate;
+}
+// Let's only call this when there are no pending updates.
+function renderDocument() {
+  document.body.innerText = myDocumentState;
+}
+
+// ...
+// Other peers, or you:
+window.webxdc.sendUpdate({ payload: "Knight d3" }, "Bob made a move!");
+```
+
 Calling `setUpdateListener()` multiple times is undefined behavior: in current implementations only the last invocation works.
 
 [`sendUpdate()`]: ./sendUpdate.html
