@@ -44,10 +44,10 @@ The following `index.html` shows a complete webxdc app, with an input field show
 </html>
 ```
 
-To package the app as a `.xdc` file, zip the directory containing the `index.html`:
+To package the app as a `.xdc` file, zip the directory containing `index.html` and any related files:
 
 ```shell
-zip -9 --recurse-paths "myapp.xdc" PATH_TO_DIR
+(cd PATH_TO_DIR && zip -9 --recurse-paths - *) > myapp.xdc
 ```
 
 Now it's possible to share the `myapp.xdc` file in any chat: recipients can hit "Start" to begin using the app to enter text in this input field and send updates to each other. 
