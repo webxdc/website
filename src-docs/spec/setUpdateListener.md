@@ -43,8 +43,8 @@ const initialPendingUpdatesHandledPromise = window.webxdc.setUpdateListener(
     // such as applying a chess move to the board.
     myDocumentState = myDocumentUpdate;
 
-    const areMoreUpdatesPending = update.serial !== update.max_serial;
-    if (!areMoreUpdatesPending) {
+    const areAllUpdatesProcessed = update.serial === update.max_serial;
+    if (areAllUpdatesProcessed) {
       renderDocument();
     }
   }
@@ -59,8 +59,7 @@ function renderDocument() {
   document.body.innerText = myDocumentState;
 }
 
-// ...
-// Other peers, or you:
+// Peers can send  messages like this
 window.webxdc.sendUpdate({ payload: "Knight d3" }, "Bob made a move!");
 ```
 
