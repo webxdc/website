@@ -6,9 +6,8 @@ window.webxdc.sendUpdate(update, descr);
 
 Send an update to all peers.
 
-- `update`: an object with the following properties:  
-    - `update.payload`: string, number, boolean, array, object or `null`.
-       MUST NOT be `undefined`.
+- `update`: an object with at least one of the following properties:
+    - `update.payload`: optional string, number, boolean, array, object or `null`.
        Everything that is not JSON serializable will be skipped,
        this especially affects Binary data buffers as used in `File`, `Blob`, `Int*Array` etc.;
        if needed, use eg. base64.
@@ -26,8 +25,8 @@ Send an update to all peers.
        it is recommended to use some aggregated value, e.g. "8 votes", "Highscore: 123".
        Do not add linebreaks; implementations will truncate the text at about 20 characters or less.
 
-- `descr`: short, human-readable description what this update is about.
-  this is shown e.g. as a fallback text in an e-mail program.
+- `descr`: optional, short, human-readable description what this update is about.
+  this is shown e.g. as a fallback text for debugging with an e-mail program.
 
 All peers, including the sending one,
 will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
