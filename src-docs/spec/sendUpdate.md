@@ -11,7 +11,7 @@ Send an update to all peers.
        MUST NOT be `undefined`.
        Everything that is not JSON serializable will be skipped,
        this especially affects Binary data buffers as used in `File`, `Blob`, `Int*Array` etc.;
-       if needed, use eg. base64.
+       if needed, use eg. base64. The total JSON serialized size must not exceed 128KB.
     - `update.info`: optional, short, informational message that will be added to the chat,
        e.g. "Alice voted" or "Bob scored 123 in MyGame".
        Do not add linebreaks; implementations will truncate the text at about 50 characters or less.
