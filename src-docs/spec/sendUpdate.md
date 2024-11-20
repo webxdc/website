@@ -18,7 +18,7 @@ Send an update to all peers.
        If there are series of info messages, older ones may be dropped.
        use this option sparingly to not spam the chat.
     - `update.notify`: optional array of [user addresses](./selfAddr_and_selfName.md)
-       that should be notified eg. by a sound.
+       that should be notified e.g. by a sound.
        note that still all chat members get the update payload and the `info` message shown in the chat
     - `update.document`: optional, name of the document in edit
        (eg. the title of a poll or the name of a text in an editor)
