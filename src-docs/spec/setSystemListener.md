@@ -6,14 +6,14 @@ window.webxdc.setSystemListener((event) => {});
 
 With `setSystemListener()` you define a callback that receives system events.
 
-Each `event` which is passed to the callback comes with one of the following properties set:
+Each `event` passed to the callback comes with one of the following properties set:
 
 - `event.click`: user clicked an info message or a notification sent by [`sendUpdate()`].
   `event.click` contains the whole update object.
   If the click was performed _before_ the app was started,
   it is guaranteed that this event is emitted before `setSystemListener()` returns.
   Note, however, that the event can be emitted also multiple times while the app is running,
-  e.g. when the user taps info messages while the app is already started. 
+  e.g. when the user taps info messages while the app is already started.
 
 Example:
 
