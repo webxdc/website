@@ -7,11 +7,11 @@
   - [Javascript API](./spec/api.md)
       - [sendUpdate](./spec/sendUpdate.md)
       - [setUpdateListener](./spec/setUpdateListener.md)
-      - [setSystemListener](./spec/setSystemListener.md)
       - [sendToChat](./spec/sendToChat.md)
       - [importFiles](./spec/importFiles.md)
       - [selfAddr & selfName](./spec/selfAddr_and_selfName.md)
       - [joinRealtimeChannel](./spec/joinRealtimeChannel.md)
+
   - [Messenger implementations](./spec/messenger.md)
 - [Shared Web Application state](./shared_state/README.md)
   - [Detecting conflicts](./shared_state/conflicts.md)
