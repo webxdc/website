@@ -6,27 +6,28 @@
 window.webxdc.selfAddr
 ```
 
-A unique string for addressing the user of a running webxdc application. 
-The address must be 
+`selfAddr` is a unique string within a webxdc application that
 
-- identical across multiple invocations of the same webxdc application,
+- can be used in other webxdc APIs,
 
-- identical on multiple devices of the user, 
+- should not be shown in the user interface of the webxdc app,
 
-- must be distinct from other user's addresses participating in the webxdc application. 
+- is identical across multiple invocations of the same webxdc application,
 
-The address should not be shown in the user interface of the webxdc app
-except for debugging purposes because it is not guaranteed to be human-readable,
-may be long, and may not have any meaning outside the context of the webxdc application. 
+- is identical on multiple devices of the user using the same webxdc application, 
 
-A webxdc application can 
+- is not guaranteed to be human-readable,
 
-- send its `selfAddr` value around in the payload passed to [`sendUpdate()`] and 
+- should not have meaning outside the webxdc application. 
+
+For example, a webxdc application can 
+
+- send its `selfAddr` value as part of the `payload` passed into [`sendUpdate()`],
 
 - receive such addresses through the payload of incoming updates,
 
 - put such addresses into the `notify` parameter passed to [`sendUpdate()`] 
-  to cause a user-interface notification for the users behind the addresses. 
+  to cause a user-interface notification for respective users. 
 
 
 ## selfName
@@ -36,6 +37,6 @@ window.webxdc.selfName
 ```
 
 This is the nick or display name for the webxdc user 
-which is intended for showing it in the user interface. 
+which can be displayed in the user interface for human recognition. 
 
 [`sendUpdate()`]: ./sendUpdate.html
