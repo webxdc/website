@@ -9,6 +9,9 @@ sent by [`sendUpdate()`]. The callback is called for updates sent by you or othe
 The `serial` specifies the last serial that you know about (defaults to 0). 
 The returned promise resolves when the listener has processed all the update messages known at the time when  `setUpdateListener` was called. 
 
+
+## Application update object 
+
 Each `update` which is passed to the callback comes with the following properties: 
 
 - `update.payload`: equals the payload given to [`sendUpdate()`]
