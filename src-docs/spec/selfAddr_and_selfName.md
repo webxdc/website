@@ -1,5 +1,15 @@
 # selfAddr & selfName
 
+## selfName
+
+```js
+window.webxdc.selfName
+```
+
+This is the nick or display name for the webxdc user 
+which can be displayed in the user interface for human recognition. 
+
+
 ## selfAddr
 
 ```js
@@ -20,23 +30,24 @@ window.webxdc.selfAddr
 
 - should not have meaning outside the webxdc application. 
 
-For example, a webxdc application can 
+## Example using selfAddr and selfName
 
-- send its `selfAddr` value as part of the `payload` passed into [`sendUpdate()`],
-
-- receive such addresses through the payload of incoming updates,
-
-- put such addresses into the `notify` parameter passed to [`sendUpdate()`] 
-  to cause a user-interface notification for respective users. 
-
-
-## selfName
+Here is a simple chat app that sends out a reply using the display names
+but uses the addresses for notifications. 
 
 ```js
-window.webxdc.selfName
+
+setUpdateListener((update) => {
+    sendUpdate({
+        payload: {
+            senderAddr: webxdc.selfAddr,
+            senderName: webxdc.selfName,
+        },
+        info: "hello ${update.senderName} from ${webxdc.selfName}}",
+        notify: [update.senderAddr]
+    })
+})
 ```
 
-This is the nick or display name for the webxdc user 
-which can be displayed in the user interface for human recognition. 
 
 [`sendUpdate()`]: ./sendUpdate.html
