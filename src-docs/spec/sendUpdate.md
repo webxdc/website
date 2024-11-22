@@ -17,9 +17,11 @@ Send an update to all peers.
        Do not add linebreaks; implementations will truncate the text at about 50 characters or less.
        If there are series of info messages, older ones may be dropped.
        use this option sparingly to not spam the chat.
-    - `update.notify`: optional array of [user addresses](./selfAddr_and_selfName.md)
-       that should be notified e.g. by a sound.
-       note that still all chat members get the update payload and the `info` message shown in the chat
+
+    - `update.notify`: optional array of [addresses](./selfAddr_and_selfName.md)
+       for which a receiving messenger should cause a user-visible notification
+       like it does for regular chat messages. 
+
     - `update.document`: optional, name of the document in edit
        (eg. the title of a poll or the name of a text in an editor)
        Implementations show the document name e.g. beside the app icon or in the title bar.

@@ -6,14 +6,28 @@
 window.webxdc.selfAddr
 ```
 
-A string with an unique ID identifying the user in the current webxdc.
-Every user of an webxdc must get a different ID
-and that ID must be the same if the webxdc is started again later for the same user.
-The same user in different webxdc, however, may have different IDs.
+A unique string for addressing the user of a running webxdc application. 
+The address must be 
 
-Especially useful if you want to differentiate between different peers -
-just send the ID along with the payload,
-and, if needed, compare the payload addresses against `selfAddr` later on.
+- identical across multiple invocations of the same webxdc application,
+
+- identical on multiple devices, 
+
+- must be distinct from all other user's addresses for the webxdc application. 
+
+The address should not be shown in the user interface of the webxdc app
+except for debugging purposes because it is not guaranteed to be human-readable,
+may be long, and may not have any meaning outside the context of the webxdc application. 
+
+A webxdc application can 
+
+- send its `selfAddr` value around in the payload passed to [`sendUpdate()`] and 
+
+- receive such addresses through the payload of incoming updates,
+
+- put such addresses into the `notify` parameter passed to [`sendUpdate()`] 
+  to cause a user-interface notification for the users behind the addresses. 
+
 
 ## selfName
 
@@ -21,7 +35,7 @@ and, if needed, compare the payload addresses against `selfAddr` later on.
 window.webxdc.selfName
 ```
 
-Name of the current account, as defined in settings.
-If empty, this defaults to the peer's address.
+This is the nick or display name for the webxdc user 
+which is intended for showing it in the user interface. 
 
-
+[`sendUpdate()`]: ./sendUpdate.html
