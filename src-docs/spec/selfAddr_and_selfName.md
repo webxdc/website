@@ -11,9 +11,9 @@ The address must be
 
 - identical across multiple invocations of the same webxdc application,
 
-- identical on multiple devices, 
+- identical on multiple devices of the user, 
 
-- must be distinct from all other user's addresses for the webxdc application. 
+- must be distinct from other user's addresses participating in the webxdc application. 
 
 The address should not be shown in the user interface of the webxdc app
 except for debugging purposes because it is not guaranteed to be human-readable,
