@@ -6,8 +6,8 @@
 window.webxdc.selfName
 ```
 
-This is the nick or display name for the webxdc user 
-which can be displayed in the user interface for human recognition. 
+`selfName` is the nick or display name for the user 
+which can be displayed in the user interface of the webxdc application. 
 
 
 ## selfAddr
@@ -29,6 +29,7 @@ window.webxdc.selfAddr
 - is not guaranteed to be human-readable,
 
 - should not have meaning outside the webxdc application. 
+
 
 ## Example using selfAddr and selfName
 
