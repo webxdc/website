@@ -9,22 +9,40 @@ An object providing information about rate limits
 of the underlying messaging layer for this webxdc app instance,
 with the following properties:
 
-- `ratelimits.sendUpdateRateLimitBurst` is an integer denoting how many
-  sendUpdate messages can be maximally send within `sendMessageRateLimitWindow` seconds.
+- `ratelimits.sendUpdateBurst` is the number of [`sendUpdate`]
+  invocations allowed within `sendUpdateWindow` seconds. 
+  Any `sendUpdate` calls beyond the burst rate limit will be queued 
+  until the window is completed. 
 
-- `ratelimits.sendUpdateRateLimitWindow` is an integer denoting the number of
-  seconds of the rate-limit window used for `sendUpdateRateLimitBurst`.
+- `ratelimits.sendUpdateWindow` is the number of seconds 
+  or duration of the the rate-limit window. 
 
-- `ratelimits.sendUpdateMaxSize` is an integer denoting the maximum number of bytes
+- `ratelimits.sendUpdateMaxPayload` is an integer denoting the maximum number of bytes
   the messaging layer will accept in the "payload" of a single [`sendUpdate`] invocation.
+
+See [Leaky Bucket algorithm](https://en.wikipedia.org/wiki/Leaky_bucket) 
+to understand how messaging rate limiting typically works for network messaging. 
 
 If the messaging layer does not expose the `ratelimits` object,
 or it only observes a subset of the properties,
 then webxdc apps should assume the following defaults:
 
-- `sendUpdateRateLimitBurst = 5`
+- `sendUpdateBurst = 5`
 
-- `sendUpdateRateLimitWindow = 60`
+- `sendUpdateWindow = 60`
 
-- `sendUpdateMaxSize= 10000`
+- `sendUpdateMaxPayload = 10000`
 
+## Example 
+
+If using the `sendUpdateBurst=5` and `sendUpdateWindow=60` defaults, 
+a webxdc app instance can expect to be able to 
+
+- to send up to 5 update messages at once (within a single second even) 
+
+- as soon as it tries to send a 6th update message
+  it will be queued until 60 seconds are over 
+  before resuming to send updates to the network. 
+
+
+[`sendUpdate()`]: ./sendUpdate.html
