@@ -33,6 +33,6 @@ The messaging layer will attempt to deliver each update immediately.
 But if the editor app were to call `sendUpdate` every 2 seconds instead, 
 it might get rate-limited and updates get queued instead of send immediately. 
 How long "too fast" updates will be delayed 
-depends on the messaging layer implementation
+depends on the messaging layer rate limit implementation
 but may go well beyond the `sendUpdateInterval` number of seconds. 
 
