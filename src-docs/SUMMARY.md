@@ -11,6 +11,7 @@
       - [importFiles](./spec/importFiles.md)
       - [selfAddr & selfName](./spec/selfAddr_and_selfName.md)
       - [joinRealtimeChannel](./spec/joinRealtimeChannel.md)
+      - [ratelimits](./spec/ratelimits.md)
   - [Messenger implementations](./spec/messenger.md)
 - [Shared Web Application state](./shared_state/README.md)
   - [Detecting conflicts](./shared_state/conflicts.md)
