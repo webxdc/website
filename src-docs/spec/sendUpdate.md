@@ -1,7 +1,7 @@
 # sendUpdate
 
 ```js
-window.webxdc.sendUpdate(update, descr);
+window.webxdc.sendUpdate(update);
 ```
 
 Send an update to all peers.
@@ -25,9 +25,6 @@ Send an update to all peers.
     - `update.summary`: optional, short text, shown beside the app icon;
        it is recommended to use some aggregated value, e.g. "8 votes", "Highscore: 123".
        Do not add linebreaks; implementations will truncate the text at about 20 characters or less.
-
-- `descr`: short, human-readable description what this update is about.
-  this is shown e.g. as a fallback text in an e-mail program.
 
 All peers, including the sending one,
 will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
