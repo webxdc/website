@@ -36,3 +36,37 @@ however, the update won't be sent to other peers
 and you won't get the update by [`setUpdateListener()`](./setUpdateListener.html).
 
 
+## Messaging layer limits for sendUpdate 
+
+A messaging layer SHOULD expose the following limits to web applications: 
+
+- `webxdc.sendUpdateInterval` indicates the number of milliseconds 
+  to wait for before calling `sendUpdate()` again since the last call. 
+  If the webxdc app calls `sendUpdate` earlier than the specified interval 
+  the messaging layer may delay updates for much longer
+  than the interval. 
+
+- `webxdc.sendUpdateMaxPayload` is the number of bytes that 
+  the messaging layer will accept as the serialized 
+  "payload" for an update object passed into a `sendUpdate` invocation.
+
+If the messaging layer does not expose these limits
+then webxdc apps should assume the following defaults:
+
+- `sendUpdateInterval = 10000`
+
+- `sendUpdateMaxPayload = 128000`
+
+### Examples for using sendUpdate limits 
+
+If using the default limits, 
+a webxdc editor app could send combined changes in a single `sendUpdate` call 
+at most every 10 seconds
+so that the messaging layer will attempt to send each update immediately. 
+If the editor app were to call `sendUpdate` every 2 seconds instead,
+updates might get queued for a longer time than just the `sendUpdateInterval`. 
+
+Moreover, an editor can also inspect `sendUpdateMaxPayload` 
+and send oversized updates in smaller chunks 
+and recombine them on the receiving side. 
+

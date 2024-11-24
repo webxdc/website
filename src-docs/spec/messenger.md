@@ -35,11 +35,6 @@ In ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-s
 Delta Chat developers discuss the unique privacy guarantees of webxdc,
 and which mitigations messengers using Chromium webviews need to implement to satisfy them. 
 
-### Exposing ratelimits objects to webxdc apps 
-
-If a messenger offers the ["ratelimits" object](ratelimits.md)
-it SHOULD provide all specified properties, and not just a subset of them. 
-
 ### UI Interactions in Chats
 
 - Text from `update.info` SHOULD be shown in the chats
