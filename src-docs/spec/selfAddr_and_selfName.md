@@ -36,14 +36,35 @@ but uses the addresses for notifications.
 
 ```js
 
+// Receive a message from anyone in the chat 
+let users = new Set();
+
 setUpdateListener((update) => {
+    let prompt = "${update.payload.senderName} (${update.payload.senderAddr}):";
+    users.add(update.payload.senderAddr);
+    console.log("${prompt} update.message");
+})
+
+// start some user interface which calls the following function for
+// message sending 
+
+sendMessage(text) => {
+
+    let payload = {
+        senderAddr: webxdc.selfAddr,
+        senderName: webxdc.selfName,
+        message: text
+    };
+
+    // notify all users who ever sent a message in the chat app 
+    let notify = {};
+    for (var addr of users) {
+        notify[addr] = "new message from ${webxdc.selfName}";
+    }
+
     sendUpdate({
-        payload: {
-            senderAddr: webxdc.selfAddr,
-            senderName: webxdc.selfName,
-        },
-        info: "hello ${update.senderName} from ${webxdc.selfName}}",
-        notify: [update.senderAddr]
+        payload: payload, 
+        notify: notify
     })
 })
 ```

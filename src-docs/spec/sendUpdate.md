@@ -29,9 +29,10 @@ The `update` object has the following properties:
    If there are series of info messages, older ones may be dropped.
    use this option sparingly to not spam the chat.
 
-- `update.notify`: optional array of [addresses](./selfAddr_and_selfName.md)
-   for which a receiving messenger should show a user-visible notification
-   like it does for regular chat messages. 
+- `update.notify`: optional dictionary mapping an [address](./selfAddr_and_selfName.md)
+  to a text that should be shown as a user-visible notification to the addressed user. 
+  The optional special key "\*" serves as a catch-all address 
+  whose text shall be notified if `selfAddr` is not contained in the dictionary. 
 
 - `update.href`: optional string that can be passed as the navigation
   location to the webxdc app. 
