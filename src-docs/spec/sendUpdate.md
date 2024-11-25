@@ -34,11 +34,10 @@ The `update` object has the following properties:
   The optional special key "\*" serves as a catch-all address 
   whose text shall be notified if `selfAddr` is not contained in the dictionary. 
 
-- `update.href`: optional string that can be passed as the navigation
-  location to the webxdc app. 
-  For now, only hash or fragment references are allowed. 
-  Strings must start with `#` and can not contain any
-  origin, path or query parts.
+- `update.href`: optional string that specifies a relative URL (path, query and fragment). 
+  When a receiver starts the webxdc app based on the update object 
+  (for example when the user clicked an info message coming from an update) 
+  the app will be navigated to the `href` location with the application root url prepended. 
 
 - `update.document`: optional, name of the document in edit
    (eg. the title of a poll or the name of a text in an editor)
