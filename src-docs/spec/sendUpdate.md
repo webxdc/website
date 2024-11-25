@@ -36,8 +36,9 @@ The `update` object has the following properties:
 
 - `update.href`: optional string that can be passed as the navigation
   location to the webxdc app. 
-  If specified the string must start with `/` and contain only the "path" part 
-  of an URL, without any origin (scheme and domain) parts. 
+  For now, only hash or fragment references are allowed. 
+  Strings must start with `#` and can not contain any
+  origin, path or query parts.
 
 - `update.document`: optional, name of the document in edit
    (eg. the title of a poll or the name of a text in an editor)
