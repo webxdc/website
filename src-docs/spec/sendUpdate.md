@@ -37,7 +37,6 @@ The `update` object has the following properties:
 - `update.href`: optional string that specifies a relative URL 
   (for example `index.html#about`) 
   When a receiver starts the webxdc app based on the update object 
-  (for example when the user clicked an info message coming from an update) 
   the app will be navigated to the `href` location with the application root url prepended. 
 
 - `update.document`: optional, name of the document in edit
