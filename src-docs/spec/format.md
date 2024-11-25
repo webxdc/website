@@ -7,7 +7,8 @@
 - the ZIP-file MUST contain at least the file `index.html`
 - the ZIP-file MAY contain a `manifest.toml` and `icon.png` or
   `icon.jpg` files
-- if the webxdc app is started, `index.html` MUST be opened in a [restricted webview](#webview-constraints-for-running-apps) that only allows accessing
+- if the webxdc app is started, `index.html` MUST be opened in a
+  [restricted webview](../faq/compat.html) that only allows accessing
   resources from the ZIP-file.
 
 ### The manifest.toml File
