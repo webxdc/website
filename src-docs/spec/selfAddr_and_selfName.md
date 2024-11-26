@@ -40,7 +40,7 @@ but uses the addresses for notifications.
 let users = new Set();
 
 setUpdateListener((update) => {
-    let prompt = "${update.payload.senderName} (${update.payload.senderAddr}):";
+    const prompt = "${update.payload.senderName} (${update.payload.senderAddr}):";
     users.add(update.payload.senderAddr);
     console.log("${prompt} update.message");
 })
