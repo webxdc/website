@@ -9,29 +9,26 @@ The same webxdc container file shared in two separate chat messages
 will be regarded as two separate "webxdc apps" 
 and the two apps can not communicate with, or even know about, each other. 
 
-### Webview Constraints for Running Apps
+### Webview Constraints
 
-When starting a web view for a webxdc app to run, messenger implementors:
+When starting a web view for a webxdc app to run, messenger implementors
 
-- MUST run the [webxdc container file](./format.md) in a constrained,
-  network-isolated webview that
-  MUST deny all forms of internet access.
-  Consequently, you do not need to offer "privacy" or "cookie" consent screens as
-  there is no way a webxdc app can implicitly transfer user data to the internet.
-  If you don't restrict internet access for web application
-  unsuspecting users may run apps
+- MUST serve all resources from the [webxdc container file](./format.md) 
+  to the webxdc application. 
+
+- MUST implement the [Webxdc Javascript API](api.md) 
+  and serve a `webxdc.js` file accordingly. 
+
+- MUST deny all forms of Internet access;
+  if you don't restrict internet access 
+  unsuspecting users may run 3rd party apps
   that leak data of private interactions to outside third parties.
-
-- MUST inject `webxdc.js` and implement the
-  [Webxdc Javascript API](api.md) so that messages are relayed and shown in chats.
+  See ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security)
+  which contains a deep discussion of the unique privacy guarantees of webxdc. 
 
 - MUST support `localStorage`, `sessionStorage` and `indexedDB`
-  and isolate them so they can not delete or modify
-  the data of other webxdc content.
 
-- MUST allow unrestricted use of DOM storage (local storage, indexed db and co),
-  but make sure it is scoped to each webxdc app so they can not delete or modify
-  the data of other webxdc content.
+- MUST isolate all storage and state of one webxdc app from any other 
 
 - MUST support `visibilitychange` events
 
@@ -46,12 +43,8 @@ When starting a web view for a webxdc app to run, messenger implementors:
 
 - MUST support `<meta name="viewport" ...>` is useful especially as webviews from different platforms have different defaults
 
-- MUST `<input type="file">` allows importing of files for further
-  processing; see [`sendToChat()`](../spec/sendToChat.md) for a way to export files
-
-In ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security)
-Delta Chat developers discuss the unique privacy guarantees of webxdc,
-and which mitigations messengers using Chromium webviews need to implement to satisfy them.
+- MUST support `<input type="file">` to allow importing of files;
+  see [`sendToChat()`](../spec/sendToChat.md) for a way to export files. 
 
 
 ### UI Interactions in Chats
@@ -69,13 +62,15 @@ and which mitigations messengers using Chromium webviews need to implement to sa
   as webxdc application developers SHOULD NOT be encouraged to send long texts here.
 
 - A "Start" button MUST be offered that runs the webxdc app.
+  Note that there is no need to ask for "privacy" or "cookie" consent because 
+  there is no way a webxdc app can implicitly transfer user data to the internet.
 
 
 ### Example Messenger Implementations
 
-- [Android using Java](https://github.com/deltachat/deltachat-android/blob/master/src/org/thoughtcrime/securesms/WebxdcActivity.java)
+- [Delta Chat Android using Java](https://github.com/deltachat/deltachat-android/blob/master/src/org/thoughtcrime/securesms/WebxdcActivity.java)
 
-- [iOS using Swift](https://github.com/deltachat/deltachat-ios/blob/master/deltachat-ios/Controller/WebxdcViewController.swift)
+- [Delta Chat iOS using Swift](https://github.com/deltachat/deltachat-ios/blob/master/deltachat-ios/Controller/WebxdcViewController.swift)
 
-- [Desktop using TypeScript](https://github.com/deltachat/deltachat-desktop/blob/786b7514d69ffb723bbe6e706494852a2641bfcd/src/main/deltachat/webxdc.ts)
+- [Delta Chat Desktop using TypeScript](https://github.com/deltachat/deltachat-desktop/blob/786b7514d69ffb723bbe6e706494852a2641bfcd/src/main/deltachat/webxdc.ts)
 
