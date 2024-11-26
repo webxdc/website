@@ -1,7 +1,7 @@
 # sendUpdate
 
 ```js
-window.webxdc.sendUpdate(update);
+window.webxdc.sendUpdate(update, descr);
 ```
 
 Send an update to all peers.
@@ -29,19 +29,14 @@ The `update` object has the following properties:
   If there are series of info messages, older ones may be dropped.
   use this option sparingly to not spam the chat.
 
-- `update.notify`: optional dictionary mapping an [address](./selfAddr_and_selfName.md)
-  to a text that should be shown as a user-visible notification to the addressed user. 
-  The optional special key "\*" serves as a catch-all address 
-  whose text shall be notified if `selfAddr` is not contained in the dictionary. 
-
 - `update.href`: optional string that specifies a relative URL 
   (for example `index.html#about`) 
   When a receiver starts the webxdc app based on the update object 
   the app will be navigated to the `href` location with the application root url prepended. 
 
 - `update.document`: optional, name of the document in edit
-  (eg. the title of a poll or the name of a text in an editor)
-  mplementations show the document name e.g. beside the app icon or in the title bar.
+  (eg. the title of a poll or the name of a text in an editor). 
+  Implementations show the document name e.g. beside the app icon or in the title bar.
   MUST NOT be used if the webxdc does not create documents, e.g. in games.
   Do not add linebreaks; implementations will truncate the text at about 20 characters or less.
 
@@ -49,6 +44,15 @@ The `update` object has the following properties:
   it is recommended to use some aggregated value, e.g. "8 votes", "Highscore: 123".
   Do not add linebreaks; implementations will truncate the text 
   at about 20 characters or less.
+
+- `update.notify`: optional dictionary mapping an [address](./selfAddr_and_selfName.md)
+  to a text that should be shown as a user-visible notification to the addressed user. 
+  The optional special key "\*" serves as a catch-all address 
+  whose text shall be notified if `selfAddr` is not contained in the dictionary. 
+
+
+The `descr` argument is deprecated but for backward compatibility
+apps should pass an empty string. 
 
 
 ## Using `info` and `href` to provide navigation
