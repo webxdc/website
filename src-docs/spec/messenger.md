@@ -13,39 +13,63 @@ and the two apps can not communicate with, or even know about, each other.
 
 When starting a web view for a webxdc app to run, messenger implementors:
 
-- MUST run the [webxdc container file](./format.md) in a constrained, 
-  network-isolated webview that 
-  MUST deny all forms of internet access. 
-  If you don't do this
-  unsuspecting users may leak data of their private interactions to outside third parties.
-  You do not need to offer "privacy" or "cookie" consent screens as
+- MUST run the [webxdc container file](./format.md) in a constrained,
+  network-isolated webview that
+  MUST deny all forms of internet access.
+  Consequently, you do not need to offer "privacy" or "cookie" consent screens as
   there is no way a webxdc app can implicitly transfer user data to the internet.
+  If you don't restrict internet access for web application
+  unsuspecting users may run apps
+  that leak data of private interactions to outside third parties.
+
+- MUST inject `webxdc.js` and implement the
+  [Webxdc Javascript API](api.md) so that messages are relayed and shown in chats.
+
+- MUST support `localStorage`, `sessionStorage` and `indexedDB`
+  and isolate them so they can not delete or modify
+  the data of other webxdc content.
 
 - MUST allow unrestricted use of DOM storage (local storage, indexed db and co),
   but make sure it is scoped to each webxdc app so they can not delete or modify
   the data of other webxdc content.
 
-- MUST inject `webxdc.js` and implement the
-  [Webxdc Javascript API](api.md) so that messages are relayed and shown in chats.
+- MUST support `visibilitychange` events
 
-- MUST make sure the standard JavaScript API works as described at
-  [Other APIs and Tags Usage Hints](../faq/compat.md#other-apis-and-tags-usage-hints).
+- MUST support `window.navigator.language`
 
-In ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security) 
+- MUST support `window.location.href` but you can not specify or assume anything
+  about the scheme or domain part of the url.
+
+- MUST support HTML links such as `<a href="localfile.html">`
+
+- MUST support `mailto` links, such as `<a href="mailto:addr@example.org?body=...">`
+
+- MUST support `<meta name="viewport" ...>` is useful especially as webviews from different platforms have different defaults
+
+- MUST `<input type="file">` allows importing of files for further
+  processing; see [`sendToChat()`](../spec/sendToChat.md) for a way to export files
+
+In ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security)
 Delta Chat developers discuss the unique privacy guarantees of webxdc,
-and which mitigations messengers using Chromium webviews need to implement to satisfy them. 
+and which mitigations messengers using Chromium webviews need to implement to satisfy them.
+
 
 ### UI Interactions in Chats
 
 - Text from `update.info` SHOULD be shown in the chats
-  and tapping them should jump to their webxdc message
+  and tapping them SHOULD open the webxdc app directly.
+  If `update.href` was set then the webxdc app MUST
+  be started with the root URL for the webview with
+  the value of `update.href` appended.
 
-- The most recent text from `update.document` and `update.summary` SHOULD be shown inside the webxdc message,
+- The most recent text from `update.document`
+  and `update.summary` SHOULD be shown inside the webxdc message,
   together with name and icon.
   Only one line of text SHOULD be shown and truncation is fine
-  as webxdc devs SHOULD NOT be encouraged to send long texts here.
+  as webxdc application developers SHOULD NOT be encouraged to send long texts here.
 
-- A "Start" button SHOULD run the webxdc app.
+- A "Start" button MUST be offered that runs the webxdc app.
+
 
 ### Example Messenger Implementations
 
