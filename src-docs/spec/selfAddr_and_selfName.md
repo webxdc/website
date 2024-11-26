@@ -18,15 +18,19 @@ window.webxdc.selfAddr
 
 `selfAddr` is a unique string within a webxdc application that
 
-- should not be shown in the user interface of the webxdc application,
+- has no meaning outside the webxdc app,
 
 - can be used in other webxdc APIs,
 
+- should not be shown in the user interface of the webxdc application,
+
 - is identical across multiple invocations of the same webxdc application,
 
-- is identical on multiple devices of the user using the same webxdc application, 
+- is identical on multiple devices of the user using the same webxdc application. 
 
-- should not be linkable to addresses of the same user in other webxdc applications. 
+- is not linkable to addresses in other webxdc apps: 
+  even if a web app manipulates users to share addresses via copy+paste with another web app,
+  addresses between the two web apps can not be correlated. 
 
 
 ## Example using selfAddr and selfName
