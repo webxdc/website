@@ -49,7 +49,6 @@ setUpdateListener((update) => {
 // message sending 
 
 sendMessage(text) => {
-
     let payload = {
         senderAddr: webxdc.selfAddr,
         senderName: webxdc.selfName,
