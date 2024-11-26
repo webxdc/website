@@ -40,9 +40,9 @@ but uses the addresses for notifications.
 let users = new Set();
 
 setUpdateListener((update) => {
-    const prompt = "${update.payload.senderName} (${update.payload.senderAddr}):";
+    const prompt = `${update.payload.senderName} (${update.payload.senderAddr}):`;
     users.add(update.payload.senderAddr);
-    console.log("${prompt} update.message");
+    console.log(`${prompt} ${update.message}`);
 })
 
 // start some user interface which calls the following function for
@@ -58,7 +58,7 @@ sendMessage(text) => {
     // notify all users who ever sent a message in the chat app 
     let notify = {};
     for (const addr of users) {
-        notify[addr] = "new message from ${webxdc.selfName}";
+        notify[addr] = `new message from ${webxdc.selfName}`;
     }
 
     sendUpdate({
