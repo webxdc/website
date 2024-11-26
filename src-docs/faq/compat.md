@@ -8,6 +8,8 @@ Webxdc apps run in a restricted environment, but the following practices are per
 - `localStorage`, `sessionStorage`, `indexedDB`
 - `visibilitychange` events
 - `window.navigator.language`
+- `window.location.href` but you can not specify or assume anything
+  about the scheme or domain part of the url. 
 - internal links, such as `<a href="localfile.html">`
 - `mailto` links, such as `<a href="mailto:addr@example.org?body=...">`
 - `<meta name="viewport" ...>` is useful especially as webviews from different platforms have different defaults
