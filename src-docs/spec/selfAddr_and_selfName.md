@@ -57,7 +57,7 @@ sendMessage(text) => {
 
     // notify all users who ever sent a message in the chat app 
     let notify = {};
-    for (var addr of users) {
+    for (const addr of users) {
         notify[addr] = "new message from ${webxdc.selfName}";
     }
 
