@@ -11,9 +11,9 @@ will receive the update by the callback given to [`setUpdateListener()`](./setUp
 
 There are situations where the user cannot send messages to a chat,
 e.g. if the webxdc instance comes as a contact request or if the user has left a group.
-In these cases, you can still call `sendUpdate()`,
-however, the update won't be sent to other peers
-and you won't get the update by [`setUpdateListener()`](./setUpdateListener.html).
+In these cases, an app can still call `sendUpdate()`,
+but the update won't be sent to other peers
+and it will not be passed to [`setUpdateListener()`](./setUpdateListener.html).
 
 The `update` object has the following properties:  
 
