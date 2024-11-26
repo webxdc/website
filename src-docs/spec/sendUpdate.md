@@ -18,16 +18,16 @@ and you won't get the update by [`setUpdateListener()`](./setUpdateListener.html
 The `update` object has the following properties:  
 
 - `update.payload`: string, number, boolean, array, object or `null`.
-   MUST NOT be `undefined`.
-   Everything that is not JSON serializable will be skipped,
-   this especially affects Binary data buffers as used in `File`, `Blob`, `Int*Array` etc.;
-   if needed, use eg. base64.
+  MUST NOT be `undefined`.
+  Everything that is not JSON serializable will be skipped,
+  this especially affects Binary data buffers as used in `File`, `Blob`, `Int*Array` etc.;
+  if needed, use eg. base64.
 
 - `update.info`: optional, short, informational message that will be added to the chat,
-   e.g. "Alice voted" or "Bob scored 123 in MyGame".
-   Do not add linebreaks; implementations will truncate the text at about 50 characters or less.
-   If there are series of info messages, older ones may be dropped.
-   use this option sparingly to not spam the chat.
+  e.g. "Alice voted" or "Bob scored 123 in MyGame".
+  Do not add linebreaks; implementations will truncate the text at about 50 characters or less.
+  If there are series of info messages, older ones may be dropped.
+  use this option sparingly to not spam the chat.
 
 - `update.notify`: optional dictionary mapping an [address](./selfAddr_and_selfName.md)
   to a text that should be shown as a user-visible notification to the addressed user. 
@@ -40,15 +40,15 @@ The `update` object has the following properties:
   the app will be navigated to the `href` location with the application root url prepended. 
 
 - `update.document`: optional, name of the document in edit
-   (eg. the title of a poll or the name of a text in an editor)
-   Implementations show the document name e.g. beside the app icon or in the title bar.
-   MUST NOT be used if the webxdc does not create documents, e.g. in games.
-   Do not add linebreaks; implementations will truncate the text at about 20 characters or less.
+  (eg. the title of a poll or the name of a text in an editor)
+  mplementations show the document name e.g. beside the app icon or in the title bar.
+  MUST NOT be used if the webxdc does not create documents, e.g. in games.
+  Do not add linebreaks; implementations will truncate the text at about 20 characters or less.
 
 - `update.summary`: optional, short text, shown beside the app icon;
-   it is recommended to use some aggregated value, e.g. "8 votes", "Highscore: 123".
-   Do not add linebreaks; implementations will truncate the text 
-   at about 20 characters or less.
+  it is recommended to use some aggregated value, e.g. "8 votes", "Highscore: 123".
+  Do not add linebreaks; implementations will truncate the text 
+  at about 20 characters or less.
 
 
 ## Using `info` and `href` to provide navigation
