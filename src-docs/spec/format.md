@@ -2,14 +2,15 @@
 ## Webxdc Container File Format
 
 - a Webxdc app is a **ZIP-file** with the extension `.xdc`
+
 - the ZIP-file MUST use the default compression methods as of RFC 1950,
   this is "Deflate" or "Store"
+
 - the ZIP-file MUST contain at least the file `index.html`
+
 - the ZIP-file MAY contain a `manifest.toml` and `icon.png` or
   `icon.jpg` files
-- if the webxdc app is started, `index.html` MUST be opened in a
-  [restricted webview](../faq/compat.html) that only allows accessing
-  resources from the ZIP-file.
+
 
 ### The manifest.toml File
 
