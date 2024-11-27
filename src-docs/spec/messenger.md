@@ -16,6 +16,7 @@ When starting a web view for a webxdc app to run, messenger implementors
 - MUST serve all resources from the [webxdc container file](./format.md) 
   to the webxdc application. 
 
+- on initial opening, MUST open root URL for the webview with `index.html` appended 
 - MUST implement the [Webxdc Javascript API](api.md) 
   and serve a `webxdc.js` file accordingly. 
 
