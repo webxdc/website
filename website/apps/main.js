@@ -2,7 +2,6 @@
 import {
   html,
   render,
-  useReducer,
   useState,
   useEffect,
   useMemo,
@@ -21,7 +20,7 @@ const xdcget_export = "https://apps.testrun.org";
  * @param {{app: import('./app_list.d').AppEntry}} param0
  */
 const App = ({ app, toggleModal }) => {
-  const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
+  const subtitle = app.description.split('\n').shift();
   return html`
     <button
       class="app"
@@ -39,7 +38,6 @@ const App = ({ app, toggleModal }) => {
 };
 
 const Dialog = ({app, modal, toggleModal}) => {
-  console.log(app);
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
 
   // Only show the modal that matches the app ID that was clicked
@@ -68,20 +66,57 @@ const Dialog = ({app, modal, toggleModal}) => {
   `;
 };
 
-const MainScreen = () => {
+const MainScreen = ({initialAppId}) => {
   /** @typedef {import('./app_list.d').AppList} AppList */
   /** @type {[AppList, (newState: AppList) => void]} */
   const [apps, setApps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modal, viewModal] = useState(false); 
+  const [appIdMap, setIdMap] = useState({});
 
   useEffect(() => {
     (async () => {
-      console.log(";");
+      console.log("fetch");
       setApps(await (await fetch(xdcget_export + "/xdcget-lock.json")).json());
       setLoading(false);
     })();
   }, []);
+
+  // We need a map so that we can quickly verify later if 
+  // an app ID is valid.
+  useEffect(() => {
+    setIdMap(apps.reduce((map, app) => {
+      map[app.app_id] = true;
+      return map;
+    }, {}));
+  }, [apps]);
+
+  // This allows us to set/unset the modal for a particular app
+  const toggleModal = (appId) => {
+    if(appId) {
+      viewModal(appId);
+      window.location.hash = appId;
+    } else {
+      viewModal(false);
+      window.location.hash = '';
+    }
+  };
+
+  const onHashChange = () => {
+    viewModal(false);
+    if(window.location.hash.substring(1) in appIdMap) {
+      toggleModal(window.location.hash.substring(1));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('hashchange', onHashChange);
+    if (window.location.hash.length > 0) {
+      onHashChange();
+    }
+    return () => window.removeEventListener('hashchange', onHashChange);
+
+  }, [window.location.hash, appIdMap]);
 
   const fuse = useMemo(() => {
     return new Fuse(apps, {
@@ -122,16 +157,7 @@ const MainScreen = () => {
     updateSearch();
   }, [apps]);
   console.count('render');
-
-  // This allows us to set/unset the modal for a particular app
-  const toggleModal = (appID) => {
-    if(appID) {
-      viewModal(appID);
-    } else {
-      viewModal(false);
-    }
-  };
-
+  
   return html`
     <header>
     <nav><input
@@ -157,5 +183,5 @@ const MainScreen = () => {
 };
 
 window.onload = async () => {
-  render(html`<${MainScreen} />`, window.apps);
+  render(html`<${MainScreen} initialAppId=${window.location.hash} />`, window.apps);
 };
