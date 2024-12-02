@@ -38,7 +38,7 @@ const App = ({ app, toggleModal }) => {
   `;
 };
 
-const Dialog = ({app, modal}) => {
+const Dialog = ({app, modal, toggleModal}) => {
   console.log(app);
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
 
@@ -58,9 +58,12 @@ const Dialog = ({app, modal}) => {
       <div class="description-full">
         ${description}
       </div>
-      <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank">
-        <button>Download</button>
-      </a>
+      <div class="button-container">
+        <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
+          Download
+        </a>
+        <button onClick=${() => toggleModal(false)}>Cancel</button>
+      </div>
     </div>
   `;
 };
@@ -145,9 +148,9 @@ const MainScreen = () => {
         searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
     </div>
     <div id="dialog_layer" class="dialogs">
-      <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}" onClick=${() => toggleModal(false)}>
+      <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}">
         ${searchResults && 
-          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal}/>`)}
+          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} />`)}
       </div>
     </div>
   `;

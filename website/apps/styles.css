@@ -1,9 +1,7 @@
-:root {
-  --icon: 64px;
-}
-
 #apps {
   --padding: 8px;
+  --icon: 64px;
+
   margin: 0 var(--padding);
 
   grid-column: 1/-1;
@@ -67,10 +65,19 @@ img {
   opacity: 0.7;
 }
 
+/* Override the look of buttons */
+
 button {
   margin: 0;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.button {
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: fit-content;
 }
 
 #footer {
@@ -119,6 +126,11 @@ button {
 [role=dialog] .app-container {
   display: flex;
   padding-bottom: 1rem;
+}
+
+[role=dialog] .button-container {
+  display: flex;
+  gap: var(--padding);
 }
 
 [role=dialog].active {
