@@ -20,23 +20,40 @@ const xdcget_export = "https://apps.testrun.org";
 /**
  * @param {{app: import('./app_list.d').AppEntry}} param0
  */
-const App = ({ app }) => {
+const App = ({ app, toggleModal }) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
   return html`
-    <a
+    <button
       class="app"
-      href=${xdcget_export + "/" + app.cache_relname}
-      target="_blank"
-      tabindex="0"
-    >
+      onClick=${() => toggleModal(app.app_id)}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" />
       <div class="props">
         <div class="title">${app.name}</div>
         <div class="description">
-          <span class="subtitle">${subtitle}</span></div>
+          <span class="subtitle">${subtitle}</span>
+        </div>
         <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
       </div>
-    </a>
+    </button>
+  `;
+};
+
+const Dialog = ({app, modal}) => {
+  console.log(app);
+  const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
+
+  // Only show the modal that matches the app ID that was clicked
+  return html`
+    <div role="dialog" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
+      <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" />
+      <div class="metadata">
+        <div class="title">${app.name}</div>
+        <div class="description">
+          <span class="subtitle">${subtitle}</span>
+          <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
+        </div>
+      </div>
+    </div>
   `;
 };
 
@@ -45,6 +62,7 @@ const MainScreen = () => {
   /** @type {[AppList, (newState: AppList) => void]} */
   const [apps, setApps] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [modal, viewModal] = useState(false); 
 
   useEffect(() => {
     (async () => {
@@ -92,7 +110,16 @@ const MainScreen = () => {
     // do the initial update or when applist changes
     updateSearch();
   }, [apps]);
-  console.count('render')
+  console.count('render');
+
+  // This allows us to set/unset the modal for a particular app
+  const toggleModal = (appID) => {
+    if(appID) {
+      viewModal(appID);
+    } else {
+      viewModal(false);
+    }
+  };
 
   return html`
     <header>
@@ -107,7 +134,13 @@ const MainScreen = () => {
     <div id="app_container">
       ${loading && html`<div>Loading</div>`}
       ${searchResults &&
-      searchResults.map((result) => html`<${App} app=${result.item} />`)}
+        searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
+    </div>
+    <div id="dialog_layer" class="dialogs">
+      <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}" onClick=${() => toggleModal(false)}>
+        ${searchResults && 
+          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal}/>`)}
+      </div>
     </div>
   `;
 };
