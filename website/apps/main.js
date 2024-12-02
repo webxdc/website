@@ -45,14 +45,22 @@ const Dialog = ({app, modal}) => {
   // Only show the modal that matches the app ID that was clicked
   return html`
     <div role="dialog" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
-      <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" />
-      <div class="metadata">
-        <div class="title">${app.name}</div>
-        <div class="description">
-          <span class="subtitle">${subtitle}</span>
-          <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
+      <div class="app-container">
+        <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" />
+        <div class="metadata">
+          <div class="title">${app.name}</div>
+          <div class="description">
+            <span class="subtitle">${subtitle}</span>
+            <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
+          </div>
         </div>
       </div>
+      <div class="description-full">
+        ${description}
+      </div>
+      <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank">
+        <button>Download</button>
+      </a>
     </div>
   `;
 };

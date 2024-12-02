@@ -67,6 +67,12 @@ img {
   opacity: 0.7;
 }
 
+button {
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 #footer {
   text-align: center;
   margin-top: 3em;
@@ -96,6 +102,7 @@ img {
 }
 
 [role=dialog] {
+  font-size: 1rem;
   display: none;
   position: absolute;
   padding: 2rem;
@@ -109,11 +116,21 @@ img {
   border-radius: var(--padding);
 }
 
+[role=dialog] .app-container {
+  display: flex;
+  padding-bottom: 1rem;
+}
+
 [role=dialog].active {
   display: flex;
+  flex-direction: column;
 }
 
 [role=dialog] .metadata {
   display: flex;
   flex-direction: column;
+}
+
+[role=dialog] .description-full {
+  padding-bottom: 1rem;
 }
