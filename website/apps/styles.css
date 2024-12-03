@@ -11,10 +11,22 @@
   text-align: center;
 }
 
+/* Search */ 
+
 #search_field {
   margin: var(--padding);
   min-width: 60%;
   max-width: 80%;
+}
+
+#filter-apps {
+  display: flex;
+  gap: var(--padding);
+  justify-content: center;
+}
+
+#filter-apps button {
+  border-radius: 50px;
 }
 
 #app_container {
@@ -150,6 +162,7 @@ button.ghost, .button.ghost {
   padding-bottom: 1rem;
   flex: 1;
 }
+
 
 @media screen and (min-width: 640px) {
   [role=dialog] {

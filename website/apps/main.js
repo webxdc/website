@@ -73,9 +73,20 @@ const Dialog = ({app, modal, toggleModal}) => {
 }
 
 /*
+<Filter> provides simple filtering of apps
+*/
+const Filter = () => {
+  return html`
+    <div id="filter-apps">
+      <button>tools</button>
+      <button>games</button>
+    </div>
+  `;
+}
+
+/*
 <Search> deals with searching and filtering webxdc apps
 */
-
 const Search = ({apps, setSearchResults}) => {
   const fuse = useMemo(() => {
     return new Fuse(apps, {
@@ -125,6 +136,7 @@ const Search = ({apps, setSearchResults}) => {
         ref=${searchFieldRef}
         oninput=${updateSearch}
       /></nav>
+      <${Filter} />
     </header>
   `;
 };
