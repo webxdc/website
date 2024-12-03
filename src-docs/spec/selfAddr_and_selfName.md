@@ -6,8 +6,8 @@
 window.webxdc.selfName
 ```
 
-`selfName` is the nick or display name for the user 
-which can be displayed in the user interface of the webxdc application. 
+`selfName` is the nick or display name for the user
+which the webxdc application may show in its user interface.
 
 
 ## selfAddr
@@ -26,21 +26,21 @@ window.webxdc.selfAddr
 
 - is identical across multiple invocations of the same webxdc application,
 
-- is identical on multiple devices of the user using the same webxdc application. 
+- is identical on multiple devices of the user using the same webxdc application.
 
-- is not linkable to addresses in other webxdc apps: 
+- is not linkable to addresses in other webxdc apps:
   even if a web app manipulates users to share addresses via copy+paste with another web app,
-  addresses between the two web apps can not be correlated. 
+  addresses between the two web apps can not be correlated.
 
 
 ## Example using selfAddr and selfName
 
 Here is a simple chat app that sends out a reply using the display names
-but uses the addresses for notifications. 
+but uses the addresses for notifications.
 
 ```js
 
-// Receive a message from anyone in the chat 
+// Receive a message from anyone in the chat
 let users = new Set();
 
 setUpdateListener((update) => {
@@ -50,7 +50,7 @@ setUpdateListener((update) => {
 })
 
 // start some user interface which calls the following function for
-// message sending 
+// message sending
 
 sendMessage(text) => {
     let payload = {
@@ -59,14 +59,14 @@ sendMessage(text) => {
         message: text
     };
 
-    // notify all users who ever sent a message in the chat app 
+    // notify all users who ever sent a message in the chat app
     let notify = {};
     for (const addr of users) {
         notify[addr] = `new message from ${webxdc.selfName}`;
     }
 
     sendUpdate({
-        payload: payload, 
+        payload: payload,
         notify: notify
     })
 })
