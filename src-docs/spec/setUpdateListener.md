@@ -6,13 +6,13 @@ let promise = window.webxdc.setUpdateListener((update) => {}, serial);
 
 With `setUpdateListener()` you define a callback that receives the updates
 sent by [`sendUpdate()`]. The callback is called for updates sent by you or other peers.
-The `serial` specifies the last serial that you know about (defaults to 0). 
-The returned promise resolves when the listener has processed all the update messages known at the time when  `setUpdateListener` was called. 
+The `serial` specifies the last serial that you know about (defaults to 0).
+The returned promise resolves when the listener has processed all the update messages known at the time when  `setUpdateListener` was called.
 
 
-## Application update object 
+## Application update object
 
-Each `update` which is passed to the callback comes with the following properties: 
+Each `update` which is passed to the callback comes with the following properties:
 
 - `update.payload`: equals the payload given to [`sendUpdate()`]
 
@@ -26,11 +26,17 @@ Each `update` which is passed to the callback comes with the following propertie
 
 - `update.info`: optional, short, informational message (see [`sendUpdate()`])
 
+- `update.href`: in-app "deep link" reference
+  that can be optionally provided by the update sender via [`SendUpdate()`].
+
 - `update.document`: optional, document name as set by the sender, (see [`sendUpdate()`]).
   Implementations show the document name e.g. beside the app icon or in the title bar.
   There is no need for the receiver to further process this information.
 
 - `update.summary`: optional, short text, shown beside icon (see [`sendUpdate()`])
+
+- `update.notify`: optional, list of user addresses
+  intended to be notified by the sender
 
 Calling `setUpdateListener()` multiple times is undefined behavior: in current implementations only the last invocation works.
 
