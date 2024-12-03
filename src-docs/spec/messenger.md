@@ -36,7 +36,7 @@ When starting a web view for a webxdc app to run, messenger implementors
 - MUST support `window.navigator.language`
 
 - MUST support `window.location.href` but you can not specify or assume anything
-  about the scheme or domain part of the url.
+  about the protocol scheme or domain part of the url.
 
 - MUST support HTML links such as `<a href="localfile.html">`
 
