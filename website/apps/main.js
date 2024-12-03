@@ -72,6 +72,63 @@ const Dialog = ({app, modal, toggleModal}) => {
 };
 
 /*
+<Search> deals with searching and filtering webxdc apps
+*/
+
+const Search = ({apps, setSearchResults}) => {
+  const fuse = useMemo(() => {
+    return new Fuse(apps, {
+      includeScore: true,
+      // Search in `author` and in `tags` array
+      keys: [
+        { name: "name", weight: 2 },
+        { name: "description", weight: 0.2 },
+      ],
+    });
+  }, [apps]);
+  
+  const searchFieldRef = useRef(null);
+  const updateSearch = useMemo(() => {
+    return () => {
+      if (searchFieldRef.current) {
+        const query = searchFieldRef.current.value;
+        if (query) {
+          const results = fuse.search(query)
+          setSearchResults(results);
+          // console.log("search result", {results});
+          return;
+        }
+      }
+      setSearchResults(
+        apps
+          .map((app) => ({ item: app }))
+          .sort(
+            (a, b) =>
+              new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
+          )
+      );
+    };
+  }, [fuse, apps]);
+
+  useEffect(() => {
+    // do the initial update or when applist changes
+    updateSearch();
+  }, [apps]);
+
+  return html`
+    <header>
+      <nav><input
+        type="search"
+        placeholder="Search"
+        id="search_field"
+        ref=${searchFieldRef}
+        oninput=${updateSearch}
+      /></nav>
+    </header>
+  `;
+};
+
+/*
 <MainScreen> is responsible for implementing the search function, for fetching
 the app data, and for actually rendering the page contents.
 */
@@ -134,56 +191,12 @@ const MainScreen = () => {
 
   }, [window.location.hash, appIdMap]);
 
-  const fuse = useMemo(() => {
-    return new Fuse(apps, {
-      includeScore: true,
-      // Search in `author` and in `tags` array
-      keys: [
-        { name: "name", weight: 2 },
-        { name: "description", weight: 0.2 },
-      ],
-    });
-  }, [apps]);
   const [searchResults, setSearchResults] = useState();
-  const searchFieldRef = useRef(null);
-  const updateSearch = useMemo(() => {
-    return () => {
-      if (searchFieldRef.current) {
-        const query = searchFieldRef.current.value;
-        if (query) {
-          const results = fuse.search(query)
-          setSearchResults(results);
-          // console.log("search result", {results});
-          return;
-        }
-      }
-      setSearchResults(
-        apps
-          .map((app) => ({ item: app }))
-          .sort(
-            (a, b) =>
-              new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
-          )
-      );
-    };
-  }, [fuse, apps]);
 
-  useEffect(() => {
-    // do the initial update or when applist changes
-    updateSearch();
-  }, [apps]);
   console.count('render');
   
   return html`
-    <header>
-      <nav><input
-        type="search"
-        placeholder="Search"
-        id="search_field"
-        ref=${searchFieldRef}
-        oninput=${updateSearch}
-      /></nav>
-    </header>
+    <${Search} apps=${apps} setSearchResults=${setSearchResults}/>
     <div id="app_container">
       ${loading && html`<div>Loading</div>`}
       ${searchResults &&
@@ -199,5 +212,5 @@ const MainScreen = () => {
 };
 
 window.onload = async () => {
-  render(html`<${MainScreen} />`, window.apps);
+  render(html`<${MainScreen} />`, document.getElementById('apps'));
 };
