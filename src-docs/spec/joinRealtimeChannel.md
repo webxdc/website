@@ -34,6 +34,8 @@ Calling `setListener` a second time will replace the previous listener.
 ## `realtimeChannel.send(data)` 
 
 Send a `Uint8Array` data item to connected peers. 
+The size of the array must not exceed 128000 bytes. 
+
 There is no guarantee anyone is receiving sent data
 because there might be no currently listening peers,
 or network connections fail. 
