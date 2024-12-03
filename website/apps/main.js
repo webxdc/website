@@ -5,7 +5,7 @@ import {
   useState,
   useEffect,
   useMemo,
-  useRef,
+  useRef
 } from "./deps/preact_and_htm.js";
 import Fuse from "./deps/fuse.basic.esm.min.js";
 import dayjs from "./deps/dayjs/dayjs_with_relative_time.min.js";
@@ -26,7 +26,7 @@ const App = ({ app, toggleModal }) => {
     <button
       class="app"
       onClick=${() => toggleModal(app.app_id)}>
-      <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name}" />
+      <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props">
         <div class="title">${app.name}</div>
         <div class="description">
@@ -42,23 +42,24 @@ const App = ({ app, toggleModal }) => {
 <Dialog> creates an overlay that shows the metadata of an app and a button of
 downloading the actual webxdc file from the server.
 */
+
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
   
   return html`
     <!-- Only show the modal that matches the app ID that was clicked -->
-    <div role="dialog" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
+    <div id=${app.app_id} role="dialog" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
       <div class="app-container">
-        <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name}" />
+        <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name} app" />
         <div class="metadata">
           <div class="title">${app.name}</div>
           <div class="description">
-            <span class="subtitle">${subtitle}</span>
+            <span class="subtitle" id="${app.app_id}_label">${subtitle}</span>
           </div>
           <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
         </div>
       </div>
-      <div class="description-full">
+      <div class="description-full" id="${app.app_id}_desc">
         ${description}
       </div>
       <div class="button-container">
@@ -69,7 +70,7 @@ const Dialog = ({app, modal, toggleModal}) => {
       </div>
     </div>
   `;
-};
+}
 
 /*
 <Search> deals with searching and filtering webxdc apps
@@ -161,13 +162,22 @@ const MainScreen = () => {
   }, [apps]);
 
   // This allows us to set/unset the modal for a particular app.
+  // - Open the modal
+  // - Change the hash
+  // - Switch focus to the modal
   const toggleModal = (appId) => {
     if(appId) {
       viewModal(appId);
       window.location.hash = appId;
+
+      let appIdEl = document.getElementById(appId);
+      if(appIdEl) {
+        appIdEl.focus();
+      }
     } else {
       viewModal(false);
       window.location.hash = '';
+      document.body.focus();
     }
   };
 
@@ -192,7 +202,6 @@ const MainScreen = () => {
   }, [window.location.hash, appIdMap]);
 
   const [searchResults, setSearchResults] = useState();
-
   console.count('render');
   
   return html`
