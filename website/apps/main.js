@@ -8,24 +8,25 @@ import {
   useRef,
 } from "./deps/preact_and_htm.js";
 import Fuse from "./deps/fuse.basic.esm.min.js";
-
 import dayjs from "./deps/dayjs/dayjs_with_relative_time.min.js";
+
 //@ts-ignore
 dayjs.extend(dayjs_plugin_relativeTime);
 
 // without a trailing slash
 const xdcget_export = "https://apps.testrun.org";
 
-/**
- * @param {{app: import('./app_list.d').AppEntry}} param0
- */
+/*
+Each <App> is implemented as a button that, when clicked, would show
+more details about the webxdc app by showing a <Dialog> 
+*/
 const App = ({ app, toggleModal }) => {
   const subtitle = app.description.split('\n').shift();
   return html`
     <button
       class="app"
       onClick=${() => toggleModal(app.app_id)}>
-      <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" />
+      <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name}" />
       <div class="props">
         <div class="title">${app.name}</div>
         <div class="description">
@@ -37,20 +38,24 @@ const App = ({ app, toggleModal }) => {
   `;
 };
 
+/*
+<Dialog> creates an overlay that shows the metadata of an app and a button of
+downloading the actual webxdc file from the server.
+*/
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
-
-  // Only show the modal that matches the app ID that was clicked
+  
   return html`
+    <!-- Only show the modal that matches the app ID that was clicked -->
     <div role="dialog" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
       <div class="app-container">
-        <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" />
+        <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name}" />
         <div class="metadata">
           <div class="title">${app.name}</div>
           <div class="description">
             <span class="subtitle">${subtitle}</span>
-            <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
           </div>
+          <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
         </div>
       </div>
       <div class="description-full">
@@ -66,7 +71,11 @@ const Dialog = ({app, modal, toggleModal}) => {
   `;
 };
 
-const MainScreen = ({initialAppId}) => {
+/*
+<MainScreen> is responsible for implementing the search function, for fetching
+the app data, and for actually rendering the page contents.
+*/
+const MainScreen = () => {
   /** @typedef {import('./app_list.d').AppList} AppList */
   /** @type {[AppList, (newState: AppList) => void]} */
   const [apps, setApps] = useState([]);
@@ -74,6 +83,8 @@ const MainScreen = ({initialAppId}) => {
   const [modal, viewModal] = useState(false); 
   const [appIdMap, setIdMap] = useState({});
 
+  // Fetch the data that contains all of the apps we have available
+  // in the xstore.
   useEffect(() => {
     (async () => {
       console.log("fetch");
@@ -83,7 +94,8 @@ const MainScreen = ({initialAppId}) => {
   }, []);
 
   // We need a map so that we can quickly verify later if 
-  // an app ID is valid.
+  // an app ID is valid. We'll be using this for verifying
+  // valid app ID in window.location.hash
   useEffect(() => {
     setIdMap(apps.reduce((map, app) => {
       map[app.app_id] = true;
@@ -91,7 +103,7 @@ const MainScreen = ({initialAppId}) => {
     }, {}));
   }, [apps]);
 
-  // This allows us to set/unset the modal for a particular app
+  // This allows us to set/unset the modal for a particular app.
   const toggleModal = (appId) => {
     if(appId) {
       viewModal(appId);
@@ -103,17 +115,21 @@ const MainScreen = ({initialAppId}) => {
   };
 
   const onHashChange = () => {
+    // Close any open modals when window.location.hash changes
+    // Doesn't matter if it's valid or not.
     viewModal(false);
     if(window.location.hash.substring(1) in appIdMap) {
       toggleModal(window.location.hash.substring(1));
     }
   };
 
+  // We set an event that triggers whenever window.location.hash changes
   useEffect(() => {
-    window.addEventListener('hashchange', onHashChange);
+    // If the variable s already set, show the modal.
     if (window.location.hash.length > 0) {
       onHashChange();
     }
+    window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
 
   }, [window.location.hash, appIdMap]);
@@ -160,13 +176,13 @@ const MainScreen = ({initialAppId}) => {
   
   return html`
     <header>
-    <nav><input
-      type="search"
-      placeholder="Search"
-      id="search_field"
-      ref=${searchFieldRef}
-      oninput=${updateSearch}
-    /></nav>
+      <nav><input
+        type="search"
+        placeholder="Search"
+        id="search_field"
+        ref=${searchFieldRef}
+        oninput=${updateSearch}
+      /></nav>
     </header>
     <div id="app_container">
       ${loading && html`<div>Loading</div>`}
@@ -183,5 +199,5 @@ const MainScreen = ({initialAppId}) => {
 };
 
 window.onload = async () => {
-  render(html`<${MainScreen} initialAppId=${window.location.hash} />`, window.apps);
+  render(html`<${MainScreen} />`, window.apps);
 };
