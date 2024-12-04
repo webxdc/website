@@ -178,15 +178,9 @@ const MainScreen = () => {
     if(appId) {
       viewModal(appId);
       window.location.hash = appId;
-
-      let appIdEl = document.getElementById(appId);
-      if(appIdEl) {
-        appIdEl.focus();
-      }
     } else {
       viewModal(false);
       window.location.hash = '';
-      document.body.focus();
     }
   };
 
