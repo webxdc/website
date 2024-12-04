@@ -31,7 +31,7 @@
   padding: 1rem;
   border: none;
   border-radius: initial;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #00000020;
 
   background: none;
   color: var(--text);
@@ -194,6 +194,10 @@ button.ghost, .button.ghost {
 }
 
 @media (prefers-color-scheme: dark) {
+  .app {
+    border-color: #FFFFFF20;
+  }
+
   .dialog-backdrop {
     background: rgb(255 255 255 / 30%);
   }

@@ -66,7 +66,7 @@ const Dialog = ({app, modal, toggleModal}) => {
       </div>
       <div class="additional-info">
         <div>
-          <b>Date: </b>${dayjs(app.date).format("l")} (${app.tag_name})
+          <b>Updated on: </b>${dayjs(app.date).format("l")} (${app.tag_name})
         </div>
         <div>
           <b>Source: </b><a href=${app.source_code_url} target="_blank">${app.source_code_url}</a>
