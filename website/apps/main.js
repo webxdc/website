@@ -45,7 +45,6 @@ const App = ({ app, toggleModal }) => {
 <Dialog> creates an overlay that shows the metadata of an app and a button of
 downloading the actual webxdc file from the server.
 */
-
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
 
@@ -70,7 +69,7 @@ const Dialog = ({app, modal, toggleModal}) => {
           <b>Date: </b>${dayjs(app.date).format("l")} (${app.tag_name})
         </div>
         <div>
-          <b>Source: </b><a href=${app.source_code_url}>${app.source_code_url}</a>
+          <b>Source: </b><a href=${app.source_code_url} target="_blank">${app.source_code_url}</a>
         </div>
       </div>
       <div class="button-container">

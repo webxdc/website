@@ -2,7 +2,7 @@
   --padding: 8px;
   --icon: 64px;
 
-  margin: 0 var(--padding);
+  margin: 0 1rem;
   grid-column: 1/-1;
 }
 
@@ -14,19 +14,9 @@
 /* Search */ 
 
 #search_field {
-  margin: var(--padding);
-  min-width: 60%;
-  max-width: 80%;
-}
-
-#filter-apps {
-  display: flex;
-  gap: var(--padding);
-  justify-content: center;
-}
-
-#filter-apps button {
   border-radius: 50px;
+  min-width: 60%;
+  max-width: 100%;
 }
 
 #app_container {
@@ -37,25 +27,29 @@
 }
 
 .app {
-  width: 300px;
-  margin: var(--padding);
-  background: none;
+  width: 100%;
+  padding: 1rem;
   border: none;
+  border-radius: initial;
+  border-bottom: 1px solid lightgrey;
+
+  background: none;
   color: var(--text);
   text-align: left;
   font-size: 1rem;
+  gap: 0.9rem;
 
   text-decoration: none;
 
   display: flex;
   align-items: center;
-
   flex-shrink: 0;
 }
 
 #apps img {
   width: var(--icon);
   min-width: var(--icon);
+  height: var(--icon);
 
   margin-right: calc(var(--padding));
 }
@@ -165,6 +159,19 @@ button.ghost, .button.ghost {
 }
 
 @media screen and (min-width: 640px) {
+  #search_field {
+    max-width: 80%;
+  }
+
+  .app {
+    width: 300px;
+    gap: .3rem;
+    border-radius: var(--padding);
+    border: none;
+    padding: .5rem;
+    margin: .5rem;
+  }
+
   [role=dialog] {
     display: none;
     position: absolute;
