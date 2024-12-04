@@ -48,6 +48,10 @@ downloading the actual webxdc file from the server.
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
 
+  if(modal === app.app_id) {
+    document.title = `webxdc apps: ${app.name}`;
+  }
+
   return html`
     <!-- Only show the modal that matches the app ID that was clicked -->
     <div id=${app.app_id} role="dialog" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
@@ -178,7 +182,6 @@ const MainScreen = () => {
     if(appId) {
       viewModal(appId);
       window.location.hash = appId;
-      document.title = `webxdc apps: ${appId}`;
     } else {
       viewModal(false);
       document.title = "webxdc apps";
