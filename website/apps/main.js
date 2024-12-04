@@ -178,9 +178,10 @@ const MainScreen = () => {
     if(appId) {
       viewModal(appId);
       window.location.hash = appId;
+      document.title = `webxdc apps: ${appId}`;
     } else {
       viewModal(false);
-      window.location.hash = '';
+      document.title = "webxdc apps";
     }
   };
 
