@@ -9,9 +9,12 @@ import {
 } from "./deps/preact_and_htm.js";
 import Fuse from "./deps/fuse.basic.esm.min.js";
 import dayjs from "./deps/dayjs/dayjs_with_relative_time.min.js";
+import "./deps/dayjs/localizedFormat.min.js.js";
 
 //@ts-ignore
 dayjs.extend(dayjs_plugin_relativeTime);
+//@ts-ignore
+dayjs.extend(dayjs_plugin_localizedFormat);
 
 // without a trailing slash
 const xdcget_export = "https://apps.testrun.org";
@@ -45,7 +48,7 @@ downloading the actual webxdc file from the server.
 
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
-  
+
   return html`
     <!-- Only show the modal that matches the app ID that was clicked -->
     <div id=${app.app_id} role="dialog" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
@@ -62,24 +65,20 @@ const Dialog = ({app, modal, toggleModal}) => {
       <div class="description-full" id="${app.app_id}_desc">
         ${description}
       </div>
+      <div class="additional-info">
+        <div>
+          <b>Date: </b>${dayjs(app.date).format("l")} (${app.tag_name})
+        </div>
+        <div>
+          <b>Source: </b><a href=${app.source_code_url}>${app.source_code_url}</a>
+        </div>
+      </div>
       <div class="button-container">
         <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
           Download
         </a>
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
       </div>
-    </div>
-  `;
-}
-
-/*
-<Filter> provides simple filtering of apps
-*/
-const Filter = () => {
-  return html`
-    <div id="filter-apps">
-      <button>tools</button>
-      <button>games</button>
     </div>
   `;
 }
@@ -136,7 +135,6 @@ const Search = ({apps, setSearchResults}) => {
         ref=${searchFieldRef}
         oninput=${updateSearch}
       /></nav>
-      <${Filter} />
     </header>
   `;
 };
