@@ -4,17 +4,21 @@ body {
   align-items: center;
 }
 
+header > nav {
+  padding: 1rem 1rem 0 1rem;
+}
+
 #apps {
   --padding: 8px;
   --icon: 64px;
 
   max-width: 1300px;
+  width: 100%;
   margin: 0 1rem;
   grid-column: 1/-1;
 }
 
 #apps header {
-  margin: var(--padding);
   text-align: center;
 }
 

@@ -24,6 +24,7 @@ Each <App> is implemented as a button that, when clicked, would show
 more details about the webxdc app by showing a <Dialog> 
 */
 const App = ({ app, toggleModal }) => {
+  console.log(app);
   const subtitle = app.description.split('\n').shift();
   return html`
     <button
@@ -71,6 +72,9 @@ const Dialog = ({app, modal, toggleModal}) => {
       <div class="additional-info">
         <div>
           <b>Updated on: </b>${dayjs(app.date).format("l")} (${app.tag_name})
+        </div>
+        <div>
+          <b>Size: </b>${(app.size/1000).toLocaleString(undefined, {maximumFractionDigits: 1})} kb
         </div>
         <div>
           <b>Source: </b><a href=${app.source_code_url} target="_blank">${app.source_code_url}</a>
@@ -224,8 +228,13 @@ const MainScreen = () => {
           searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} />`)}
       </div>
     </div>
+    <${Tabs} />
   `;
 };
+
+const Tabs = () => {
+  return html``;
+}
 
 window.onload = async () => {
   render(html`<${MainScreen} />`, document.getElementById('apps'));
