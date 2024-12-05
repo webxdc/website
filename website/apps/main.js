@@ -24,7 +24,6 @@ Each <App> is implemented as a button that, when clicked, would show
 more details about the webxdc app by showing a <Dialog> 
 */
 const App = ({ app, toggleModal }) => {
-  console.log(app);
   const subtitle = app.description.split('\n').shift();
   return html`
     <button
@@ -53,6 +52,11 @@ const Dialog = ({app, modal, toggleModal}) => {
     document.title = `webxdc apps: ${app.name}`;
   }
 
+  let size = `${(app.size/1000).toLocaleString(undefined, {maximumFractionDigits: 1})} kb`;
+  if(app.size > 1000000) {
+    size = `${(app.size/1000000).toLocaleString(undefined, {maximumFractionDigits: 1})} mb`;
+  }
+
   return html`
     <!-- Only show the modal that matches the app ID that was clicked -->
     <div id=${app.app_id} role="dialog" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
@@ -74,7 +78,7 @@ const Dialog = ({app, modal, toggleModal}) => {
           <b>Updated on: </b>${dayjs(app.date).format("l")} (${app.tag_name})
         </div>
         <div>
-          <b>Size: </b>${(app.size/1000).toLocaleString(undefined, {maximumFractionDigits: 1})} kb
+          <b>Size: </b>${size}
         </div>
         <div>
           <b>Source: </b><a href=${app.source_code_url} target="_blank">${app.source_code_url}</a>
