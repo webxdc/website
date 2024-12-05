@@ -169,6 +169,43 @@ button.ghost, .button.ghost {
   flex: 1;
 }
 
+/*
+  -------
+  Tabs 
+  -------
+*/
+
+#tabs {
+  position: sticky;
+  bottom: 0;
+  padding: 1rem;
+  background: #FFFFFF90;
+  border-top: 1px solid #00000020;
+  backdrop-filter: blur(1rem);
+  display: flex;
+  gap: 1rem;
+}
+
+#tabs > button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
+#tabs > button:hover {
+  filter: brightness(1.9);
+}
+
+#tabs > button > svg {
+  width: calc(var(--icon) / 2);
+  height: calc(var(--icon) / 2);
+}
+
 @media screen and (min-width: 670px) {
   #search_field {
     max-width: 80%;
