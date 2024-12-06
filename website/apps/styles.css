@@ -209,6 +209,10 @@ button.ghost, .button.ghost {
   background: #00000010;
 }
 
+#tabs > button.active {
+  background: #00000010;
+}
+
 #tabs > button > svg {
   width: calc(var(--icon) / 2);
   height: calc(var(--icon) / 2);
