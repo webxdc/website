@@ -23,6 +23,7 @@ body {
   top: 0;
   background: #FFFFFF90;
   border-bottom: 1px solid #00000020;
+  -webkit-backdrop-filter: blur(1rem);
   backdrop-filter: blur(1rem);
   z-index: 1;
 }
@@ -209,6 +210,7 @@ button.ghost, .button.ghost {
   padding: 1rem;
   background: #FFFFFF90;
   border-top: 1px solid #00000020;
+  -webkit-backdrop-filter: blur(1rem);
   backdrop-filter: blur(1rem);
   display: flex;
   gap: 1rem;
