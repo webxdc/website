@@ -103,7 +103,13 @@ body {
   max-height: 60px;
   line-height: 1.2;
   font-size: 0.9rem;
-  
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#apps .props {
+  width: calc(300px - var(--icon) - var(--padding));
 }
 
 #apps .date {

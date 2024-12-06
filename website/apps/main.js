@@ -32,9 +32,7 @@ const App = ({ app, toggleModal }) => {
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props">
         <div class="title">${app.name}</div>
-        <div class="description">
-          <span class="subtitle">${subtitle}</span>
-        </div>
+        <div class="description">${subtitle}</div>
         <div class="date">Updated ${dayjs(app.date).fromNow()}</div>
       </div>
     </button>
