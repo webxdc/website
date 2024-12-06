@@ -2,6 +2,10 @@ html {
   height: 100%;
 }
 
+.loading {
+  padding-top: 1rem;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -283,6 +287,11 @@ button.ghost, .button.ghost {
 
   .dialog-backdrop {
     background: rgb(255 255 255 / 30%);
+  }
+
+  .search {
+    background: #00000090;
+    border-bottom: 1px solid #00000020;
   }
 
   #tabs {

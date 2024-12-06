@@ -230,7 +230,7 @@ const MainScreen = () => {
   return html`
     <${Search} apps=${apps} setSearchResults=${setSearchResults} filterGroup=${filterGroup} />
     <div id="app_container">
-      ${loading && html`<div>Loading</div>`}
+      ${loading && html`<div class="loading">Loading ...</div>`}
       ${searchResults &&
         searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
     </div>
