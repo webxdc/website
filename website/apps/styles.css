@@ -15,7 +15,6 @@ header > nav {
   max-width: 1300px;
   width: 100%;
   margin: 0 1rem;
-  grid-column: 1/-1;
 }
 
 #apps header {
@@ -35,6 +34,8 @@ header > nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
+  min-height: 100vh;
 }
 
 .app {
@@ -43,6 +44,7 @@ header > nav {
   border: none;
   border-radius: initial;
   border-bottom: 1px solid #00000020;
+  height: fit-content;
 
   background: none;
   color: var(--text);
@@ -195,10 +197,16 @@ button.ghost, .button.ghost {
   flex-direction: column;
   align-items: center;
   font-size: 1rem;
+  transition: all .3s;
 }
 
 #tabs > button:hover {
   filter: brightness(1.9);
+  background: #00000010;
+}
+
+#tabs > button:active {
+  background: #00000010;
 }
 
 #tabs > button > svg {
