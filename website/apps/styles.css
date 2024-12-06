@@ -1,7 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+}
+
+header {
+  width: 100%;
 }
 
 header > nav {
@@ -12,9 +21,12 @@ header > nav {
   --padding: 8px;
   --icon: 64px;
 
-  max-width: 1300px;
   width: 100%;
   margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 #apps header {
@@ -30,12 +42,12 @@ header > nav {
 }
 
 #app_container {
-  max-width: 100vw;
+  max-width: 1300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .app {
@@ -186,6 +198,7 @@ button.ghost, .button.ghost {
   backdrop-filter: blur(1rem);
   display: flex;
   gap: 1rem;
+  width: 100%;
 }
 
 #tabs > button {
