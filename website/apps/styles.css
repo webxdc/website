@@ -26,7 +26,7 @@ header > nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  flex: 1;
 }
 
 #apps header {
@@ -268,7 +268,7 @@ button.ghost, .button.ghost {
 
 @media (prefers-color-scheme: dark) {
   .app {
-    border-color: #00000020;
+    border-color: #FFFFFF20;
   }
 
   .dialog-backdrop {
