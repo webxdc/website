@@ -145,15 +145,15 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
   }, [apps, filterGroup]);
 
   return html`
-    <header>
-      <nav><input
+    <div class="search">
+      <input
         type="search"
         placeholder="Search"
         id="search_field"
         ref=${searchFieldRef}
         oninput=${updateSearch}
-      /></nav>
-    </header>
+      />
+    </div>
   `;
 };
 

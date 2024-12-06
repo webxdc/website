@@ -9,12 +9,21 @@ body {
   height: 100%;
 }
 
-header {
+.search {
   width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  background: #FFFFFF90;
+  border-bottom: 1px solid #00000020;
+  backdrop-filter: blur(1rem);
 }
 
-header > nav {
-  padding: 1rem 1rem 0 1rem;
+.search input {
+  margin: 0;
 }
 
 #apps {
@@ -48,6 +57,7 @@ header > nav {
   justify-content: center;
   align-content: flex-start;
   height: 100%;
+  z-index: -1;
 }
 
 .app {
