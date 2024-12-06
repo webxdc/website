@@ -103,6 +103,7 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
   const fuse = useMemo(() => {
     return new Fuse(apps, {
       includeScore: true,
+      threshold: 0.25,
       // Search in `author` and in `tags` array
       keys: [
         { name: "name", weight: 2 },
