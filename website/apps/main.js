@@ -201,6 +201,7 @@ const MainScreen = () => {
     } else {
       viewModal(false);
       document.title = "webxdc apps";
+      window.location.hash = 'home';
     }
   };
 

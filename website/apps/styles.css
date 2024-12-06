@@ -37,7 +37,7 @@ header > nav {
 
 #search_field {
   border-radius: 50px;
-  min-width: 60%;
+  min-width: 50%;
   max-width: 100%;
 }
 
