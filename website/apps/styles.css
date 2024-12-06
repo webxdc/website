@@ -63,6 +63,7 @@ body {
   justify-content: center;
   align-content: flex-start;
   height: 100%;
+  width: 100%;
 }
 
 .app {
