@@ -178,6 +178,7 @@ button.ghost, .button.ghost {
 [role=dialog] .button-container {
   display: flex;
   gap: var(--padding);
+  width: 100%;
   flex-direction: column;
 }
 
@@ -194,7 +195,6 @@ button.ghost, .button.ghost {
 [role=dialog] .additional-info {
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 /*
