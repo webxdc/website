@@ -24,6 +24,7 @@ body {
   background: #FFFFFF90;
   border-bottom: 1px solid #00000020;
   backdrop-filter: blur(1rem);
+  z-index: 1;
 }
 
 .search input {
@@ -61,7 +62,6 @@ body {
   justify-content: center;
   align-content: flex-start;
   height: 100%;
-  z-index: -1;
 }
 
 .app {
