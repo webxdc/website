@@ -35,7 +35,7 @@ const App = ({ app, toggleModal }) => {
         <div class="description">
           <span class="subtitle">${subtitle}</span>
         </div>
-        <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
+        <div class="date">Updated ${dayjs(app.date).fromNow()}</div>
       </div>
     </button>
   `;
