@@ -98,6 +98,9 @@ body {
 #apps .title {
   font-weight: bold;
   line-height: 1.3;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #apps .description {

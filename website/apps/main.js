@@ -28,7 +28,8 @@ const App = ({ app, toggleModal }) => {
   return html`
     <button
       class="app"
-      onClick=${() => toggleModal(app.app_id)}>
+      onClick=${() => toggleModal(app.app_id)}
+      key=${app.app_id}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props">
         <div class="title">${app.name}</div>
@@ -224,7 +225,7 @@ const MainScreen = () => {
 
   }, [window.location.hash, appIdMap]);
 
-  console.count('render');
+  //console.count('render');
   
   return html`
     <${Search} apps=${apps} setSearchResults=${setSearchResults} filterGroup=${filterGroup} />
