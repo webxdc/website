@@ -133,8 +133,15 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
           .map((app) => ({ item: app }))
           .filter(filterResults)
           .sort(
-            (a, b) =>
-              new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
+            (a, b) => {
+              if (a.item.name < b.item.name) {
+                return -1;
+              }
+              if (a.item.name > b.item.name) {
+                return 1;
+              }
+              return 0;
+            }
           )
       );
     };
