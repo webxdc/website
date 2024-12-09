@@ -25,6 +25,7 @@ more details about the webxdc app by showing a <Dialog>
 */
 const App = ({ app, toggleModal }) => {
   const subtitle = app.description.split('\n').shift();
+
   return html`
     <button
       class="app"
@@ -33,8 +34,8 @@ const App = ({ app, toggleModal }) => {
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props">
         <div class="title">${app.name}</div>
+        <div class="author">${extract_author(app.source_code_url)}</div>
         <div class="description">${subtitle}</div>
-        <div class="date">Updated ${dayjs(app.date).fromNow()}</div>
       </div>
     </button>
   `;
@@ -65,10 +66,10 @@ const Dialog = ({app, modal, toggleModal}) => {
         <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name} app" />
         <div class="metadata">
           <div class="title">${app.name}</div>
+          <div class="author">${extract_author(app.source_code_url)}</div>
           <div class="description">
             <span class="subtitle" id="${app.app_id}_label">${subtitle}</span>
           </div>
-          <div class="date">Last updated ${dayjs(app.date).fromNow()}</div>
         </div>
       </div>
       <div class="description-full" id="${app.app_id}_desc">
@@ -76,7 +77,7 @@ const Dialog = ({app, modal, toggleModal}) => {
       </div>
       <div class="additional-info">
         <div>
-          <b>Updated on: </b>${dayjs(app.date).format("l")} (${app.tag_name})
+          <b>Published: </b>${dayjs(app.date).format("l")} (${app.tag_name})
         </div>
         <div>
           <b>Size: </b>${size}
@@ -273,6 +274,15 @@ const Tabs = ({setFilterGroup, filterGroup}) => {
     </button>
   </div>`;
 }
+
+// Extract the username from GitHub or Codeberg
+const extract_author = (source_code_url) => {
+  const matches = /(github.com|codeberg.org)\/(\w+)/.exec(source_code_url); 
+  if(matches && matches.length === 3) {
+    return matches[2];
+  }
+  return "";
+};
 
 window.onload = async () => {
   render(html`<${MainScreen} />`, document.getElementById('apps'));
