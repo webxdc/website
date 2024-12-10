@@ -134,10 +134,10 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
           .filter(filterResults)
           .sort(
             (a, b) => {
-              if (a.item.name.toLowerCase() < b.item.name.toLowerCase()) {
+              if (a.item.name < b.item.name) {
                 return -1;
               }
-              if (a.item.name.toLowerCase() > b.item.name.toLowerCase()) {
+              if (a.item.name > b.item.name) {
                 return 1;
               }
               return 0;
