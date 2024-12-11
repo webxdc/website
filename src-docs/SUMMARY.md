@@ -12,6 +12,8 @@
       - [selfAddr & selfName](./spec/selfAddr_and_selfName.md)
       - [joinRealtimeChannel](./spec/joinRealtimeChannel.md)
   - [Messenger implementations](./spec/messenger.md)
+  - [CHANGELOG](./spec/CHANGELOG.md)
+
 - [Shared Web Application state](./shared_state/README.md)
   - [Detecting conflicts](./shared_state/conflicts.md)
   - [Theory of Conflict-free Replicated Data Types (CRDTs)](./shared_state/crdts.md)
@@ -23,3 +25,4 @@
   - [Packaging](./faq/packaging.md)
   - [Compatibility](./faq/compat.md)
   - [Storage](./faq/storage.md)
+
