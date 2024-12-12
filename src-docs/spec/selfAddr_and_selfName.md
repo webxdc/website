@@ -20,17 +20,18 @@ A string ("unique ID") identifying the user in the current webxdc application.
 Every user of a webxdc application must get a different `selfAddr`. 
 The `selfAddr` must be the same if the webxdc is started again later for the same user,
 on the same or on a different device. 
-The same user opening a different webxdc application, however, MUST have a different `selfAddr`.
+The same user opening a different webxdc application, however, 
+SHOULD have a different `selfAddr` to avoid linkability between apps: 
+even if a web app manipulates users to share `selfAddr` values via copy+paste 
+to another web app, addresses between the two web apps should not be linkable. 
 
 Note that `selfAddr` 
 
 - has no meaning outside the webxdc application,
 
-- should not be shown in the user interface of the webxdc application,
+- should not be shown in the user interface of the webxdc application
+  (use `selfName` instead). 
 
-- is not linkable to addresses in other webxdc apps:
-  even if a web app manipulates users to share addresses via copy+paste with another web app,
-  addresses between the two web apps can not be correlated.
 
 
 ## Example using selfAddr and selfName
