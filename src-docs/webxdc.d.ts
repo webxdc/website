@@ -89,9 +89,8 @@ interface Webxdc<T> {
   /**
    * Webxdc are usually shared in a chat and run independently on each peer. To get a shared status, the peers use sendUpdate() to send updates to each other.
    * @param update status update to send
-   * @param description short, human-readable description what this update is about. this is shown eg. as a fallback text in an email program.
    */
-  sendUpdate(update: SendingStatusUpdate<T>, description: string): void;
+  sendUpdate(update: SendingStatusUpdate<T>): void;
   /**
    * Send a message with file, text or both to a chat.
    * Asks user to what Chat to send the message to.
