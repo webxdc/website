@@ -33,9 +33,9 @@ const App = ({ app, toggleModal }) => {
       key=${app.app_id}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props">
-        <div class="title">${app.name}</div>
-        <div class="description">${subtitle}</div>
-        <div class="author">${extract_author(app.source_code_url)}</div>
+        <div class="title ellipse">${app.name}</div>
+        <div class="description ellipse">${subtitle}</div>
+        <div class="author ellipse">${extract_author(app.source_code_url)}</div>
       </div>
     </button>
   `;
@@ -65,7 +65,7 @@ const Dialog = ({app, modal, toggleModal}) => {
       <div class="app-container">
         <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name} app" />
         <div class="metadata">
-          <div class="title">${app.name}</div>
+          <div class="title ellipse">${app.name}</div>
           <div class="description">
             <span class="subtitle" id="${app.app_id}_label">${subtitle}</span>
           </div>
@@ -82,7 +82,7 @@ const Dialog = ({app, modal, toggleModal}) => {
         <div>
           <b>Size: </b>${size}
         </div>
-        <div>
+        <div class="ellipse">
           <b>Source: </b><a href=${app.source_code_url} target="_blank">${app.source_code_url}</a>
         </div>
       </div>
