@@ -143,6 +143,8 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
   useEffect(() => {
     // do the initial update or when applist changes
     updateSearch();
+    // If the category filter changes, we scroll to the top
+    window.scrollTo(0,0);
   }, [apps, filterGroup]);
 
   return html`
