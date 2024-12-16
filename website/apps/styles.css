@@ -113,7 +113,7 @@ body {
 }
 
 #apps .props {
-  width: calc(300px - var(--icon) - var(--padding));
+  width: 100%;
 }
 
 #apps .author {

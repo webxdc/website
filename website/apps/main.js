@@ -32,7 +32,7 @@ const App = ({ app, toggleModal }) => {
       onClick=${() => toggleModal(app.app_id)}
       key=${app.app_id}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
-      <div class="props">
+      <div class="props ellipse">
         <div class="title ellipse">${app.name}</div>
         <div class="description ellipse">${subtitle}</div>
         <div class="author ellipse">${extract_author(app.source_code_url)}</div>
