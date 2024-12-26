@@ -29,6 +29,21 @@ Send an update to all peers.
 - `descr`: short, human-readable description what this update is about.
   this is shown e.g. as a fallback text in an e-mail program.
 
+Example:
+
+```js
+window.webxdc.sendUpdate(
+  { payload: "Hello from Alice" },
+  "A 'hello' message"
+);
+
+// Peers can receive messages as such:
+window.webxdc.setUpdateListener((update) => {
+  console.log(update.payload);
+});
+// 'Hello from Alice' is printed in the console
+```
+
 All peers, including the sending one,
 will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
 

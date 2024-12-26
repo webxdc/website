@@ -29,6 +29,40 @@ Each `update` which is passed to the callback comes with the following propertie
 
 - `update.summary`: optional, short text, shown beside icon (see [`sendUpdate()`])
 
+Example:
+
+```js
+let myDocumentState = "";
+const initialPendingUpdatesHandledPromise = window.webxdc.setUpdateListener(
+  (update) => {
+    // Remember that the listener is invoked for
+    // your own `window.webxdc.sendUpdate()` calls as well!
+
+    // Dummy document update logic.
+    // Yours might be more complex,
+    // such as applying a chess move to the board.
+    myDocumentState = myDocumentUpdate;
+
+    const areAllUpdatesProcessed = update.serial === update.max_serial;
+    if (areAllUpdatesProcessed) {
+      renderDocument();
+    }
+  }
+);
+
+initialPendingUpdatesHandledPromise.then(() => {
+  renderDocument();
+});
+
+// Let's only call this when there are no pending updates.
+function renderDocument() {
+  document.body.innerText = myDocumentState;
+}
+
+// Peers can send  messages like this
+window.webxdc.sendUpdate({ payload: "Knight d3" }, "Bob made a move!");
+```
+
 Calling `setUpdateListener()` multiple times is undefined behavior: in current implementations only the last invocation works.
 
 [`sendUpdate()`]: ./sendUpdate.html
