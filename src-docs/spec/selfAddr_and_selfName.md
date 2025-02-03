@@ -53,7 +53,7 @@ setUpdateListener((update) => {
 // start some user interface which calls the following function for
 // message sending
 
-sendMessage(text) => {
+function sendMessage(text) {
     let payload = {
         senderAddr: webxdc.selfAddr,
         senderName: webxdc.selfName,
