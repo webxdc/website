@@ -47,7 +47,7 @@ window.webxdc.setUpdateListener((update) => {
     const prompt = `${update.payload.senderName} (${update.payload.senderAddr}):`;
     users.add(update.payload.senderAddr);
     console.log(`${prompt} ${update.message}`);
-})
+});
 
 // start some user interface which calls the following function for
 // message sending
@@ -68,7 +68,7 @@ function sendMessage(text) {
     window.webxdc.sendUpdate({
         payload: payload,
         notify: notify
-    })
+    });
 })
 ```
 
