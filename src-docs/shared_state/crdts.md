@@ -86,7 +86,7 @@ then it might be worthwhile to design a specialized CRDT to solve it,
 and it may be reassuring to know that
 these data structures do not always require much complexity.
 
-In practice the order of applications will matter,
+In practice the order of operations will matter,
 especially when dealing with data structures like lists or arrays.
 If two concurrent operations append items to the end of a list
 then it's reasonable to insert them in an arbitrary sequence.
