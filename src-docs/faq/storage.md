@@ -33,14 +33,36 @@ no feedback on delivery status.
 There is only a "best effort" approach. 
 Messengers will typically queue messages and attempt delivery repeatedly. 
 
-If you want guarantees for peers receiving updates,
-you need to implement your own reliability protocol in your app. 
-Common techniques include assigning sequence numbers or linked IDs to all updates you send,
-and implementing a way for receivers to request re-sending if updates are missing. 
+Applications should assume that updates
+may be reordered and some updates may be lost.
 
+For small documents, like a shopping list,
+it is appropriate to send the whole
+document state as an update each time
+and merge incoming documents on reception.
+This way changes can only be lost
+if original sender fails to deliver
+update to anyone else in the chat
+and stops using the app.
+
+For documents consisting of independent parts,
+like spreadsheet consisting of cells,
+similar approach can be applied
+independently to each part.
+
+For some applications
+like games updating the scoreboard
+it is fine to send new high scores
+as individual update,
+because if some update is lost
+it is not critical.
+
+If you have complex documents and have
+to optimize for the size of updates
+by encoding the difference between the document states,
+you have to implement a synchronization protocol yourself.
 As with all "network synchronization" topics there are some theoretical limits. 
 In particular it is useful to study and think about 
 the [Two-Generals problem](https://en.wikipedia.org/wiki/Two_Generals'_Problem) 
 and learn about existing "reliability layer" protocols 
-before attempting to implement one yourself. 
- 
+before attempting to implement one yourself.
