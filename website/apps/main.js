@@ -18,13 +18,15 @@ dayjs.extend(dayjs_plugin_localizedFormat);
 
 // without a trailing slash
 const xdcget_export = "https://apps.testrun.org";
+const pinSvg = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>`;
 
 /*
 Each <App> is implemented as a button that, when clicked, would show
 more details about the webxdc app by showing a <Dialog> 
 */
-const App = ({ app, toggleModal }) => {
+const App = ({ app, toggleModal, pinnedApps }) => {
   const subtitle = app.description.split('\n').shift();
+  const pinned = pinnedApps.includes(app.app_id);
 
   return html`
     <button
@@ -33,7 +35,10 @@ const App = ({ app, toggleModal }) => {
       key=${app.app_id}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props ellipse">
-        <div class="title ellipse">${app.name}</div>
+        <div class="title">
+          <span class="ellipse">${app.name}</span>
+          ${pinned && html`<span>${pinSvg}</span>`}
+        </div>
         <div class="description ellipse">${subtitle}</div>
         <div class="author ellipse">${extract_author(app.source_code_url)}</div>
       </div>
@@ -45,8 +50,19 @@ const App = ({ app, toggleModal }) => {
 <Dialog> creates an overlay that shows the metadata of an app and a button of
 downloading the actual webxdc file from the server.
 */
-const Dialog = ({app, modal, toggleModal}) => {
+const Dialog = ({app, modal, toggleModal, pinnedApps, updateList}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
+  const pinned = pinnedApps.includes(app.app_id);
+
+  const pinOrUnpin = () => {
+    if (pinned) {
+      pinnedApps.splice(pinnedApps.indexOf(app.app_id), 1);
+    } else {
+      pinnedApps.push(app.app_id);
+    }
+    localStorage.setItem("pinned", JSON.stringify(pinnedApps));
+    updateList();
+  }
 
   // Change the title when a dialog is open
   if(modal === app.app_id) {
@@ -91,6 +107,7 @@ const Dialog = ({app, modal, toggleModal}) => {
           Download
         </a>
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
+        <button class="ghost" onClick=${() => pinOrUnpin()}>${pinned ? "Unpin" : "Pin"}</button>
       </div>
     </div>
   `;
@@ -99,7 +116,7 @@ const Dialog = ({app, modal, toggleModal}) => {
 /*
 <Search> deals with searching and filtering webxdc apps
 */
-const Search = ({apps, setSearchResults, filterGroup}) => {
+const Search = ({apps, setSearchResults, filterGroup, pinnedApps}) => {
   const fuse = useMemo(() => {
     return new Fuse(apps, {
       includeScore: true,
@@ -115,7 +132,8 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
   const filterResults = (result) => {
     return filterGroup === "home" ? true : result.item.category === filterGroup;
   } 
-  
+
+  const isPinned = (id) => pinnedApps.includes(id);
   const searchFieldRef = useRef(null);
   const updateSearch = useMemo(() => {
     return () => {
@@ -135,6 +153,10 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
           .sort(
             (a, b) =>
               new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
+          )
+          .sort(
+            (a, b) =>
+              Number(isPinned(b.item.app_id)) - Number(isPinned(a.item.app_id))
           )
       );
     };
@@ -174,6 +196,8 @@ const MainScreen = () => {
   const [searchResults, setSearchResults] = useState();
   const [filterGroup, setFilterGroup] = useState("home");
 
+  const updateList = () => setApps([...apps]);
+  const pinnedApps = JSON.parse(localStorage.getItem("pinned") || "[]");
   // Fetch the data that contains all of the apps we have available
   // in the xstore.
   useEffect(() => {
@@ -231,16 +255,16 @@ const MainScreen = () => {
   //console.count('render');
   
   return html`
-    <${Search} apps=${apps} setSearchResults=${setSearchResults} filterGroup=${filterGroup} />
+    <${Search} apps=${apps} pinnedApps=${pinnedApps} setSearchResults=${setSearchResults} filterGroup=${filterGroup} />
     <div id="app_container">
       ${loading && html`<div class="loading">Loading ...</div>`}
       ${searchResults &&
-        searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
+        searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} pinnedApps=${pinnedApps} />`)}
     </div>
     <div id="dialog_layer" class="dialogs">
       <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}">
         ${searchResults && 
-          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} />`)}
+          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} pinnedApps=${pinnedApps} updateList=${updateList} />`)}
       </div>
     </div>
     <div id="footer">

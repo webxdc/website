@@ -104,6 +104,13 @@ body {
 #apps .title {
   font-weight: bold;
   line-height: 1.3;
+  display: flex;
+  justify-content: space-between;
+}
+
+#apps .title svg {
+  height: 1em;
+  vertical-align: middle;
 }
 
 #apps .description {
