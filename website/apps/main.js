@@ -150,14 +150,15 @@ const Search = ({apps, setSearchResults, filterGroup, pinnedApps}) => {
         apps
           .map((app) => ({ item: app }))
           .filter(filterResults)
-          .sort(
-            (a, b) =>
-              new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
-          )
-          .sort(
-            (a, b) =>
-              Number(isPinned(b.item.app_id)) - Number(isPinned(a.item.app_id))
-          )
+          .sort((a, b) => {
+            if (isPinned(a.item.app_id) === isPinned(b.item.app_id)) {
+              return (
+                new Date(b.item.date).getTime() -
+                new Date(a.item.date).getTime()
+              );
+            }
+            return isPinned(a.item.app_id) ? -1 : 1;
+          })
       );
     };
   }, [fuse, apps, filterGroup]);
