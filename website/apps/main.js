@@ -18,6 +18,7 @@ dayjs.extend(dayjs_plugin_localizedFormat);
 
 // without a trailing slash
 const xdcget_export = "https://apps.testrun.org";
+const tryItBaseUrl = "https://webxdc-try-it.xyz";
 
 /*
 Each <App> is implemented as a button that, when clicked, would show
@@ -67,6 +68,19 @@ const Dialog = ({app, modal, toggleModal}) => {
     size = `${(app.size/1000000).toLocaleString(undefined, {maximumFractionDigits: 1})} mb`;
   }
 
+  let tryItUrl = new URL(tryItBaseUrl);
+  tryItUrl.hostname =
+    "webapp-" +
+    app.app_id +
+    "-" +
+    app.tag_name.replaceAll(".", "-") +
+    "." +
+    tryItUrl.hostname;
+  const params = new URLSearchParams({
+    url: xdcget_export + "/" + app.cache_relname,
+  });
+  tryItUrl.hash = params.toString();
+
   return html`
     <dialog ref=${ref} id=${app.app_id} onClose=${() => toggleModal(false)} closedby="any" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc">
       <div class="app-container">
@@ -97,6 +111,7 @@ const Dialog = ({app, modal, toggleModal}) => {
         <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
           Add to Chat
         </a>
+        <a class="button" target="_blank" href="${tryItUrl.toString()}">Try it</a>
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
       </div>
     </dialog>
