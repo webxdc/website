@@ -1,7 +1,6 @@
 [book]
 authors = ["DeltaChat Contributors"]
 language = "en"
-multilingual = false
 src = "./"
 title = "Webxdc"
 
