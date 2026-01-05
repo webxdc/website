@@ -97,7 +97,8 @@ const Dialog = ({app, modal, toggleModal}) => {
         <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
           Add to Chat
         </a>
-        <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
+        <!-- A "Close" button could be here, but there is lots of ways
+        to dismiss the dialog anyway. -->
       </div>
     </dialog>
   `;
