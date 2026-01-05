@@ -47,11 +47,19 @@ downloading the actual webxdc file from the server.
 */
 const Dialog = ({app, modal, toggleModal}) => {
   const [subtitle, description] = [app.description.split('\n').shift(), app.description.split('\n').slice(1).join(' ')];
+  const ref = /** @type {import("react").RefObject<HTMLDialogElement>} */(useRef())
 
-  // Change the title when a dialog is open
-  if(modal === app.app_id) {
-    document.title = `webxdc apps: ${app.name}`;
-  }
+  useEffect(() => {
+    // Only show the modal that matches the app ID that was clicked.
+    if(modal === app.app_id) {
+      ref.current.showModal();
+      // Change the title when a dialog is open
+      document.title = `webxdc apps: ${app.name}`;
+      return () => {
+        ref.current.close();
+      }
+    }
+  }, [modal, app.app_id])
 
   // Display the size of the webxdc apps in a more human readable format
   let size = `${(app.size/1000).toLocaleString(undefined, {maximumFractionDigits: 1})} kb`;
@@ -60,8 +68,7 @@ const Dialog = ({app, modal, toggleModal}) => {
   }
 
   return html`
-    <!-- Only show the modal that matches the app ID that was clicked -->
-    <div id=${app.app_id} role="dialog" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc" aria-modal="true" class="${modal === app.app_id ? 'active' : 'hidden'}">
+    <dialog ref=${ref} id=${app.app_id} onClose=${() => toggleModal(false)} aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc">
       <div class="app-container">
         <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name} app" />
         <div class="metadata">
@@ -92,7 +99,7 @@ const Dialog = ({app, modal, toggleModal}) => {
         </a>
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
       </div>
-    </div>
+    </dialog>
   `;
 }
 
@@ -237,11 +244,9 @@ const MainScreen = () => {
       ${searchResults &&
         searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
     </div>
-    <div id="dialog_layer" class="dialogs">
-      <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}">
-        ${searchResults && 
-          searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} />`)}
-      </div>
+    <div>
+      ${searchResults && 
+        searchResults.map((result) => html`<${Dialog} app=${result.item} modal=${modal} toggleModal=${toggleModal} />`)}
     </div>
     <div id="footer">
       <a href="https://support.delta.chat/c/webxdc/20">support forum</a>
