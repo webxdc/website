@@ -151,51 +151,41 @@ button.ghost, .button.ghost {
   -------
 */
 
-.dialog-backdrop {
-  background: rgb(0 0 0 / 30%);
-  display: none;
-  position: fixed;
-  overflow-y: auto;
-  inset: 0;
-  z-index: 1;
-}
-
-.dialog-backdrop.active {
-  display: block;
-}
-
-[role=dialog] {
+dialog {
   font-size: 1rem;
-  display: none;
+  color: var(--text);
   padding: 2rem;
   background: var(--bg);
   min-height: 100vh;
+  margin: 0;
+  width: 100%;
+  border: none;
   gap: 1rem;
 }
 
-[role=dialog] .app-container {
+dialog .app-container {
   display: flex;
   gap: var(--padding);
 }
 
-[role=dialog] .button-container {
+dialog .button-container {
   display: flex;
   gap: var(--padding);
   width: 100%;
   flex-direction: column;
 }
 
-[role=dialog].active {
+dialog[open] {
   display: flex;
   flex-direction: column;
 }
 
-[role=dialog] .metadata {
+dialog .metadata {
   display: flex;
   flex-direction: column;
 }
 
-[role=dialog] .additional-info {
+dialog .additional-info {
   display: flex;
   flex-direction: column;
 }
@@ -260,12 +250,9 @@ button.ghost, .button.ghost {
     margin: .5rem;
   }
 
-  [role=dialog] {
-    display: none;
-    position: absolute;
-    top: 2rem;
-    left: 50vw;
-    transform: translateX( -50% );
+  dialog {
+    margin: auto;
+    margin-top: 2rem;
     min-width: calc(640px - (15px * 2));
     max-width: calc(640px - (15px * 2));
     min-height: auto;
@@ -273,7 +260,7 @@ button.ghost, .button.ghost {
     border-radius: var(--padding);
   }
 
-  [role=dialog] .button-container {
+  dialog .button-container {
     display: flex;
     gap: var(--padding);
     width: fit-content;
@@ -284,10 +271,6 @@ button.ghost, .button.ghost {
 @media (prefers-color-scheme: dark) {
   .app {
     border-color: #FFFFFF20;
-  }
-
-  .dialog-backdrop {
-    background: rgb(255 255 255 / 30%);
   }
 
   .search {
