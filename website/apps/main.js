@@ -68,7 +68,7 @@ const Dialog = ({app, modal, toggleModal}) => {
   }
 
   return html`
-    <dialog ref=${ref} id=${app.app_id} onClose=${() => toggleModal(false)} aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc">
+    <dialog ref=${ref} id=${app.app_id} onClose=${() => toggleModal(false)} closedby="any" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc">
       <div class="app-container">
         <img src="${xdcget_export + "/" + app.icon_relname}" loading="lazy" alt="Icon of ${app.name} app" />
         <div class="metadata">
