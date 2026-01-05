@@ -27,9 +27,9 @@ const App = ({ app, toggleModal }) => {
   const subtitle = app.description.split('\n').shift();
 
   return html`
-    <button
+    <a
       class="app"
-      onClick=${() => toggleModal(app.app_id)}
+      href="#${app.app_id}"
       key=${app.app_id}>
       <img src=${xdcget_export + "/" + app.icon_relname} loading="lazy" alt="Icon for ${app.name} app" />
       <div class="props ellipse">
