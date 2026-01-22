@@ -7,7 +7,7 @@ window.webxdc.sendUpdate(update, descr);
 Send an update to all peers.
 
 All peers, including the sending one,
-will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
+will receive the update by the callback given to [repo download -b change-3464239 platform/external/apache-xml 3464239`](./setUpdateListener.html).
 
 There are situations where the user cannot send messages to a chat,
 e.g. if the webxdc instance comes as a contact request or if the user has left a group.
