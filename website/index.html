@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mini apps - shared in a chat</title>
+    <title>Webxdc: secure mini apps shared in a chat</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="description" content="Privacy-preserving mini apps shared in a chat - built with webxdc." />
-    <meta name="keywords" content="mini apps webxdc html5 javascript email messenger delta chat" />
+    <meta name="description" content="Webxdc mini apps run securely inside your chats: games, polls, collaboration tools and more. No internet access, no tracking, no accounts needed." />
+    <meta name="keywords" content="mini apps webxdc html5 javascript email messenger delta chat cheogram privacy security" />
 
-    <meta property="og:title" content="mini apps - shared in a chat">
-    <meta property="og:description" content="no logins, no coins,  no platforms 🎉">
+    <meta property="og:title" content="Webxdc: mini apps shared in a chat">
+    <meta property="og:description" content="Secure mini apps for your chats. No internet access, no tracking, no servers.">
     <meta property="og:image" content="https://webxdc.org/assets/icon.png">
     <meta property="og:url" content="https://webxdc.org">
     <meta name="twitter:card" content="summary">
@@ -21,22 +21,21 @@
 </head>
 <body>
 <main style="padding-bottom: 2em;">
+
+    <!-- hero: end-user focused -->
     <section class="box box-topmost hero is-dark">
         <div class="columns has-text-centered-mobile is-vcentered is-gapless">
             <div class="column">
                 <h1 class="title">
                     <img style="width: 3.4em;" alt="Webxdc Logo" src="assets/icon.png"><br>
-                    mini apps
+                    Webxdc: secure mini apps
                 </h1>
                 <h3 class="subtitle">
-                    shared in a chat
+                    Play games, run polls, collaborate, right inside your messenger.
+                    Built on the open and secure <strong>webxdc</strong> container format.
                 </h3>
-                <p>
-                    no&nbsp;logins, no&nbsp;coins, no&nbsp;platforms&nbsp;🎉
-                </p>
                 <br/>
                 <br/>
-
             </div>
             <div class="column has-text-centered">
                 <div class="smartphone">
@@ -45,33 +44,144 @@
                         <img class="content" aria-hidden="true" src="assets/screenshots/tower-builder.png">
                     </video>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <div class="box-buttons columns is-mobile">
+    <!-- what are mini apps -->
+    <section class="info-section">
+        <h2 class="info-heading">What are mini apps?</h2>
+        <p>
+            Mini apps are interactive attachments like polls, games, editors or checklists,
+            shared in a chat like a photo. No install needed, everyone can use them right away.
+            They use the webxdc container format, which ensures apps
+            have no internet access and can never leak data.
+        </p>
+    </section>
 
-        <section class="box column hero is-warning has-text-centered">
-            <h2 class="title">
-                <a href="https://webxdc.org/docs">develop own app</a>
-            </h2>
-        </section>
+    <!-- how it works -->
+    <section class="info-section">
+        <h2 class="info-heading">How it works</h2>
+        <div class="columns is-multiline is-centered has-text-centered steps-row">
+            <div class="column is-one-third-desktop">
+                <p class="step-number">1</p>
+                <p><strong>Someone shares a mini app</strong><br/>A small <code>.xdc</code> file is sent into a chat, like sharing an image or document.</p>
+            </div>
+            <div class="column is-one-third-desktop">
+                <p class="step-number">2</p>
+                <p><strong>Tap "Start"</strong><br/>The app opens safely inside your messenger. It has no internet access, so your data stays private.</p>
+            </div>
+            <div class="column is-one-third-desktop">
+                <p class="step-number">3</p>
+                <p><strong>Use it together</strong><br/>Everyone in the chat sees the same app. Play, vote, edit, all in real time.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="box column hero is-success has-text-centered">
-            <h2 class="title" >
-                <a href="https://webxdc.org/apps">try out mini apps</a>
-            </h2>
-        </section>
+    <!-- app examples -->
+    <section class="info-section">
+        <h2 class="info-heading">Apps you can try today</h2>
+        <div class="columns is-multiline is-centered has-text-centered">
+            <div class="column is-one-quarter-desktop is-half-tablet app-card">
+                <img class="app-thumb" src="assets/screenshots/poll.png" alt="Poll app">
+                <p><strong>Poll</strong></p>
+            </div>
+            <div class="column is-one-quarter-desktop is-half-tablet app-card">
+                <img class="app-thumb" src="assets/screenshots/checklist.png" alt="Checklist app">
+                <p><strong>Checklist</strong></p>
+            </div>
+            <div class="column is-one-quarter-desktop is-half-tablet app-card">
+                <img class="app-thumb" src="assets/screenshots/chess.png" alt="Chess app">
+                <p><strong>Chess</strong></p>
+            </div>
+            <div class="column is-one-quarter-desktop is-half-tablet app-card">
+                <img class="app-thumb" src="assets/screenshots/editor.png" alt="Editor app">
+                <p><strong>Editor</strong></p>
+            </div>
+        </div>
+        <p class="has-text-centered" style="margin-top: 1em;">
+            <a class="button is-success is-medium" href="https://webxdc.org/apps">Explore apps</a>
+        </p>
+    </section>
 
-    </div>
+    <!-- why use webxdc for mini apps -->
+    <section class="info-section">
+        <h2 class="info-heading">Total privacy and freedom from platforms and app stores</h2>
 
+        <p>
+            Telegram, WhatsApp or WeChat offer mini apps too,
+            but they require cloud servers, platform accounts, and give companies access to your data.
+        </p>
+        <div class="columns is-multiline">
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>🔒 Secure and private by design</strong>
+                    <p>Webxdc apps have no internet access at all. They are sandboxed and isolated, so they can never track you or leak data to third parties.</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>📡 Offline first</strong>
+                    <p>Webxdc apps work without an internet connection and all data is end to end encrypted. Perfect for travel, poor connectivity, or keeping things truly private.</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>🌐 No platform lock in</strong>
+                    <p>Webxdc is an open container format. The same app runs on <a href="https://delta.chat">Delta Chat</a>, <a href="https://cheogram.com">Cheogram</a>, and any future supporting messenger.</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>💜 No servers needed</strong>
+                    <p>No accounts, no logins, no DNS, no cloud. Webxdc apps are shared peer to peer through your existing encrypted chat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- get started with a messenger -->
+    <section class="info-section">
+        <h2 class="info-heading">Get a messenger that supports mini apps</h2>
+        <p>
+            To use webxdc mini apps, you need a messenger that supports them.
+            Currently, these messengers let you share and run mini apps in any chat:
+        </p>
+        <div class="columns is-centered has-text-centered" style="margin-top: 1.5em;">
+            <div class="column is-narrow">
+                <a class="button is-link is-medium" href="https://delta.chat">Delta Chat</a>
+                <p class="is-size-7" style="margin-top: .5em;">decentralized cross-platform messenger</p>
+            </div>
+            <div class="column is-narrow">
+                <a class="button is-link is-medium" href="https://cheogram.com">Cheogram</a>
+                <p class="is-size-7" style="margin-top: .5em;">XMPP based Android messenger</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- for developers (secondary) -->
+    <section class="info-section dev-section">
+        <h2 class="info-heading">Build your own mini app</h2>
+        <p>
+            Webxdc apps are just HTML5, CSS and JavaScript zipped into a <code>.xdc</code> file.
+            No frameworks required, no servers to deploy, no app store reviews.
+            If you can build a web page, you can build a mini app.
+        </p>
+        <p style="margin-top: 1em;">
+            The <a href="https://webxdc.org/docs">webxdc documentation</a> covers everything you need:
+            the file format, the JavaScript API for sharing state between users,
+            and tools for testing your app without a messenger.
+        </p>
+        <p class="has-text-centered" style="margin-top: 1.5em;">
+            <a class="button is-warning is-medium" href="https://webxdc.org/docs">Developer docs</a>
+        </p>
+    </section>
 
 </main>
 <footer class="page-footer">
-    <a href="https://delta.chat/en/imprint">imprint</a>
+    <a href="https://delta.chat/en/imprint">Imprint</a>
     |
-    <a href="https://delta.chat/en/gdpr-website">privacy policy</a>
+    <a href="https://delta.chat/en/gdpr-website">Privacy Policy</a>
 </footer>
 </body>
 </html>

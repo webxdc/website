@@ -1,8 +1,6 @@
 
 html {
     font-size: 1.2em;
-    /* For style. See https://github.com/webxdc/website/pull/7. */
-    text-transform: lowercase;
 }
 
 a {
@@ -47,6 +45,53 @@ a {
     .box-buttons .column:last-child {
         margin-right: 0;
     }
+}
+
+.info-section {
+    max-width: 1024px;
+    margin: 2em auto;
+    padding: 0 1.5em;
+}
+
+.info-heading {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .75em;
+}
+
+.info-section p {
+    margin-bottom: .5em;
+    line-height: 1.6;
+}
+
+.steps-row .step-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #00d1b2;
+    margin-bottom: .25em;
+}
+
+.app-card {
+    padding: 1em;
+}
+
+.app-thumb {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    margin-bottom: .5em;
+}
+
+.advantage-item {
+    padding: .75em 0;
+}
+
+.dev-section {
+    border-top: 1px solid #ddd;
+    padding-top: 2em;
+    margin-top: 2.5em;
 }
 
 .footnotes, .page-footer {
