@@ -1,6 +1,8 @@
 
 ## Webxdc Container File Format
 
+The webxdc container file format defines how mini apps are packaged for distribution:
+
 - a Webxdc app is a **ZIP-file** with the extension `.xdc`
 
 - the ZIP-file MUST use the default compression methods as of RFC 1950,

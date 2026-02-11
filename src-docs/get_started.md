@@ -1,11 +1,13 @@
 # Getting Started 
 
-Webxdc brings web apps to messenger chats,
-in a simple file format containing HTML5, CSS, JavaScript and other asset files. 
+Webxdc brings mini apps to messenger chats.
+Users share and run mini apps, while developers create them using the webxdc format and API.
+
+Mini apps are packaged in a simple file format containing HTML5, CSS, JavaScript and other asset files. 
 All authentication, identity management, social discovery and message transport 
 is outsourced to the host messenger which runs a webxdc app container file
 and relays application update messages between app users,
-letting each app inherit offline-first and end-to-end encryption 
+letting each mini app inherit offline-first and end-to-end encryption 
 capabilities implemented by the hosting messenger. 
 
 <video controls style="width:560px; max-width: 100%;"><source src="https://webxdc.org/assets/just-web-apps.mp4" type="video/mp4"><a href="https://www.youtube.com/watch?v=I1K4pBvb2pI">watch "just web apps" on youtube</a></video>
@@ -14,9 +16,9 @@ capabilities implemented by the hosting messenger.
 
 The e-mail based [Delta Chat](https://delta.chat) 
 and the XMPP-based [Cheogram](https://cheogram.com) messengers 
-support [webxdc apps](https://webxdc.org/apps), which run on both messengers without any change. 
+support mini apps built with the [webxdc format](https://webxdc.org/apps), which run on both messengers without any change. 
 
-The following `index.html` shows a complete webxdc app, with an input field shown on all peers. Data submitted from the input is delivered to all members of the chat.
+The following `index.html` shows a complete mini app using the webxdc API, with an input field shown on all peers. Data submitted from the input is delivered to all members of the chat.
 
 ```html
 <!DOCTYPE html>
@@ -50,33 +52,33 @@ To package the app as a `.xdc` file, zip the directory containing `index.html` a
 (cd PATH_TO_DIR && zip -9 --recurse-paths - *) > myapp.xdc
 ```
 
-Now it's possible to share the `myapp.xdc` file in any chat: recipients can hit "Start" to begin using the app to enter text in this input field and send updates to each other. 
+Now it's possible to share the `myapp.xdc` file in any chat: recipients can hit "Start" to begin using the mini app to enter text in this input field and send updates to each other. 
 
 To simulate multiple chat participants in the browser, try [Hello](https://github.com/webxdc/hello) as a minimal example; it includes everything needed to run the app and requires no build systems.
 
 The [webxdc-dev simulation tool](https://github.com/webxdc/webxdc-dev) is the recommended 
-tool for developing webxdc apps as it allows multi-user simulation, 
+tool for developing mini apps as it allows multi-user simulation, 
 and allows observing network messages between app instances. 
-However, no messenger is required to develop a webxdc app with the `webxdc-dev` tool. 
+However, no messenger is required to develop a mini app with the `webxdc-dev` tool. 
 
 ## More examples 
 
 [webxdc on Codeberg](https://codeberg.org/webxdc) and [webxdc on GitHub](https://github.com/webxdc) 
-contain curated webxdc app examples. 
+contain curated mini app examples. 
 
-The [webxdc store](https://webxdc.org/apps) contains working webxdc apps that you can use today. 
+The [webxdc store](https://webxdc.org/apps) contains working mini apps that you can use today. 
 Each app comes with a "source code" link so that you can learn and fork as you wish. 
 You can [submit your own available FOSS app](https://codeberg.org/webxdc/xdcget/src/branch/main/SUBMIT.md) for inclusion into the curated store. 
 
-## Useful background for developing webxdc apps 
+## Useful background for developing mini apps 
 
-Webxdc app development and deployment is fundamentally easier than 
+Mini app development and deployment is fundamentally easier than 
 developing for and maintaining an application-specific always-online HTTP server. 
 But there are undeniably complications in arranging consistent web app state 
 across user's devices, a typical issue for any Peer-to-Peer (P2P) networking system. 
 Even if you don't study the topic in depth, reading [Shared web application state](./shared_state/)
 introduces you to the terminology and some necessary considerations,
-with a particular eye on webxdc and providing practical guidance. 
+with a particular eye on the webxdc format and providing practical guidance. 
 
 
 ## Participating in developments 

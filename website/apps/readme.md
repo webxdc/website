@@ -1,6 +1,6 @@
-## webxdc xstore simple webinterface
+## mini apps store - simple web interface
 
-Search webxdc store and download apps from a simple website.
+Search the mini apps store and download apps from a simple website.
 
 ## setup
 You need to serve the export/output directory of [xdcget](https://codeberg.org/webxdc/xdcget) somewhere and point the `xdcget_export` constant in main.js to the location you hosted it at.

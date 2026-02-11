@@ -1,12 +1,15 @@
 # Webxdc Specification
 
-The webxdc specification covers three areas: 
+The webxdc specification defines how mini apps are packaged, delivered, and run.
+Mini apps are what users interact with, while webxdc is the technical format and API that enables them.
 
-- [`.xdc` container file format](format.md) describes zip-file format
-  with manifest and icon files. 
+The specification covers three areas: 
 
-- [Javascript API](api.md) specifies a minimal stable API that all webxdc
-  apps can use. 
+- [`.xdc` container file format](format.md) describes the zip-file format
+  with manifest and icon files for packaging mini apps. 
 
-- [Messenger implementation](messenger.md) specifies how messenger 
-  run webxdc apps in isolated web views. 
+- [Javascript API](api.md) specifies a minimal stable API that all mini apps
+  can use. 
+
+- [Messenger implementation](messenger.md) specifies how messengers 
+  run mini apps in isolated web views. 

@@ -21,13 +21,13 @@ as an alternative to browser-native debugging tools.
     </script>
     ```
 
-When your webxdc app is started, 
+When your mini app is started, 
 a floating button will appear in a corner. 
 Tap it to see the developer tools.
 
 ## Debugging Inside Delta Chat
 
-### Debug a webxdc app in Android via Chrome DevTools
+### Debug a mini app in Android via Chrome DevTools
 
 1. enable webView debugging in Delta Chat settings 
    `Settings` > `Advanced` > `Developer Mode`: 
@@ -43,7 +43,7 @@ Tap it to see the developer tools.
 
 1. open chromium (or google chrome) and go to `chrome://inspect/#devices`
 
-1. start your webxdc that you want to debug
+1. start your mini app that you want to debug
 
 1. click on `inspect`:
 
@@ -68,9 +68,9 @@ First enable the devTools for webxdc in the Settings:
 
   `Settings` > `Advanced` > Experimental Features > `Enable Webxdc Devtools`
 
-> Note that you need to close and open any active webxdcs again for changes to take effect
+> Note that you need to close and open any active mini apps again for changes to take effect
 
-Start the webxdc you want to debug and press `F12` to open the developer tools:
+Start the mini app you want to debug and press `F12` to open the developer tools:
 
 <p>
 <img
