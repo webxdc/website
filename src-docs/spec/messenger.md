@@ -27,11 +27,15 @@ When starting a web view for a webxdc app to run, messenger implementors
   See ["Bringing E2E privacy to the web"](https://delta.chat/en/2023-05-22-webxdc-security)
   which contains a deep discussion of the unique privacy guarantees of webxdc.
   
-  Users may click on internet links (e.g., `http://` or `https://` URLs) provided by an app.
-  If a messenger implementation chooses to allow accessing the internet through such links,
-  it MUST show the full URL to the user and ask for explicit confirmation before opening the link.
-  This confirmation dialog MUST include a clear warning that the link leads to an external website
-  and may compromise the user's privacy. 
+  Users may click on internet links provided by an app
+  (e.g., `http://` or `https://` URL schemes).
+  If a messenger implementation chooses to allow
+  accessing the internet through such links,
+  it MUST show the full URL to the user and ask for
+  explicit confirmation before opening the link.
+  This confirmation dialog MUST include a clear warning
+  that the link leads to an external website
+  and may compromise the user's privacy.
 
 - MUST support `localStorage`, `sessionStorage` and `indexedDB`
 
