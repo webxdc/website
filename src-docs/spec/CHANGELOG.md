@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3] - 2026-02-11
+
+### Other changes
+
+- clarify that users may click on internet links
+  provided by webxdc apps (e.g., `http://` or `https://`)
+  
+- if messenger implementations allow accessing the internet,
+  they MUST show the full URL to the user,
+  ask for explicit confirmation before opening the link,
+  and include a clear warning about privacy risks
+
 ## [1.2] - 2024-12-15
 
 ### New APIs
