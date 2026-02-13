@@ -3,75 +3,199 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mini apps - shared in a chat</title>
+    <title>Webxdc: secure mini apps shared in a chat</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="description" content="Privacy-preserving mini apps shared in a chat - built with webxdc." />
-    <meta name="keywords" content="mini apps webxdc html5 javascript email messenger delta chat" />
+    <meta name="description" content="Webxdc mini apps run securely inside your chats: games, polls, collaboration tools and more. No internet access, no tracking, no accounts needed." />
+    <meta name="keywords" content="mini apps webxdc html5 javascript email messenger delta chat cheogram privacy security" />
 
-    <meta property="og:title" content="mini apps - shared in a chat">
-    <meta property="og:description" content="no logins, no coins,  no platforms 🎉">
-    <meta property="og:image" content="https://webxdc.org/assets/icon.png">
+    <meta property="og:title" content="Webxdc: mini apps shared in a chat">
+    <meta property="og:description" content="Secure mini apps for chats. No internet access, no tracking, no servers.">
+    <meta property="og:image" content="https://webxdc.org/social-preview.png">
     <meta property="og:url" content="https://webxdc.org">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" href="assets/bulma.min.css">
     <link rel="stylesheet" href="assets/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rajdhani/1.3.1/rajdhani.min.css">
 
-    <script defer src="https://cosmos.delta.chat/banner.js"></script>
 </head>
 <body>
+<a href="#app-examples-section" class="sr-only sr-only-focusable">Skip to apps</a>
 <main style="padding-bottom: 2em;">
+
+    <!-- hero: end-user focused -->
     <section class="box box-topmost hero is-dark">
         <div class="columns has-text-centered-mobile is-vcentered is-gapless">
             <div class="column">
-                <h1 class="title">
-                    <img style="width: 3.4em;" alt="Webxdc Logo" src="assets/icon.png"><br>
-                    mini apps
+                <h1 class="title hero-logo-title">
+                    <div class="hero-logo-row">
+                        <img style="width: 3.4em;" alt="Webxdc Logo" src="assets/icon.png">
+                        <span class="hero-webxdc-text">
+                            <span id="webxdc-web" style="
+                              color:#78babf;
+                              text-shadow:
+                                0 0 6px rgba(120,186,191,.7),
+                                0 0 18px rgba(120,186,191,.5),
+                                0 0 32px rgba(120,186,191,.35);
+                            ">web</span><span id="webxdc-xdc" style="color:#405964;">xdc</span>
+                        </span>
+                    </div>
+                    Secure mini apps for&nbsp;chats
                 </h1>
-                <h3 class="subtitle">
-                    shared in a chat
+                <h3 class="subtitle hero-subtitle">
+                    Play games or collaborate, privately.
                 </h3>
-                <p>
-                    no&nbsp;logins, no&nbsp;coins, no&nbsp;platforms&nbsp;🎉
-                </p>
-                <br/>
-                <br/>
-
+                <div class="hero-messenger-grid">
+                    <span class="hero-supported-label">Supported by</span>
+                    <button class="messenger-btn" data-messenger="deltachat">Delta Chat</button>
+                    <button class="messenger-btn" data-messenger="arcanechat">Arcanechat</button>
+                    <button class="messenger-btn" data-messenger="deltatouch">Delta Touch</button>
+                    <button class="messenger-btn" data-messenger="cheogram">Cheogram</button>
+                    <button class="messenger-btn" data-messenger="w2g">Watch2Gether</button>
+                </div>
             </div>
             <div class="column has-text-centered">
                 <div class="smartphone">
-                    <video class="content" autoplay muted loop playsinline>
+                    <video class="content" autoplay muted loop playsinline aria-label="Demo of a mini app running inside a chat messenger">
                         <source src="assets/deltagif.mp4" type="video/mp4">
-                        <img class="content" aria-hidden="true" src="assets/screenshots/tower-builder.png">
+                        <img class="content" aria-hidden="true" src="assets/screenshots/tower-builder.png" alt="">
                     </video>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <div class="box-buttons columns is-mobile">
-
-        <section class="box column hero is-warning has-text-centered">
-            <h2 class="title">
-                <a href="https://webxdc.org/docs">develop own app</a>
-            </h2>
-        </section>
-
-        <section class="box column hero is-success has-text-centered">
-            <h2 class="title" >
-                <a href="https://webxdc.org/apps">try out mini apps</a>
-            </h2>
-        </section>
-
+    <!-- messenger popup (hidden by default) -->
+    <div id="messenger-popup" class="messenger-popup" style="display:none;" role="dialog" aria-modal="true" aria-label="Messenger details">
+        <div class="messenger-popup-card">
+            <img id="messenger-popup-img" src="" alt="" />
+            <div class="messenger-popup-body">
+                <h3 id="messenger-popup-name" class="messenger-popup-name"></h3>
+                <p id="messenger-popup-desc" class="messenger-popup-desc"></p>
+                <p id="messenger-popup-platforms" class="messenger-popup-platforms"></p>
+                <div class="messenger-popup-buttons">
+                    <a id="messenger-popup-link" class="button btn-teal" href="#" target="_blank">Visit homepage</a>
+                    <button id="messenger-popup-close" class="button app-dialog-close-btn" aria-label="Close messenger details">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- app examples -->
+    <section class="info-section" id="app-examples-section">
+        <div class="carousel-search">
+            <span class="carousel-search-wrap">
+                <input type="text" id="carousel-search-input" class="carousel-search-input" placeholder="🔍 Search community apps..." aria-label="Search community apps" />
+                <button type="button" id="carousel-search-clear" class="carousel-search-clear" aria-label="Clear search" style="display:none;">&times;</button>
+            </span>
+        </div>
+        <div class="carousel-wrapper" role="region" aria-label="Community apps carousel">
+            <button class="carousel-arrow carousel-arrow-left" aria-label="Scroll left">&#9664;</button>
+            <div class="carousel-track" id="carousel-track">
+                <!-- populated dynamically from fetched app data -->
+            </div>
+            <button class="carousel-arrow carousel-arrow-right" aria-label="Scroll right">&#9654;</button>
+        </div>
+        <!-- inline app detail popup with instructions (hidden by default) -->
+        <div id="app-dialog-inline" class="app-dialog-inline" style="display:none;" role="dialog" aria-label="App details">
+            <button id="app-dialog-close" class="app-dialog-x" aria-label="Close">&times;</button>
+            <div class="app-dialog-columns">
+                <div class="app-dialog-left">
+                    <h3 class="app-dialog-how-title">How to use</h3>
+                    <div class="app-dialog-steps" id="app-dialog-steps">
+                        <!-- populated dynamically per app -->
+                    </div>
+                </div>
+                <div class="app-dialog-right">
+                    <div class="app-dialog-header">
+                        <img id="app-dialog-icon" src="" alt="" />
+                        <div class="app-dialog-meta">
+                            <div class="app-dialog-title" id="app-dialog-title"></div>
+                            <div class="app-dialog-subtitle" id="app-dialog-subtitle"></div>
+                            <div class="app-dialog-author" id="app-dialog-author"></div>
+                        </div>
+                    </div>
+                    <div class="app-dialog-download-bar">
+                        <a id="app-dialog-download" class="button btn-teal" href="#" target="_blank" aria-label="Download this app">Download</a>
+                        <a id="app-dialog-source" class="app-dialog-source-link" href="#" target="_blank" style="display:none;" aria-label="View source code">Source</a>
+                    </div>
+                    <div class="app-dialog-description" id="app-dialog-description"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- why webxdc -->
+    <section class="box box-privacy" id="private-by-design">
+        <h2 class="info-heading">Private and peer-to-peer</h2>
+        <div class="columns is-multiline">
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>🛡️ No tracking, no data leaks</strong>
+                    <p>Apps are sandboxed with zero internet access. They can never phone home, track you, or leak data. Verified by an <a href="https://delta.chat/en/2023-05-22-webxdc-security">independent security audit</a>.</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+
+<strong>🌿 Works offline</strong>
+
+
+                    <p>Mini-apps run on the phones and devices of your chat partners only.
+                    Everyone can use mini apps while completely offline.
+</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>❤️  No platforms, no billionaires</strong>
+                    <p>Webxdc is an open community-specified mini app container format with a simple API. The same app works everywhere, no permissions needed.<p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="advantage-item">
+                    <strong>🕊️ No servers needed</strong>
+                    <p>Apps are shared peer-to-peer through your chat.
+<a href="https://delta.chat/en/2024-11-20-webxdc-realtime">Realtime collaboration</a> uses <a href="https://iroh.computer">true peer-to-peer networking</a> on chatmail clients.
+        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- for developers -->
+    <section class="box box-dev">
+        <h2 class="info-heading">Build your own mini app</h2>
+        <div class="dev-columns">
+            <div class="dev-text">
+                <p>
+                    If you can build a web page, you can build a mini app.
+                    Just zip your HTML, CSS and JavaScript into a <code>.xdc</code> file
+                    and share it in a chat.
+                    No hosting, no app stores, no user data to handle.
+                    The chat messenger takes care of delivery, encryption
+                    and identity so your code can focus entirely
+                    on the user experience.
+                </p>
+                <p class="has-text-centered" style="margin-top: 1.5em;">
+                    <a class="button btn-teal-inv is-medium" href="https://webxdc.org/docs">Developer docs</a>
+                </p>
+            </div>
+            <div class="dev-video">
+                <video controls muted playsinline style="width:100%; border-radius: 8px;" aria-label="Introduction video: building a mini app">
+                    <source src="assets/just-web-apps.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
 
 </main>
 <footer class="page-footer">
-    <a href="https://delta.chat/en/imprint">imprint</a>
+    <a href="https://delta.chat/en/imprint">Imprint</a>
     |
-    <a href="https://delta.chat/en/gdpr-website">privacy policy</a>
+    <a href="https://delta.chat/en/gdpr-website">Privacy Policy</a>
 </footer>
+
+<script defer src="assets/index.js"></script>
 </body>
 </html>

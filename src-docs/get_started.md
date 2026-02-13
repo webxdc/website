@@ -9,6 +9,8 @@ is outsourced to the host messenger which runs a webxdc app container file
 and relays application update messages between app users,
 letting each mini app inherit offline-first and end-to-end encryption 
 capabilities implemented by the hosting messenger. 
+Mini apps have no internet access and run in a sandboxed web view,
+which means they can never track users or leak data to third parties. 
 
 <video controls style="width:560px; max-width: 100%;"><source src="https://webxdc.org/assets/just-web-apps.mp4" type="video/mp4"><a href="https://www.youtube.com/watch?v=I1K4pBvb2pI">watch "just web apps" on youtube</a></video>
 
