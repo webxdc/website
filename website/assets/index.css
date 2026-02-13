@@ -3,6 +3,10 @@ html {
     font-size: 1.2em;
 }
 
+/* Skip navigation link for keyboard/screen-reader users */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+.sr-only-focusable:focus { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; padding: .5em 1em; background: #364e59; color: #fff; z-index: 9999; }
+
 a {
     text-decoration: underline;
 }
@@ -13,23 +17,91 @@ a {
     border-radius: 0 0 6px 6px;
 }
 
-.box-buttons {
-    max-width: 1024px;
-    margin: auto; /* this centers the box */
+/* hero subtitle wider so text fits in ~2 lines */
+.hero-subtitle {
+    max-width: 100%;
+    font-size: 1.1em;
 }
 
-.box-buttons .column {
-    margin-left: .75em;
-    margin-right: .75em;
+/* hero logo + webxdc text side by side */
+.hero-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: .4em;
 }
 
-.box-buttons .column:last-child {
-    margin-bottom: 1.5em; /* for other columns, margin is set in bulma.css */
+.hero-webxdc-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    letter-spacing: .04em;
+    line-height: 1;
+    text-transform: lowercase;
+    white-space: nowrap;
 }
 
-.box-buttons .column h2 {
-    margin-top: auto;
-    margin-bottom: auto;
+.hero-webxdc-text span {
+    transition: color 2s ease, text-shadow 2s ease;
+}
+
+/* messenger grid below the subtitle */
+.hero-messenger-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5em;
+    margin-top: 1.2em;
+    margin-bottom: .5em;
+}
+.hero-supported-label {
+    color: rgba(255,255,255,.7);
+    font-size: .85em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-messenger-grid .messenger-btn {
+    display: inline-block;
+    padding: .4em 1.2em;
+    background-color: rgba(124, 197, 204, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: .85em;
+    text-align: center;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    min-width: 0;
+}
+
+.hero-messenger-grid .messenger-btn:hover {
+    background-color: rgba(124, 197, 204, 0.45);
+}
+
+@media screen and (max-width: 768px) {
+    .hero-logo-row {
+        justify-content: center;
+    }
+    .hero-webxdc-text {
+        font-size: 32px;
+    }
+    .hero-messenger-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: .4em;
+    }
+    .hero-supported-label {
+        grid-column: 1 / -1;
+    }
+    .hero-messenger-grid .messenger-btn {
+        padding: .4em .6em;
+        font-size: .8em;
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 1048px) {
@@ -38,74 +110,53 @@ a {
         border-radius: 6px;
     }
 
-    .box-buttons .column:first-child {
-        margin-left: 0;
-    }
-
-    .box-buttons .column:last-child {
-        margin-right: 0;
-    }
 }
 
-.info-section {
+/* buttons matching webxdc teal palette */
+.btn-teal {
+    background-color: #364e59 !important;
+    border-color: #364e59 !important;
+    color: #fff !important;
+}
+
+.btn-teal:hover {
+    background-color: #7cc5cc !important;
+    border-color: #7cc5cc !important;
+    color: #fff !important;
+}
+
+.btn-teal-light {
+    background-color: #7cc5cc !important;
+    border-color: #7cc5cc !important;
+    color: #fff !important;
+}
+
+.btn-teal-light:hover {
+    background-color: #364e59 !important;
+    border-color: #364e59 !important;
+    color: #fff !important;
+}
+
+/* feature numbers */
+.features {
+    text-align: left;
+    display: inline-block;
+}
+
+/* app examples */
+.app-examples {
     max-width: 1024px;
-    margin: 2em auto;
-    padding: 0 1.5em;
+    margin: 1.5em auto;
+    padding: 0 .75em;
 }
 
-.info-heading {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: .75em;
-}
-
-.info-section p {
-    margin-bottom: .5em;
-    line-height: 1.6;
-}
-
-.steps-row .step-number {
-    font-size: 2em;
-    font-weight: bold;
-    color: #00d1b2;
-    margin-bottom: .25em;
-}
-
-.app-card {
-    padding: 1em;
-}
-
-.app-thumb {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-    margin-bottom: .5em;
-}
-
-.advantage-item {
-    padding: .75em 0;
-}
-
-.dev-section {
-    border-top: 1px solid #ddd;
-    padding-top: 2em;
-    margin-top: 2.5em;
-}
-
-.footnotes, .page-footer {
+/* supported messengers */
+.messengers {
     max-width: 1024px;
-    margin: auto;
-    padding: 1.5em;
+    margin: 1.5em auto;
+    padding: 0 .75em;
     text-align: center;
-    font-size: .9em;
 }
-
-.footnotes a {
-    color: #4a4a4a;
-}
-
 
 .page-footer a {
     color: #4a4a4a;
@@ -115,7 +166,6 @@ a {
 .page-footer a:hover {
     text-decoration: underline;
 }
-
 
 /* smartphone border, credits to https://www.w3schools.com/howto/howto_css_devices.asp */
 .smartphone { /* The device with borders */
@@ -156,3 +206,558 @@ a {
     border-radius: 5px;
 }
 
+/* info sections layout */
+.info-section {
+    max-width: 1024px;
+    margin: 2em auto;
+    padding: 0 1.5em;
+}
+
+.info-heading {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #364e59;
+    margin-bottom: 1em;
+}
+
+/* "Try a community app" heading */
+.community-heading {
+    font-size: 1.6em;
+    display: inline-block;
+    background-color: #7cc5cc;
+    color: #fff;
+    padding: .3em .8em;
+    border-radius: 6px;
+    width: auto;
+}
+
+.info-section .community-heading {
+    display: block;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* step numbers (teal circles) */
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: #7cc5cc;
+    color: #364e59;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: .5em;
+}
+
+/* app thumbnails */
+/* carousel search */
+.carousel-search {
+    text-align: center;
+    margin-bottom: .8em;
+}
+
+.carousel-search-wrap {
+    display: inline-flex;
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+}
+
+.carousel-search-input {
+    padding: .4em 2em .4em .8em;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    font-size: .9em;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.carousel-search-input:focus {
+    border-color: #7cc5cc;
+}
+
+.carousel-search-clear {
+    position: absolute;
+    right: .4em;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    color: #999;
+    cursor: pointer;
+    padding: 0 .3em;
+    line-height: 1;
+}
+
+.carousel-search-clear:hover {
+    color: #364e59;
+}
+
+/* carousel */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: .6em;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: .5em 0;
+}
+.carousel-unmatched {
+    flex: 0 0 auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: .6em 1.2em;
+    background-color: #eee;
+    color: #888;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    font-size: .85em;
+    font-style: italic;
+    width: 180px;
+    min-height: 60px;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .3em;
+    padding: .6em .8em;
+    background-color: #f5f5f5;
+    color: #364e59;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: .85em;
+    width: 220px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    scroll-snap-align: start;
+}
+
+.carousel-card:hover {
+    border-color: #7cc5cc;
+    background-color: #eaf8f9;
+}
+
+.carousel-card.carousel-card-active {
+    border-color: #364e59;
+    background-color: #daf1f3;
+    box-shadow: 0 0 0 2px #7cc5cc;
+}
+
+.carousel-card img {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.carousel-card-name {
+    font-weight: bold;
+    color: #364e59;
+    max-width: 100%;
+}
+
+.carousel-card-desc {
+    color: #666;
+    font-size: .85em;
+    max-width: 100%;
+}
+
+.carousel-card-author {
+    color: #999;
+    font-size: .8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.carousel-arrow {
+    flex: 0 0 auto;
+    background-color: #364e59;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2.2em;
+    height: 2.2em;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.carousel-arrow:hover {
+    background-color: #7cc5cc;
+}
+.carousel-arrow:active {
+    transform: scale(0.9);
+    background-color: #2a3e47;
+}
+
+/* advantage items */
+.advantage-item {
+    padding: .4em .8em;
+}
+
+.advantage-item p {
+    margin-top: .2em;
+}
+
+/* developer section */
+/* "Private by design" box */
+.box-privacy {
+    max-width: 1024px;
+    margin: 2em auto;
+    padding: 1.2em 1.5em;
+    background-color: #364e59;
+    color: #e8f4f5;
+    border-radius: 6px;
+}
+
+.box-privacy .info-heading {
+    color: #fff;
+    margin-bottom: .6em;
+}
+
+.box-privacy .advantage-item strong {
+    color: #fff;
+}
+
+.box-privacy .advantage-item p {
+    color: #c8e4e7;
+}
+
+.box-privacy a {
+    color: #a8e8ed;
+    text-decoration: underline;
+}
+
+.box-privacy a:hover {
+    color: #fff;
+}
+
+/* "Build your own mini app" box */
+.box-dev {
+    max-width: 1024px;
+    margin: 0 auto 2em;
+    background-color: #7cc5cc;
+    color: #1a2e36;
+    border-radius: 6px;
+}
+
+.box-dev .info-heading {
+    color: #1a2e36;
+}
+
+.box-dev a {
+    color: #1a2e36;
+    font-weight: bold;
+}
+
+.box-dev code {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #1a2e36;
+}
+
+/* inverted teal button (light bg → dark text) */
+.btn-teal-inv {
+    background-color: #364e59 !important;
+    border-color: #364e59 !important;
+    color: #fff !important;
+}
+
+.btn-teal-inv:hover {
+    background-color: #2a3d46 !important;
+    border-color: #2a3d46 !important;
+    color: #fff !important;
+}
+
+/* inline app detail popup (positioned within the section) */
+.app-dialog-inline {
+    position: relative;
+    background: #fff;
+    border: 2px solid #7cc5cc;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin-top: 1em;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* × close button in top right corner */
+.app-dialog-x {
+    position: absolute;
+    top: .5em;
+    right: .7em;
+    background: none;
+    border: none;
+    font-size: 1.6em;
+    line-height: 1;
+    color: #999;
+    cursor: pointer;
+    padding: .1em .3em;
+    z-index: 1;
+}
+
+.app-dialog-x:hover {
+    color: #364e59;
+}
+
+/* two-column layout: app card left, instructions right */
+.app-dialog-columns {
+    display: flex;
+    gap: 2em;
+    align-items: stretch;
+    min-height: 300px;
+}
+
+.app-dialog-left {
+    flex: 0 0 36%;
+    min-width: 0;
+}
+
+.app-dialog-right {
+    flex: 1 1 65%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* download bar under app header */
+.app-dialog-download-bar {
+    margin-bottom: 1em;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+.app-dialog-source-link {
+    color: #364e59;
+    text-decoration: underline;
+    font-size: .9em;
+    align-self: center;
+}
+.app-dialog-source-link:hover {
+    color: #7cc5cc;
+}
+
+@media screen and (max-width: 768px) {
+    .app-dialog-columns {
+        flex-direction: column;
+        gap: 1em;
+        min-height: auto;
+    }
+    .app-dialog-right {
+        width: 100%;
+    }
+    .community-heading {
+        font-size: 1.3em;
+    }
+    .carousel-card {
+        flex: 0 0 150px;
+        width: 150px;
+    }
+    .carousel-arrow {
+        width: 1.8em;
+        height: 1.8em;
+        font-size: .9em;
+    }
+}
+
+/* step instructions inside the dialog */
+.app-dialog-steps {
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+}
+
+.app-dialog-step {
+    display: flex;
+    align-items: flex-start;
+    gap: .6em;
+    font-size: .9em;
+    line-height: 1.4;
+    color: #333;
+}
+
+.app-dialog-step .step-number {
+    flex-shrink: 0;
+    width: 1.6em;
+    height: 1.6em;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.app-dialog-tip {
+    font-size: .85em;
+    color: #666;
+    font-style: italic;
+    margin: .6em 0 0 0;
+}
+
+.app-dialog-header {
+    display: flex;
+    gap: .8em;
+    align-items: flex-start;
+    margin-bottom: 1em;
+}
+
+.app-dialog-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+}
+
+.app-dialog-meta {
+    min-width: 0;
+}
+
+.app-dialog-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #364e59;
+}
+
+.app-dialog-subtitle {
+    font-size: .9em;
+    color: #555;
+}
+
+.app-dialog-author {
+    font-size: .85em;
+    color: #888;
+}
+
+.app-dialog-description {
+    font-size: .9em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.app-dialog-close-btn {
+    background-color: #e0e0e0 !important;
+    border-color: #e0e0e0 !important;
+    color: #364e59 !important;
+}
+
+.app-dialog-close-btn:hover {
+    background-color: #ccc !important;
+}
+
+/* "How it works" title inside dialog */
+.app-dialog-how-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #364e59;
+    margin-bottom: .8em;
+}
+
+/* developer box two-column layout */
+.dev-columns {
+    display: flex;
+    gap: 2em;
+    align-items: flex-start;
+}
+
+.dev-text {
+    flex: 1 1 55%;
+    min-width: 0;
+}
+
+.dev-video {
+    flex: 1 1 40%;
+    min-width: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .dev-columns {
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+
+/* messenger popup overlay */
+.messenger-popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+.messenger-popup-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.messenger-popup-card img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    display: block;
+    background: #f5f5f5;
+    padding: 8px;
+}
+
+.messenger-popup-body {
+    padding: 1.2em;
+}
+
+.messenger-popup-name {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #364e59;
+    margin-bottom: .4em;
+}
+
+.messenger-popup-desc {
+    font-size: .95em;
+    color: #333;
+    margin-bottom: .5em;
+}
+
+.messenger-popup-platforms {
+    font-size: .85em;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+.messenger-popup-buttons {
+    display: flex;
+    gap: .6em;
+}
