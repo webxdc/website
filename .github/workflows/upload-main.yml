@@ -35,7 +35,7 @@ jobs:
 
       - name: install mdbook
         run: |
-          cargo install mdbook
+          cargo install mdbook --vers "^0.4"
           cargo install mdbook-linkcheck
           cd src-docs 
           mdbook build
