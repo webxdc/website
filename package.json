@@ -1,0 +1,18 @@
+{
+  "name": "webxdc-website",
+  "version": "1.0.0",
+  "description": "Webxdc website with community mini apps",
+  "private": true,
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "htmlhint 'website/**/*.html'",
+    "lint:css": "stylelint 'website/**/*.css' '!website/**/*.min.css'",
+    "lint:js": "eslint 'website/**/*.js' --ignore-pattern 'website/**/deps/**' --ignore-pattern '**/*.min.js'"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}

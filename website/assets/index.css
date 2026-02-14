@@ -32,7 +32,7 @@ a {
 }
 
 .hero-webxdc-text {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: Rajdhani, sans-serif;
     font-weight: 600;
     font-size: 44px;
     letter-spacing: .04em;
@@ -54,7 +54,7 @@ a {
     margin-bottom: .5em;
 }
 .hero-supported-label {
-    color: rgba(255,255,255,.7);
+    color: rgb(255 255 255 / 70%);
     font-size: .85em;
     font-weight: bold;
     display: flex;
@@ -65,9 +65,9 @@ a {
 .hero-messenger-grid .messenger-btn {
     display: inline-block;
     padding: .4em 1.2em;
-    background-color: rgba(124, 197, 204, 0.2);
+    background-color: rgb(124 197 204 / 20%);
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgb(255 255 255 / 35%);
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
@@ -80,10 +80,10 @@ a {
 }
 
 .hero-messenger-grid .messenger-btn:hover {
-    background-color: rgba(124, 197, 204, 0.45);
+    background-color: rgb(124 197 204 / 45%);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
     .hero-logo-row {
         justify-content: center;
     }
@@ -104,7 +104,7 @@ a {
     }
 }
 
-@media screen and (min-width: 1048px) {
+@media screen and (width >= 1048px) {
     .box-topmost {
         margin-top: 1.5em;
         border-radius: 6px;
@@ -179,7 +179,7 @@ a {
     border-radius: 28px;
     box-shadow: 0 0 30px #555;
 }
-.smartphone:before { /* The horizontal line on the top of the device */
+.smartphone::before { /* The horizontal line on the top of the device */
     content: '';
     display: block;
     width: 60px;
@@ -197,7 +197,7 @@ a {
     background: black;
 }
 
-.smartphone:before { /* The horizontal line on the top of the device */
+.smartphone::before { /* The horizontal line on the top of the device */
     width: 32px;
     height: 3px;
     top: -10px;
@@ -484,7 +484,7 @@ a {
 }
 
 .box-dev code {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgb(255 255 255 / 30%);
     color: #1a2e36;
 }
 
@@ -509,7 +509,7 @@ a {
     border-radius: 10px;
     padding: 1.5em;
     margin-top: 1em;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
 }
 
 /* × close button in top right corner */
@@ -569,7 +569,7 @@ a {
     color: #7cc5cc;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
     .app-dialog-columns {
         flex-direction: column;
         gap: 1em;
@@ -620,7 +620,7 @@ a {
     font-size: .85em;
     color: #666;
     font-style: italic;
-    margin: .6em 0 0 0;
+    margin: .6em 0 0;
 }
 
 .app-dialog-header {
@@ -697,7 +697,7 @@ a {
     min-width: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
     .dev-columns {
         flex-direction: column;
         gap: 1em;
@@ -708,8 +708,8 @@ a {
 .messenger-popup {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
     z-index: 1000;
     align-items: center;
     justify-content: center;
@@ -719,7 +719,7 @@ a {
 .messenger-popup-card {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
     max-width: 500px;
     width: 100%;
     overflow: hidden;

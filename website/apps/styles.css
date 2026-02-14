@@ -66,8 +66,7 @@ body {
   max-width: 1300px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: flex-start;
+  place-content: flex-start center;
   height: 100%;
   width: 100%;
 }
@@ -79,15 +78,12 @@ body {
   border-radius: initial;
   border-bottom: 1px solid #00000020;
   height: fit-content;
-
   background: none;
   color: var(--text);
   text-align: left;
   font-size: 1rem;
   gap: 0.9rem;
-
   text-decoration: none;
-
   display: flex;
   align-items: flex-start;
   flex-shrink: 0;
@@ -97,7 +93,6 @@ body {
   width: var(--icon);
   min-width: var(--icon);
   height: var(--icon);
-
   margin-right: calc(var(--padding));
 }
 
@@ -161,10 +156,7 @@ button.ghost, .button.ghost {
   display: none;
   position: fixed;
   overflow-y: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 1;
 }
 
@@ -230,7 +222,6 @@ button.ghost, .button.ghost {
 #tabs > button {
   width: 100%;
   background: transparent;
-  border: none;
   color: black;
   display: flex;
   flex-direction: column;
@@ -255,7 +246,7 @@ button.ghost, .button.ghost {
   height: calc(var(--icon) / 2);
 }
 
-@media screen and (min-width: 670px) {
+@media screen and (width >= 670px) {
   #search_field {
     max-width: 80%;
   }
@@ -318,7 +309,6 @@ button.ghost, .button.ghost {
   #tabs > button {
     width: 100%;
     background: transparent;
-    border: none;
     color: white;
     display: flex;
     flex-direction: column;
