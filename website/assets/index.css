@@ -158,6 +158,12 @@ a {
     text-align: center;
 }
 
+.page-footer {
+    text-align: center;
+    padding: 1em;
+    background: #f0f0f0;
+}
+
 .page-footer a {
     color: #4a4a4a;
     text-decoration: none;
