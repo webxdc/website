@@ -2,3 +2,4 @@ docs
 book
 *.swp
 node_modules
+package-lock.json
