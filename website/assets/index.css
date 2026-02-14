@@ -179,7 +179,7 @@ a {
     border-radius: 28px;
     box-shadow: 0 0 30px #555;
 }
-.smartphone:before { /* The horizontal line on the top of the device */
+.smartphone::before { /* The horizontal line on the top of the device */
     content: '';
     display: block;
     width: 60px;
@@ -197,7 +197,7 @@ a {
     background: black;
 }
 
-.smartphone:before { /* The horizontal line on the top of the device */
+.smartphone::before { /* The horizontal line on the top of the device */
     width: 32px;
     height: 3px;
     top: -10px;

@@ -94,7 +94,7 @@ const Dialog = ({app, modal, toggleModal}) => {
       </div>
     </div>
   `;
-}
+};
 
 /*
 <Search> deals with searching and filtering webxdc apps
@@ -114,7 +114,7 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
 
   const filterResults = (result) => {
     return filterGroup === "home" ? true : result.item.category === filterGroup;
-  } 
+  }; 
   
   const searchFieldRef = useRef(null);
   const updateSearch = useMemo(() => {
@@ -122,7 +122,7 @@ const Search = ({apps, setSearchResults, filterGroup}) => {
       if (searchFieldRef.current) {
         const query = searchFieldRef.current.value;
         if (query) {
-          const results = fuse.search(query)
+          const results = fuse.search(query);
           setSearchResults(results.filter(filterResults));
           // console.log("search result", {results});
           return;
@@ -266,7 +266,7 @@ const Tabs = ({setFilterGroup, filterGroup}) => {
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12.75 6H14c3.771 0 5.657 0 6.828 1.172S22 10.229 22 14s0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14s0-5.657 1.172-6.828S6.229 6 10 6z" opacity=".5"/><path fill="currentColor" d="M8.75 12a.75.75 0 0 0-1.5 0v1.05a.2.2 0 0 1-.2.2H6a.75.75 0 0 0 0 1.5h1.05c.11 0 .2.09.2.2V16a.75.75 0 0 0 1.5 0v-1.05c0-.11.09-.2.2-.2H10a.75.75 0 0 0 0-1.5H8.95a.2.2 0 0 1-.2-.2zM15 13.5a1 1 0 1 0 0-2a1 1 0 0 0 0 2m3 2a1 1 0 1 1-2 0a1 1 0 0 1 2 0M15.75 2a.75.75 0 0 0-1.5 0v1a.25.25 0 0 1-.25.25h-1A1.75 1.75 0 0 0 11.25 5v1h1.5V5a.25.25 0 0 1 .25-.25h1A1.75 1.75 0 0 0 15.75 3z"/></svg>      Games
     </button>
   </div>`;
-}
+};
 
 // Extract the username from GitHub or Codeberg
 const extract_author = (source_code_url) => {

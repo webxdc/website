@@ -1,0 +1,34 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "selector-id-pattern": null,
+    "alpha-value-notation": "number",
+    "property-no-vendor-prefix": null,
+    "at-rule-no-vendor-prefix": null,
+    "selector-not-notation": null,
+    "color-function-notation": null,
+    "value-keyword-case": null,
+    "comment-empty-line-before": null,
+    "keyframes-name-pattern": null,
+    "font-family-name-quotes": null,
+    "shorthand-property-no-redundant-values": null,
+    "rule-empty-line-before": null,
+    "length-zero-no-unit": null,
+    "color-hex-length": null,
+    "no-duplicate-selectors": null,
+    "declaration-empty-line-before": null,
+    "selector-attribute-quotes": null,
+    "declaration-block-no-duplicate-properties": null,
+    "media-feature-range-notation": null,
+    "declaration-block-single-line-max-declarations": null
+  },
+  "ignoreFiles": [
+    "website/assets/bulma.css",
+    "website/assets/bulma.min.css"
+  ]
+}
