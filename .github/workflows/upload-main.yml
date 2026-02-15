@@ -33,18 +33,25 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v1.3.0
 
+      - name: Build website
+        run: |
+          npm install -g pnpm
+          cd website
+          pnpm i
+          pnpm build
+
       - name: install mdbook
         run: |
           cargo install mdbook --vers "^0.4"
           cargo install mdbook-linkcheck
           cd src-docs 
           mdbook build
-          mv book/html ../website/docs
+          mv book/html ../website/dist/docs
 
       - name: Upload website including docs and apps 
         run: |
           mkdir -p "$HOME/.ssh"
           echo "${{ secrets.KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
-          mv apps website/
-          rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/" "${{ secrets.USERNAME }}@delta.chat:/var/www/html/webxdc.org" 
+          cp -r apps website/dist/
+          rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/dist/" "${{ secrets.USERNAME }}@delta.chat:/var/www/html/webxdc.org" 

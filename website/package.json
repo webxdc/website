@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000",
+    "fix": "prettier --write .",
+    "check": "prettier --check .",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "vite": "latest"
+  },
+  "dependencies": {
+    "bulma": "^0.9.4"
+  }
+}
