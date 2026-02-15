@@ -32,7 +32,7 @@ a {
 }
 
 .hero-webxdc-text {
-    font-family: Rajdhani, sans-serif;
+    font-family: sans-serif;
     font-weight: 600;
     font-size: 44px;
     letter-spacing: .04em;
@@ -156,6 +156,12 @@ a {
     margin: 1.5em auto;
     padding: 0 .75em;
     text-align: center;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 1em;
+    background: #f0f0f0;
 }
 
 .page-footer a {
