@@ -68,18 +68,22 @@ const Dialog = ({app, modal, toggleModal}) => {
     size = `${(app.size/1000000).toLocaleString(undefined, {maximumFractionDigits: 1})} mb`;
   }
 
-  let tryItUrl = new URL(tryItBaseUrl);
-  tryItUrl.hostname =
-    "webapp-" +
-    app.app_id +
-    "-" +
-    app.tag_name.replaceAll(".", "-") +
-    "." +
-    tryItUrl.hostname;
-  const params = new URLSearchParams({
-    url: xdcget_export + "/" + app.cache_relname,
-  });
-  tryItUrl.hash = params.toString();
+  const tryItUrl = useMemo(() => {
+    const url = new URL(tryItBaseUrl);
+    url.hostname =
+      "webapp-" +
+      app.app_id +
+      "-" +
+      app.tag_name.replaceAll(".", "-") +
+      "." +
+      url.hostname;
+    const params = new URLSearchParams({
+      url: xdcget_export + "/" + app.cache_relname,
+    });
+    url.hash = params.toString();
+
+    return url.toString();
+  }, [app.app_id, app.cache_relname, app.tag_name]);
 
   return html`
     <dialog ref=${ref} id=${app.app_id} onClose=${() => toggleModal(false)} closedby="any" aria-labelledby="${app.app_id}_label" aria-describedby="${app.app_id}_desc">
@@ -111,7 +115,7 @@ const Dialog = ({app, modal, toggleModal}) => {
         <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
           Add to Chat
         </a>
-        <a class="button" target="_blank" href="${tryItUrl.toString()}">Try it</a>
+        <a class="button" target="_blank" href="${tryItUrl}">Try it</a>
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
       </div>
     </dialog>
