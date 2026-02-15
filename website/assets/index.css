@@ -216,7 +216,7 @@ a {
 .info-section {
     max-width: 1024px;
     margin: 2em auto;
-    padding: 0 1.5em;
+    padding: 0 1em;
 }
 
 .info-heading {
@@ -411,14 +411,36 @@ a {
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 2.2em;
-    height: 2.2em;
-    font-size: 1em;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
     transition: background-color 0.2s;
+}
+
+/* draw geometric arrows so centering is independent of font metrics */
+.carousel-arrow::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.carousel-arrow-left::before {
+    border-inline-end: 12px solid #fff;
+    margin-inline-start: -4px;
+}
+
+.carousel-arrow-right::before {
+    border-inline-start: 12px solid #fff;
+    margin-inline-end: -4px;
 }
 
 .carousel-arrow:hover {
@@ -592,9 +614,8 @@ a {
         width: 150px;
     }
     .carousel-arrow {
-        width: 1.8em;
-        height: 1.8em;
-        font-size: .9em;
+        width: 30px;
+        height: 30px;
     }
 }
 
