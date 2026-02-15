@@ -23,7 +23,7 @@ const xdcget_export = "https://apps.testrun.org";
 Each <App> is implemented as a button that, when clicked, would show
 more details about the webxdc app by showing a <Dialog> 
 */
-const App = ({ app, toggleModal }) => {
+const App = ({ app }) => {
   const subtitle = app.description.split('\n').shift();
 
   return html`
@@ -235,7 +235,7 @@ const MainScreen = () => {
     <div id="app_container">
       ${loading && html`<div class="loading">Loading ...</div>`}
       ${searchResults &&
-        searchResults.map((result) => html`<${App} app=${result.item} toggleModal=${toggleModal} />`)}
+        searchResults.map((result) => html`<${App} app=${result.item} />`)}
     </div>
     <div id="dialog_layer" class="dialogs">
       <div class="dialog-backdrop ${modal ? 'active' : 'hidden'}">
