@@ -69,6 +69,10 @@ const Dialog = ({app, modal, toggleModal}) => {
   }
 
   const tryItUrl = useMemo(() => {
+    if (!location.search.includes('tryIt')) {
+      return null;
+    }
+
     const url = new URL(tryItBaseUrl);
     url.hostname =
       "webapp-" +
@@ -115,7 +119,7 @@ const Dialog = ({app, modal, toggleModal}) => {
         <a href="${xdcget_export + "/" + app.cache_relname}" target="_blank" class="button">
           Add to Chat
         </a>
-        <a class="button" target="_blank" href="${tryItUrl}">Try it</a>
+        ${tryItUrl && html`<a class="button" target="_blank" href="${tryItUrl}">Try it</a>`}
         <button class="ghost" onClick=${() => toggleModal(false)}>Close</button>
       </div>
     </dialog>
