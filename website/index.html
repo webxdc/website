@@ -95,6 +95,16 @@
             </div>
             <button class="carousel-arrow carousel-arrow-right" aria-label="Scroll right"></button>
         </div>
+        <div style="display: none;">
+            <button id="carousel-card-template" class="carousel-card" >
+                <!-- `alt` is to be filled with JS -->
+                <!-- htmlhint-disable-next-line alt-require -->
+                <img loading="lazy" />
+                <span class="carousel-card-name"></span>
+                <span class="carousel-card-desc"></span>
+                <span class="carousel-card-author"></span>
+            </button>
+        </div>
         <!-- inline app detail popup with instructions (hidden by default) -->
         <div id="app-dialog-inline" class="app-dialog-inline" style="display:none;" role="dialog" aria-label="App details">
             <button id="app-dialog-close" class="app-dialog-x" aria-label="Close">&times;</button>
