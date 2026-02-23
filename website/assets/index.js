@@ -53,12 +53,6 @@
     var xdcgetBase = 'https://apps.testrun.org';
     var appMap = {};
 
-    function escapeHtml(str) {
-        var div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
     function extractAuthor(url) {
         var m = /(github\.com|codeberg\.org)\/([\w\-_]+)/.exec(url || '');
         return m && m.length === 3 ? m[2] : '';
@@ -94,21 +88,35 @@
                 else idx++;
             }
 
-            var html = '';
+            var templateEl = document.getElementById('carousel-card-template');
             shuffled.forEach(function(app) {
                 appMap[app.app_id] = app;
+                /** @type {HTMLButtonElement} */
+                var el = templateEl.cloneNode(true);
+                el.removeAttribute('id');
                 var subtitle = (app.description || '').split('\n')[0];
                 var author = app._author;
                 var searchText = (app.name + ' ' + (app.description || '') + ' ' + author).toLowerCase();
-                html += '<button class="carousel-card" data-app-id="' + app.app_id + '" data-search="' + escapeHtml(searchText) + '" aria-label="' + escapeHtml(app.name) + '">'
-                    + '<img src="' + xdcgetBase + '/' + app.icon_relname + '" alt="' + escapeHtml(app.name) + ' icon" loading="lazy" />'
-                    + '<span class="carousel-card-name">' + escapeHtml(app.name) + '</span>'
-                    + '<span class="carousel-card-desc">' + escapeHtml(subtitle) + '</span>'
-                    + (author ? '<span class="carousel-card-author">' + escapeHtml(author) + '</span>' : '')
-                    + '</button>';
+
+                el.setAttribute('data-app-id', app.app_id);
+                el.setAttribute('data-search', searchText);
+                el.ariaLabel = app.name;
+                var img = el.getElementsByTagName('img')[0];
+                img.src = xdcgetBase + '/' + app.icon_relname;
+                img.alt = app.name + ' icon';
+                el.getElementsByClassName('carousel-card-name')[0].textContent = app.name;
+                el.getElementsByClassName('carousel-card-desc')[0].textContent = subtitle;
+                el.getElementsByClassName('carousel-card-author')[0].textContent = author;
+                if (!author) {
+                    el.getElementsByClassName('carousel-card-author')[0].remove();
+                }
+
+                track.append(el);
             });
-            html += '<div class="carousel-unmatched" id="carousel-unmatched"></div>';
-            track.innerHTML = html;
+            var unmatchedEl = document.createElement('div');
+            unmatchedEl.id = 'carousel-unmatched';
+            unmatchedEl.classList.add('carousel-unmatched');
+            track.append(unmatchedEl);
 
             // update search placeholder with app count
             var searchEl = document.getElementById('carousel-search-input');
