@@ -315,6 +315,13 @@
             desc: 'A collaborative platform for watching videos, listening to music, and browsing content together in private rooms. Experimentally supports webxdc mini apps.',
             platforms: 'Web',
             url: 'https://w2g.tv'
+        },
+        vector: {
+            name: 'Vector',
+            img: 'assets/messengers/vector.png',
+            desc: 'A decentralized, privacy-focused encrypted messenger with zero metadata leakage. Features Nexus, an integrated in-app webxdc app store.',
+            platforms: 'Windows, macOS, Linux, Android',
+            url: 'https://vectorapp.io'
         }
     };
 
