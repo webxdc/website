@@ -1,50 +1,46 @@
-# workflow for rendering and uploads webxdc docs 
 
-name: Render and upload webxdc docs 
+name: Render docs and upload website to webxdc.org
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: 
-      - main
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - '**'
+  pull_request:
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-
-      - name: Rust Cache
-        uses: Swatinem/rust-cache@v1.3.0
-
-      - name: install mdbook
+      - name: Download and setup mdbook
         run: |
-          cargo install mdbook --vers "^0.4"
-          cargo install mdbook-linkcheck
+          MDBOOK_VERSION="0.4.40"
+          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz
+          sudo mv mdbook /usr/local/bin/
+
+      # Michael-F-Bryan is the original author, see github link on https://crates.io/crates/mdbook-linkcheck
+      - name: Install mdbook-linkcheck
+        run: |
+          curl -sSL "https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.7/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip" -o mdbook-linkcheck.zip
+          unzip mdbook-linkcheck.zip mdbook-linkcheck
+          chmod +x mdbook-linkcheck
+          sudo mv mdbook-linkcheck /usr/local/bin/
+
+      - name: Build docs and prepare website/ contents
+        run: |
           cd src-docs 
           mdbook build
           mv book/html ../website/docs
+          cd ..
+          mv apps website/
 
-      - name: Upload website including docs and apps 
+      - name: Upload website/ to webxdc.org
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           mkdir -p "$HOME/.ssh"
           echo "${{ secrets.KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
-          mv apps website/
           rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/" "${{ secrets.USERNAME }}@delta.chat:/var/www/html/webxdc.org" 
