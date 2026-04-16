@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4] - 2026-04-16
+
+### New APIs
+
+- add `webxdc.isAppSender` and `webxdc.isBroadcast` to allow apps to determine
+  their role and if they are in a broadcast chat
+
 ## [1.3] - 2026-02-11
 
 ### Other changes
