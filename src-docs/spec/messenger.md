@@ -54,6 +54,9 @@ When starting a web view for a webxdc app to run, messenger implementors
 
 - MUST support `<meta name="viewport" ...>` is useful especially as webviews from different platforms have different defaults
 
+- MUST support `window.webxdc.isAppSender` and `window.webxdc.isBroadcast`
+  to allow apps to determine their role and if they are in a broadcast chat.
+
 - MUST support `<input type="file">` to allow importing of files;
   see [`sendToChat()`](../spec/sendToChat.md) for a way to export files. 
 
