@@ -473,6 +473,26 @@ As for the matter of duplicate ids in the `order` array,
 the rendering code which constructs the app's UI from this data
 could ignore repeated elements when iterating over them.
 
+## Centralized coordination
+
+While CRDTs are designed for peer-to-peer operation,
+you may sometimes want to designate one client as a "coordinator".
+By comparing [`webxdc.appSenderAddr`](../spec/selfAddr_and_selfName.html#appsenderaddr)
+with `webxdc.selfAddr`,
+an app can identify whether it is running for the peer
+that initially shared the app.
+This "sender" instance can then take on special roles,
+such as authoritatively resolving state conflicts,
+for example by letting the app sender's updates always win.
+
+However, use this model with care:
+if your app logic requires the sender to be online to function,
+it will be unusable whenever the sender is offline or has left the chat.
+One further complication occurs if the app sender
+has multiple devices running the app simultaneously,
+with each device possibly regarding itself as the central coordinator
+and producing conflicting application states.
+
 ## Learning more
 
 Many more examples can be found throughout

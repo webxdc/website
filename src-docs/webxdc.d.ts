@@ -74,9 +74,9 @@ interface Webxdc<T> {
   selfName: string;
   /** The address of the peer who initially shared this webxdc app. */
   appSenderAddr: string;
-  /** True if the current user can send updates to all peers.
-   * If false, updates sent by this peer will only be received by the app sender. */
-  canSendUpdatesToAllPeers: boolean;
+  /** True if updates sent by this peer will only be received by the app sender.
+   * If false, the current user can send updates to all peers. */
+  canOnlySendUpdatesToAppSender: boolean;
   /**
    * set a listener for new status updates.
    * The "serial" specifies the last serial that you know about (defaults to 0).
