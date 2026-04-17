@@ -72,10 +72,11 @@ interface Webxdc<T> {
   selfAddr: string;
   /** Returns the peer's own name. This is name chosen by the user in their settings, if there is nothing set, that defaults to the peer's address. */
   selfName: string;
-  /** True if the current user is the sender of this webxdc app. */
-  isAppSender: boolean;
-  /** True if the current user is in a broadcast chat. */
-  isBroadcast: boolean;
+  /** The address of the peer who initially shared this webxdc app. */
+  appSenderAddr: string;
+  /** True if the current user can send updates to all peers.
+   * If false, updates sent by this peer will only be received by the app sender. */
+  canSendUpdatesToAllPeers: boolean;
   /**
    * set a listener for new status updates.
    * The "serial" specifies the last serial that you know about (defaults to 0).

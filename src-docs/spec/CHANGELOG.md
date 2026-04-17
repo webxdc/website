@@ -4,9 +4,8 @@
 
 ### New APIs
 
-- add `webxdc.isAppSender` and `webxdc.isBroadcast` to allow apps to determine
-  their role and if they are in a broadcast chat
-
+- add `webxdc.appSenderAddr` and `webxdc.canSendUpdatesToAllPeers` 
+  to allow apps to determine their role and their ability to send updates.
 ## [1.3] - 2026-02-11
 
 ### Other changes
