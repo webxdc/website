@@ -45,19 +45,20 @@ This supports a common development model where a "central" app instance
 (the sender's) processes all updates and distributes the resulting state
 back to all peers.
 
-## canSendUpdatesToAllPeers
+## canOnlySendUpdatesToAppSender
 
 ```js
-window.webxdc.canSendUpdatesToAllPeers
+window.webxdc.canOnlySendUpdatesToAppSender
 ```
 
-`canSendUpdatesToAllPeers` is a boolean that is `true` if the local user
-can send [updates](./sendUpdate.md) to everyone in the chat.
-If it is `false`, updates sent by the local user will only be seen by the app sender.
+`canOnlySendUpdatesToAppSender` is a boolean that is `true` if updates sent
+by the local user will only be seen by the app sender.
+If it is `false` or `undefined`, the local user can send [updates](./sendUpdate.md) to everyone in the chat.
 
 On some platforms, such as "broadcast channels," it is technically impossible
 for subscribers to discover or send updates to each other directly.
 In those cases, only the app sender can distribute updates globally.
+
 
 
 ## Example using selfAddr and selfName

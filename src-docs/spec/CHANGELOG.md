@@ -4,7 +4,7 @@
 
 ### New APIs
 
-- add `webxdc.appSenderAddr` and `webxdc.canSendUpdatesToAllPeers` 
+- add `webxdc.appSenderAddr` and `webxdc.canOnlySendUpdatesToAppSender` 
   to allow apps to determine their role and their ability to send updates.
 ## [1.3] - 2026-02-11
 

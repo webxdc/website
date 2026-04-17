@@ -5,9 +5,10 @@ window.webxdc.sendUpdate(update, descr);
 ```
 
 Send an update to peers. 
-If `webxdc.canSendUpdatesToAllPeers` is true, the update is sent to all peers.
-If `webxdc.canSendUpdatesToAllPeers` is false, the update is only sent to the app sender
+If `webxdc.canOnlySendUpdatesToAppSender` is false, the update is sent to all peers.
+If `webxdc.canOnlySendUpdatesToAppSender` is true, the update is only sent to the app sender
 (the peer with the address `webxdc.appSenderAddr`).
+
 
 All receiving peers, including the sending one,
 will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
