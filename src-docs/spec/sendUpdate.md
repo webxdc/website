@@ -4,9 +4,12 @@
 window.webxdc.sendUpdate(update, descr);
 ```
 
-Send an update to all peers.
+Send an update to peers.
+If `webxdc.isBroadcast` is false, the update is sent to all peers.
+If `webxdc.isBroadcast` is true and `webxdc.isAppSender` is false,
+the update is only sent to the app sender.
 
-All peers, including the sending one,
+All receiving peers, including the sending one,
 will receive the update by the callback given to [`setUpdateListener()`](./setUpdateListener.html).
 
 There are situations where the user cannot send messages to a chat,

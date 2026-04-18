@@ -148,6 +148,8 @@ While this behaviour can be very helpful for application developers,
 it may not free you entirely from having to think about network conditions.
 _Eventually-consistent_ application state should generally be treated as
 subjective, which can be a significant shift if you are used to having a server acting as an authority.
+While you can use [`webxdc.isAppSender`](../spec/selfAddr_and_selfName.html#isappsender) to nominate a peer
+(the app sender) to act as a kind of server, this introduces a dependency on that peer being online.
 That means that conditional behaviour that you'd usually treat as _yes_ and _no_,
 may instead behave more like _currently_ and _not yet_.
 
