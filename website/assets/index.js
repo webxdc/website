@@ -330,6 +330,13 @@
             desc: 'A decentralized, privacy-focused encrypted messenger with zero metadata leakage. Features Nexus, an integrated in-app webxdc app store.',
             platforms: 'Windows, macOS, Linux, Android',
             url: 'https://vectorapp.io'
+        },
+        ditto: {
+            name: 'Ditto',
+            img: 'assets/messengers/ditto.png',
+            desc: 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours to customize and build upon. Express yourself with custom themes, Lightning payments, and an ever-growing set of content types -- including WebXDC.',
+            platforms: 'Android, iOS, Web',
+            url: 'https://ditto.pub'
         }
     };
 
