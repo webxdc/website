@@ -29,6 +29,13 @@ both a Total Order of messages and a "single source of truth" can not be assumed
 Many webxdc applications are incapable of producing conflicts,
 either because they do not use the network communication APIs,
 or because any given data structure can only have one writer.
+Alternatively, an application can designate a "central" authority
+by checking [`webxdc.isAppSender`](../spec/selfAddr_and_selfName.html#isappsender)
+to identify whether it is running for the user who shared the app.
+This peer could then authoritatively resolve conflicts or coordinate state updates.
+However, developers should be aware that if the app depends entirely on the sender being online,
+the app's availability will be limited when the sender is offline.
+
 For example, many of the available [webxdc games](https://webxdc.org/apps/) offer a high-score table
 and how users scored will typically be reported back to the chat.
 Such a gaming app will simply post their user's highscore

@@ -32,6 +32,34 @@ Note that `selfAddr`
 - should not be shown in the user interface of the webxdc application
   (use `selfName` instead). 
 
+## isAppSender
+
+```js
+window.webxdc.isAppSender
+```
+
+`isAppSender` is a boolean value that is `true` if the local user is the one
+who initially shared the webxdc application in the chat.
+If it is `false`, the user is a receiver.
+
+This supports a common development model where a "central" app instance
+(the sender's) processes all updates and distributes the resulting state
+back to all peers.
+
+## isBroadcast
+
+```js
+window.webxdc.isBroadcast
+```
+
+`isBroadcast` is a boolean value that is `true` if the webxdc
+application is shared in a broadcast chat context.
+
+On some platforms, such as "broadcast channels," it is technically impossible
+for subscribers to discover or send updates to each other directly.
+In those cases, [updates](./sendUpdate.md) sent by a non-sender
+will only be seen by the app sender,
+who alone can distribute updates globally.
 
 
 ## Example using selfAddr and selfName
