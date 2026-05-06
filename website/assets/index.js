@@ -333,8 +333,8 @@
         },
         ditto: {
             name: 'Ditto',
-            img: 'assets/messengers/ditto.png',
-            desc: 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours to customize and build upon. Express yourself with custom themes, Lightning payments, and an ever-growing set of content types -- including WebXDC.',
+            img: 'assets/messengers/ditto.svg',
+            desc: 'An open-source social platform built on Nostr. Decentralized, customizable, and supports WebXDC mini apps in feeds.',
             platforms: 'Android, iOS, Web',
             url: 'https://ditto.pub'
         }
