@@ -11,8 +11,6 @@
 - the latest JavaScript features may not work on all webviews,
   you may want to transpile your code down to an older js version
   e.g. with <https://babeljs.io>
-- `<a href="https://example.org/foo">` and other external links are blocked by definition;
-  instead, embed content or use `mailto:` link to offer a way for contact
 - `<a href="data: or otherwise internal">` is not guaranteed to open a download dialog;
   instead, use [`sendToChat()`](../spec/sendToChat.md) to export files.
 - features that require user permissions
