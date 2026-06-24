@@ -319,7 +319,7 @@
         },
         w2g: {
             name: 'Watch2Gether',
-            img: 'assets/messengers/w2g.png',
+            img: 'assets/messengers/w2g.svg',
             desc: 'A collaborative platform for watching videos, listening to music, and browsing content together in private rooms. Experimentally supports webxdc mini apps.',
             platforms: 'Web',
             url: 'https://w2g.tv'
