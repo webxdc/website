@@ -46,4 +46,4 @@ jobs:
           mkdir -p "$HOME/.ssh"
           echo "${{ secrets.KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
-          rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/*" "${{ secrets.USERNAME }}@delta.chat:"
+          rsync -avzh -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" "website/" "${{ secrets.USERNAME }}@delta.chat:"
