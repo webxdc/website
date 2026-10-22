@@ -54,12 +54,44 @@ When starting a web view for a webxdc app to run, messenger implementors
 
 - MUST support `<meta name="viewport" ...>` is useful especially as webviews from different platforms have different defaults
 
-- MUST support `window.webxdc.isAppSender` and `window.webxdc.isBroadcast`
-  to allow apps to determine their role and if they are in a broadcast chat.
-
 - MUST support `<input type="file">` to allow importing of files;
   see [`sendToChat()`](../spec/sendToChat.md) for a way to export files. 
 
+### Webxdc API Implementation Checklist
+Your app MUST implement the entire webxdc api:
+
+- [ ] MUST implement the [Status Update API](../spec/joinRealtimeChannel.md)
+  - `window.webxdc.sendUpdate(update, descr)`
+    - MUST support `update.payload`
+    - SHOULD <!-- or MUST? --> support `update.info`, `update.href`, `update.document`, `update.summary`, `update.notify`
+  - `window.webxdc.setUpdateListener((update)=>{}, serial)`
+   - MUST support `update.payload`, `update.serial` and `update.max_serial`
+   - SHOULD <!-- or MUST? --> support `update.info`, `update.href`, `update.document`, `update.summary` and `update.notify`
+  - Status updates MUST use a reliable persisted transport,
+    like a hidden variant of normal messages in your chat.
+- [ ] MUST support [Realtime Channels](../spec/joinRealtimeChannel.md)
+  - `window.webxdc.joinRealtimeChannel()`
+  - `realtimeChannel.setListener((data) => {})`
+  - `realtimeChannel.send(data)`
+  - `realtimeChannel.leave()`
+  - Data over Realtime Channels MUST use a fast realtime transport
+    that has not much more latency than a direct p2p connection.
+  - Data over Realtime Channels MUST NOT be persisted or stored, it is ephemeral.
+- [ ] MUST support [`window.webxdc.importFiles(filter)`](../spec/importFiles.md)
+  - Filter support is optional, but the file picker MUST open in any case.
+- [ ] MUST support [`sendToChat(message)`](../spec/sendToChat.md)
+  - MUST support `message.text` and all options of `message.file`
+    (`name`, `blob`, `base64` and `plainText`)
+- [ ] MUST support [`window.webxdc.selfName`](spec/selfAddr_and_selfName.md#selfaddr)
+  and [`window.webxdc.selfAddr`](spec/selfAddr_and_selfName.md#selfaddr),
+  to allow apps to differentiate between different users.
+  It's important that `selfAddr` is a unique ID, not an actual address,
+  see documentation page for details.
+- [ ] MUST support `window.webxdc.isAppSender` and `window.webxdc.isBroadcast`
+  to allow apps to determine their role and if they are in a broadcast chat.
+- [ ] SHOULD expose the following limits to web applications:
+  - [`webxdc.sendUpdateInterval`](../spec/sendUpdate.md#messaging-layer-limits-for-sendupdate)
+  - [`webxdc.sendUpdateMaxSize`](../spec/sendUpdate.md#messaging-layer-limits-for-sendupdate)
 
 ### UI Interactions in Chats
 
