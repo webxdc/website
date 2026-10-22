@@ -82,8 +82,8 @@ Your app MUST implement the entire webxdc api:
 - [ ] MUST support [`sendToChat(message)`](../spec/sendToChat.md)
   - MUST support `message.text` and all options of `message.file`
     (`name`, `blob`, `base64` and `plainText`)
-- [ ] MUST support [`window.webxdc.selfName`](spec/selfAddr_and_selfName.md#selfaddr)
-  and [`window.webxdc.selfAddr`](spec/selfAddr_and_selfName.md#selfaddr),
+- [ ] MUST support [`window.webxdc.selfName`](../spec/selfAddr_and_selfName.md#selfaddr)
+  and [`window.webxdc.selfAddr`](../spec/selfAddr_and_selfName.md#selfaddr),
   to allow apps to differentiate between different users.
   It's important that `selfAddr` is a unique ID, not an actual address,
   see documentation page for details.
