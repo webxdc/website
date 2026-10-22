@@ -1,4 +1,4 @@
-# joinRealtimeChannel (experimental)
+# joinRealtimeChannel 
 
 ```js
 const realtimeChannel = window.webxdc.joinRealtimeChannel();
@@ -17,12 +17,6 @@ Per-app realtime channels are:
 
 Calling `joinRealtimeChannel` a second time without leaving the prior one
 will throw an error.
-
-## Check if the API is available
-
-This API is experimental and may not be implemented by every messenger yet.
-Check if it is available with `window.webxdc.joinRealtimeChannel !== undefined`
-(for Delta Chat, the API is available and enabled by default since 1.48)
 
 ## `realtimeChannel.setListener((data) => {})` 
 
