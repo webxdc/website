@@ -1,50 +1,21 @@
 
 # TypeScript support
 
-## How to get autocompletion in your IDE via TypeScript? 
+When you develop a webxdc app, you use the webxdc API to communicate with other instances of the same webxdc application.
 
-Install the [webxdc-types node package](https://www.npmjs.com/package/webxdc-types#types-for-webxdc) via `npm`
-and follow [the instructions in its README](https://www.npmjs.com/package/webxdc-types#usage).
+The API is available on `window.webxdc`.
 
-Alternatively, copy
-[`webxdc.d.ts`](https://github.com/webxdc/webxdc-types/blob/main/webxdc.d.ts)
-into your source dir and follow the instructions below.
+When you develop your webxdc app in TypeScript, it's handy to have proper types for this API.
 
-### How to use webxdc types? 
+## Reasons for using typescript:
 
-Start by importing the file.
+- Get autocompletion in your IDE via TypeScript (in JS and TS)
+- See documentation on hover in your IDE (in JS and TS)
+- Support for typescript type-checking, which is very helpful in preventing bugs in larger codebases
 
-In TypeScript: 
 
-```typescript
-import type { Webxdc } from './webxdc.d.ts'
-```
+## Usage
 
-In JavaScript:
-
-```javascript
-/**
- * @typedef {import('./webxdc').Webxdc} Webxdc
- */
-```
-
-This works in VS Code nicely together with the `//@ts-check` comment on top of your source file.
-
-If you want you can also type your own functions using [JSDoc comments](https://jsdoc.app/).
-
-> If you don't use VS Code you can still make use of the type checking with the TypeScript compiler:
->
-> ```sh
-> npm i -g typescript # -g stands for global installation
-> tsc --noEmit --allowJs --lib es2015,dom *.js
-> ```
-
-### How to add your own application update payload type? 
-
-If you have a type for your state update **payloads**, replace the `any` in `Webxdc<any>` with your own payload type:
-
-```typescript
-{{#include ../webxdc.d.ts:global}}
-```
-
+Install the [@webxdc/types node package](https://www.npmjs.com/package/@webxdc/types) via `npm`
+and follow [the instructions in its README](https://github.com/webxdc/webxdc-types).
 
